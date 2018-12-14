@@ -1,7 +1,7 @@
 Members
 =======
 
-  1. B590000 Mr. Firstname Lastname
+  1. B5901333 Mr. Thammaphon Sithanut
   2. B5915521 Mr. Kritsada Boonrod
   3. B5917501 Mr. Ratchapong Sritong
   4. B5921713 Mr. Nattawat Burirat 
