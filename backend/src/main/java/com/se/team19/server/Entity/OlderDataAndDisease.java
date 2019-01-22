@@ -18,6 +18,7 @@ public class OlderDataAndDisease {
     @JoinColumn(name = "DataOlder_ID", insertable = true)
     private Gender dataOlderAndDiseaseDataOlder;
 
+
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = OlderDisease.class)
     @JoinColumn(name = "OlderDisease_ID", insertable = true)
     private Province dataOlderAndDiseaseOlderDisease;
