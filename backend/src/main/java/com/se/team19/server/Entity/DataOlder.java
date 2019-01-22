@@ -1,4 +1,4 @@
-package com.se.team19.server.Entity;
+﻿package com.se.team19.server.Entity;
 
 import lombok.*;
 import javax.persistence.*;
@@ -18,6 +18,7 @@ public class DataOlder {
     private @NonNull String parentname
     private @NonNull String parentaddress;
     private @NonNull String parentphone;
+
 
     //ความสัมพันธ์
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Gender.class)
