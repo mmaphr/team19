@@ -12,6 +12,7 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @Table(name = "Category")
 public class Category {
+
     @Id
     @SequenceGenerator(name="category_seq",sequenceName="category_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="category_seq")
