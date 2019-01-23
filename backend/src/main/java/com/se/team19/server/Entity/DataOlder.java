@@ -1,4 +1,4 @@
-﻿package com.se.team19.server.Entity;
+package com.se.team19.server.Entity;
 
 import lombok.*;
 import javax.persistence.*;
@@ -11,7 +11,7 @@ public class DataOlder {
     @Id
     @SequenceGenerator(name = "dataolder_seq", sequenceName = "dataolder_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "dataolder_seq")
-    @Column(name = "DataOlder_ID", unique = true, nullable = false)
+    @Column(name = "Dataolder_ID", unique = true, nullable = false)
     private @NonNull Long id;
     private @NonNull String oldername;
     private @NonNull Date olderbirth;
@@ -28,5 +28,6 @@ public class DataOlder {
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Province.class)
     @JoinColumn(name = "Province_ID", insertable = true)
     private Province dataOlderProvince;
+
 
 }

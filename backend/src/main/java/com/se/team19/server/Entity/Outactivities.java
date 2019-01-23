@@ -25,10 +25,9 @@ import java.util.Optional;
 @Data
 
 @Getter @Setter
-@NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class Activities{
+public class Outactivities{
     @Id
     @SequenceGenerator(name="activities_seq",sequenceName="activities_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="activities_seq")
@@ -36,7 +35,7 @@ public class Activities{
     private @NonNull Long id;
 
 
-    public Activities(){
+    public Outactivities(){
     }
 
 
