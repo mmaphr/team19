@@ -32,7 +32,11 @@ public class ServerApplication {
 						   StaffRepository staffRepository,
 						   CategoryRepository categoryRepository,
 						   NoteRepository noteRepository,
-						   AddProductsRepository addProductsRepository) {
+						   AddProductsRepository addProductsRepository,
+						   RoomStatusRepository roomStatusRepository,
+						   TypeRoomRepository typeRoomRepository,
+						   DataOlderRepository DataolderRepository,
+						   RoomInformationRepository roomInformationRepository) {
 		return args -> {
 
 			//<!==========  AddProductToStock ==========!>
@@ -89,6 +93,89 @@ public class ServerApplication {
 			staffRepository.findAll().forEach(System.out::println);
 
 			//<!================= END!! Staff =================!>
+
+			//<!==========  RoomInformation ==========!>
+			Stream.of("ห้องว่าง","ขาด1คน","ขาด2คน","เต็ม").forEach(statusName -> {
+				RoomStatus roomstatus = new RoomStatus ();
+				roomstatus.setStatusname(statusName);
+				roomStatusRepository.save(roomstatus);
+			});
+			Stream.of("พิเศษชาย","พิเศษหญิง","ทั่วไปชาย","ทั่วไปหญิง").forEach(typeName -> {
+				TypeRoom typeRoom = new TypeRoom();
+				typeRoom.setTyperoom(typeName);
+				typeRoomRepository.save(typeRoom);
+			});
+
+			RoomInformation	room1 = new RoomInformation();
+			room1.setRoomnumber("A101");
+			room1.setRoomstatus(roomStatusRepository.findById(1));
+			room1.setTyperoom(typeRoomRepository.findById(1));
+			roomInformationRepository.save(room1);
+
+			RoomInformation	room2 = new RoomInformation();
+			room2.setRoomnumber("A102");
+			room2.setRoomstatus(roomStatusRepository.findById(2));
+			room2.setTyperoom(typeRoomRepository.findById(1));
+//			room2.setOlder1(DataolderRepository.findById(1));
+//			room2.setOlder2(DataolderRepository.findById(2));
+			roomInformationRepository.save(room2);
+
+			RoomInformation	room3 = new RoomInformation();
+			room3.setRoomnumber("A103");
+			room3.setRoomstatus(roomStatusRepository.findById(3));
+			room3.setTyperoom(typeRoomRepository.findById(1));
+//			room3.setOlder1(DataolderRepository.findById(3));
+			roomInformationRepository.save(room3);
+
+			RoomInformation	room4 = new RoomInformation();
+			room4.setRoomnumber("A104");
+			room4.setRoomstatus(roomStatusRepository.findById(4));
+			room4.setTyperoom(typeRoomRepository.findById(1));
+//			room4.setOlder1(DataolderRepository.findById(4));
+//			room4.setOlder2(DataolderRepository.findById(5));
+//			room4.setOlder3(DataolderRepository.findById(6));
+			roomInformationRepository.save(room4);
+
+			RoomInformation	room5 = new RoomInformation();
+			room5.setRoomnumber("A105");
+			room5.setRoomstatus(roomStatusRepository.findById(4));
+			room5.setTyperoom(typeRoomRepository.findById(1));
+//			room5.setOlder1(DataolderRepository.findById(7));
+//			room5.setOlder2(DataolderRepository.findById(8));
+//			room5.setOlder3(DataolderRepository.findById(9));
+			roomInformationRepository.save(room5);
+
+			RoomInformation	room6 = new RoomInformation();
+			room6.setRoomnumber("A106");
+			room6.setRoomstatus(roomStatusRepository.findById(1));
+			room6.setTyperoom(typeRoomRepository.findById(3));
+			roomInformationRepository.save(room6);
+
+			RoomInformation	room7 = new RoomInformation();
+			room7.setRoomnumber("A107");
+			room7.setRoomstatus(roomStatusRepository.findById(1));
+			room7.setTyperoom(typeRoomRepository.findById(3));
+			roomInformationRepository.save(room7);
+
+			RoomInformation	room8 = new RoomInformation();
+			room8.setRoomnumber("A108");
+			room8.setRoomstatus(roomStatusRepository.findById(1));
+			room8.setTyperoom(typeRoomRepository.findById(3));
+			roomInformationRepository.save(room8);
+
+			RoomInformation	room9 = new RoomInformation();
+			room9.setRoomnumber("A109");
+			room9.setRoomstatus(roomStatusRepository.findById(1));
+			room9.setTyperoom(typeRoomRepository.findById(3));
+			roomInformationRepository.save(room9);
+
+			RoomInformation	room10 = new RoomInformation();
+			room10.setRoomnumber("A 110");
+			room10.setRoomstatus(roomStatusRepository.findById(1));
+			room10.setTyperoom(typeRoomRepository.findById(3));
+			roomInformationRepository.save(room10);
+
+			//<!==========  END RoomInformation ==========!>
 
 		};
 	}
