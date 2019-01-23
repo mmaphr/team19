@@ -1,4 +1,4 @@
-package com.projact.se.cliect.Entity;
+package com.se.team19.server.Entity;
 
 import lombok.*;
 import javax.persistence.*;

@@ -1,4 +1,4 @@
-package com.se.team19.server.entity;
+package com.se.team19.server.Entity;
 
 import lombok.*;
 

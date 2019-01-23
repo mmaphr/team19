@@ -15,7 +15,7 @@ public class DataOlder {
     private @NonNull Long id;
     private @NonNull String oldername;
     private @NonNull Date olderbirth;
-    private @NonNull String parentname
+    private @NonNull String parentname;
     private @NonNull String parentaddress;
     private @NonNull String parentphone;
 
