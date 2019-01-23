@@ -1,18 +1,24 @@
 package com.se.team19.server.Entity;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NonNull;
+
 import javax.persistence.*;
-import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "Province")
+@Table(name = "province")
 public class Province {
     @Id
-    @SequenceGenerator(name = "province_seq", sequenceName = "province_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "province_seq")
-    @Column(name = "Province_ID", unique = true, nullable = false)
-    private @NonNull Long id;
-    private @NonNull String provincename;
+    @SequenceGenerator(name="province_seq",sequenceName="province_seq")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="province_seq")
+    @Column(name="PROVINCE_ID",unique = true, nullable = false)
+    private @NonNull Long ProvinceId;
+    private @NonNull String ProvinceName;
 
+    public Province() {}
+
+    public Province(String provinceName) {
+        ProvinceName = provinceName;
+    }
 }
