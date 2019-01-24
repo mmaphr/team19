@@ -1,0 +1,23 @@
+<div class="blackground" align="center" >
+  <div class="form">
+    <h1>ระบบจัดการห้องพักผู้สูงอายุ</h1>
+    <p>เติมชื่อผู้สูงอายุเพื่อค้นหาห้องพัก</p>
+    <hr>
+
+    <p><mat-form-field class="half-width" >
+      <mat-label>หมายเลขห้อง</mat-label>
+      <input matInput placeholder="A101"[(ngModel)]="roomImData.roomNumInput" >
+    </mat-form-field></p>
+
+    <p><mat-form-field class="half-width">
+      <mat-select placeholder="เลือกประเภทห้องพัก" [(ngModel)]="roomImData.typeSelect" name="typeroom">
+        <mat-option *ngFor="let typeroom of types" [value]="typeroom.id">
+          {{typeroom.typeroom}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field></p>
+
+    <button mat-flat-button color="primary" (click)="save()" >ยืนยัน</button>
+    <p><a href="roomInformation">ย้อนกลับ</a></p>
+  </div>
+</div>
