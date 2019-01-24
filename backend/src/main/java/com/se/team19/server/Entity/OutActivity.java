@@ -43,7 +43,7 @@ public class OutActivity {
     private PeriodTime periodTimeE;
 
    @OneToOne
-   @JoinColumn(name="Staff_id")
+   @JoinColumn(name="StaffId")
     private Staff staff;
 
 
