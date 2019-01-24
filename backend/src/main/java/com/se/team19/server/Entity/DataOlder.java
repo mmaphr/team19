@@ -29,5 +29,14 @@ public class DataOlder {
     @JoinColumn(name = "Province_ID", insertable = true)
     private Province dataOlderProvince;
 
-
+    public DataOlder(){}
+    public DataOlder(String oldername,  Date olderbirth, String parentname, String parentaddress, String parentphone, Gender dataOlderGender, Province dataOlderProvince) {
+        this.oldername = oldername;
+        this.olderbirth = olderbirth;
+        this.parentname = parentname;
+        this.parentaddress = parentaddress;
+        this.parentphone = parentphone;
+        this.dataOlderGender = dataOlderGender;
+        this.dataOlderProvince = dataOlderProvince;
+    }
 }
