@@ -1,0 +1,28 @@
+<div class="header_content">
+  <h1 class="title">G19 ระบบศูนย์ดูแลผู้สูงอายุ</h1>
+</div>
+<div class="main">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="container">
+    <form login="ngForm">
+      <h1>LOGIN</h1>
+      <br>
+      <div class="username">
+        <input type="text" name="adminusername" placeholder="USERNAME" [(ngModel)]="login.username" #adminusername>
+      </div>
+      <div class="password">
+        <input type="password" name="password"  placeholder="PASSWORD" [(ngModel)]="login.password" #password>
+      </div>
+      <br>
+      <div class="botton">
+        <button mat-button (click)="submit(login)">Login</button>
+      </div>
+      <br>
+      <br>
+    </form>
+  </div>
+</div>
