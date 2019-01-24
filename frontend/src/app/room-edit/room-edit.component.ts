@@ -40,7 +40,7 @@ export class RoomEditComponent implements OnInit {
     console.log(this.roomImData.roomNumInput);
     this.httpClient.post('http://localhost:8080/newRoom/'+this.roomImData.roomNumInput+'/'+this.roomImData.typeSelect,this.roomImData).subscribe(
     data => {
-              alert('Request is successful');
+              alert('เพิ่มห้องพักสำเร็จ');
               console.log('เพิ่มห้องพักสำเร็จ', data);
               this.router.navigate(['roomInformation']);
 
