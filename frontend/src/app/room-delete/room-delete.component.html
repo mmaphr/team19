@@ -6,69 +6,69 @@
 
 
 
-    <table mat-table [dataSource]="ShowAll" class="mat-elevation-z8">
+    <table mat-table [dataSo<mat-table [dataSource]="ShowAll" class="mat-elevation-z8">
 
-      <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
-      <ng-container matColumnDef="no">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element ; let i = index">{{i+1}}</td>
-      </ng-container>
-      <!-- Position Column -->
-
-
-
-      <ng-container matColumnDef="roomnumber">
-        <th mat-header-cell *matHeaderCellDef> หมายเลขห้อง </th>
-        <td mat-cell *matCellDef="let element"> {{element.roomnumber}} </td>
-      </ng-container>
-
-      <!-- Weight Column -->
-      <ng-container matColumnDef="type">
-        <th mat-header-cell *matHeaderCellDef> ประเภทห้องพัก </th>
-        <td mat-cell *matCellDef="let element"> {{element.typeroom.typeroom}} </td>
-      </ng-container>
-
-      <!--Symbol Column -->
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef> สถานะห้องพัก </th>
-        <td mat-cell *matCellDef="let element"> {{element.roomstatus.statusname}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="older1">
-        <th mat-header-cell *matHeaderCellDef> ผู้พักคนที่1 </th>
-        <td mat-cell *matCellDef="let element"> {{element.older1&&element.older1.oldername}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="delete1">
-        <th mat-header-cell *matHeaderCellDef> หมายเหตุ </th>
-        <td mat-cell *matCellDef="let element"><button mat-flat-button color="warn" (click)="delete1(element.id,element.older1,element.older2,element.older3,element.older1.id)" >ลบคนที่1</button></td>
-      </ng-container>
-
-      <ng-container matColumnDef="older2">
-        <th mat-header-cell *matHeaderCellDef> ผู้พักคนที่2 </th>
-        <td mat-cell *matCellDef="let element"> {{element.older2&&element.older2.oldername}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="delete2">
-        <th mat-header-cell *matHeaderCellDef> หมายเหตุ </th>
-        <td mat-cell *matCellDef="let element"><button mat-flat-button color="warn" (click)="delete2(element.id,element.older1,element.older2,element.older3,element.older2.id)" >ลบคนที่2</button></td>
-      </ng-container>
-
-      <ng-container matColumnDef="older3">
-        <th mat-header-cell *matHeaderCellDef> ผู้พักคนที่3 </th>
-        <td mat-cell *matCellDef="let element"> {{element.older3&&element.older3.oldername}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="delete3">
-        <th mat-header-cell *matHeaderCellDef> หมายเหตุ </th>
-        <td mat-cell *matCellDef="let element"><button mat-flat-button color="warn" (click)="delete3(element.id,element.older1,element.older2,element.older3,element.older3.id)" >ลบคนที่3</button></td>
-      </ng-container>
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+    <ng-container matColumnDef="no">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element ; let i = index">{{i+1}}</mat-cell>
+    </ng-container>
+    <!-- Position Column -->
 
 
-      <tr mat-header-row *matHeaderRowDef="showAllColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: showAllColumns;"></tr>
-    </table>
+
+    <ng-container matColumnDef="roomnumber">
+      <mat-header-cell *matHeaderCellDef> หมายเลขห้อง </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.roomnumber}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef> ประเภทห้องพัก </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.typeroom.typeroom}} </mat-cell>
+    </ng-container>
+
+    <!--Symbol Column -->
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef> สถานะห้องพัก </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.roomstatus.statusname}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="older1">
+      <mat-header-cell *matHeaderCellDef> ผู้พักคนที่1 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.older1&&element.older1.oldername}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete1">
+      <mat-header-cell *matHeaderCellDef> หมายเหตุ </mat-header-cell>
+      <mat-cell *matCellDef="let element"><button mat-flat-button color="warn" (click)="delete1(element.id,element.older1,element.older2,element.older3,element.older1.id)" >ลบคนที่1</button></mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="older2">
+      <mat-header-cell *matHeaderCellDef> ผู้พักคนที่2 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.older2&&element.older2.oldername}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete2">
+      <mat-header-cell *matHeaderCellDef> หมายเหตุ </mat-header-cell>
+      <mat-cell *matCellDef="let element"><button mat-flat-button color="warn" (click)="delete2(element.id,element.older1,element.older2,element.older3,element.older2.id)" >ลบคนที่2</button></mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="older3">
+      <mat-header-cell *matHeaderCellDef> ผู้พักคนที่3 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.older3&&element.older3.oldername}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete3">
+      <mat-header-cell *matHeaderCellDef> หมายเหตุ </mat-header-cell>
+      <mat-cell *matCellDef="let element"><button mat-flat-button color="warn" (click)="delete3(element.id,element.older1,element.older2,element.older3,element.older3.id)" >ลบคนที่3</button></mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="showAllColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: showAllColumns;"></mat-row>
+  </mat-table>
     <a href="roomInformation">ย้อนกลับ</a>
   </div>
 </div>
