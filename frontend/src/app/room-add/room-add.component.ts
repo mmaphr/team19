@@ -51,7 +51,7 @@ export class RoomAddComponent implements OnInit {
 
   }
 
-  add(id,older1,older2,older3){
+  add(id,older1,older2,older3,type){
     console.log(this.roomImData.nameInput);
     console.log(id,older1,older2,older3);
     if(this.roomImData.nameInput === ''){
@@ -62,7 +62,7 @@ export class RoomAddComponent implements OnInit {
           if(older3===null){
             console.log("ห้องว่างทุกที่");
             console.log(id);
-            this.httpClient.put('http://localhost:8080/updateRoom1/' +id+ '/'+this.roomImData.nameInput+'/3',RoomAddComponent.getId)
+            this.httpClient.put('http://localhost:8080/updateRoom1/' +id+ '/'+this.roomImData.nameInput+'/3/'+type.id,RoomAddComponent.getId)
             .subscribe(
             data => {
 
@@ -72,13 +72,13 @@ export class RoomAddComponent implements OnInit {
 
              },
             error => {
-                alert('เพิ่มไม่สำเร็จ ผู้สูงอายุมีห้องพักแล้ว');
+                alert(error.error.message);
                 console.log('Error', error);
             });
 
           }else if(older3!==null){
             console.log("ห้องว่างที่1-2");
-            this.httpClient.put('http://localhost:8080/updateRoom1/' +id+ '/'+this.roomImData.nameInput+'/2',RoomAddComponent.getId)
+            this.httpClient.put('http://localhost:8080/updateRoom1/' +id+ '/'+this.roomImData.nameInput+'/2/'+type.id,RoomAddComponent.getId)
             .subscribe(
             data => {
 
@@ -88,7 +88,7 @@ export class RoomAddComponent implements OnInit {
 
              },
             error => {
-                alert('เพิ่มไม่สำเร็จ ผู้สูงอายุมีห้องพักแล้ว');
+                alert(error.error.message);
                 console.log('Error', error);
             });
           }
@@ -97,7 +97,7 @@ export class RoomAddComponent implements OnInit {
 
           if(older3===null){
             console.log("ห้องว่างที่1,3");
-            this.httpClient.put('http://localhost:8080/updateRoom1/' +id+ '/'+this.roomImData.nameInput+'/2',RoomAddComponent.getId)
+            this.httpClient.put('http://localhost:8080/updateRoom1/' +id+ '/'+this.roomImData.nameInput+'/2/'+type.id,RoomAddComponent.getId)
             .subscribe(
             data => {
 
@@ -107,13 +107,13 @@ export class RoomAddComponent implements OnInit {
 
              },
             error => {
-                alert('เพิ่มไม่สำเร็จ ผู้สูงอายุมีห้องพักแล้ว');
+                alert(error.error.message);
                 console.log('Error', error);
             });
 
           }else if(older3!==null){
             console.log("ห้องว่างที่1");
-            this.httpClient.put('http://localhost:8080/updateRoom1/' +id+ '/'+this.roomImData.nameInput+'/4',RoomAddComponent.getId)
+            this.httpClient.put('http://localhost:8080/updateRoom1/' +id+ '/'+this.roomImData.nameInput+'/4/'+type.id,RoomAddComponent.getId)
             .subscribe(
             data => {
 
@@ -123,7 +123,7 @@ export class RoomAddComponent implements OnInit {
 
              },
             error => {
-                alert('เพิ่มไม่สำเร็จ ผู้สูงอายุมีห้องพักแล้ว');
+                alert(error.error.message);
                 console.log('Error', error);
             });
 
@@ -134,7 +134,7 @@ export class RoomAddComponent implements OnInit {
 
           if(older3===null){
             console.log("ห้องว่างที่2-3");
-            this.httpClient.put('http://localhost:8080/updateRoom2/' +id+ '/'+this.roomImData.nameInput+'/2',RoomAddComponent.getId)
+            this.httpClient.put('http://localhost:8080/updateRoom2/' +id+ '/'+this.roomImData.nameInput+'/2/'+type.id,RoomAddComponent.getId)
             .subscribe(
             data => {
 
@@ -144,13 +144,13 @@ export class RoomAddComponent implements OnInit {
 
              },
             error => {
-                alert('เพิ่มไม่สำเร็จ ผู้สูงอายุมีห้องพักแล้ว');
+                alert(error.error.message);
                 console.log('Error', error);
             });
 
           }else if(older3!==null){
             console.log("ห้องว่างที่2");
-            this.httpClient.put('http://localhost:8080/updateRoom2/' +id+ '/'+this.roomImData.nameInput+'/4',RoomAddComponent.getId)
+            this.httpClient.put('http://localhost:8080/updateRoom2/' +id+ '/'+this.roomImData.nameInput+'/4/'+type.id,RoomAddComponent.getId)
             .subscribe(
             data => {
 
@@ -159,7 +159,7 @@ export class RoomAddComponent implements OnInit {
                 this.router.navigate(['roomAll']);
              },
             error => {
-                alert('เพิ่มไม่สำเร็จ ผู้สูงอายุมีห้องพักแล้ว');
+                alert(error.error.message);
                 console.log('Error', error);
             });
           }
@@ -168,7 +168,7 @@ export class RoomAddComponent implements OnInit {
 
           if(older3===null){
             console.log("ห้องว่างที่3");
-            this.httpClient.put('http://localhost:8080/updateRoom3/' +id+ '/'+this.roomImData.nameInput+'/4',RoomAddComponent.getId)
+            this.httpClient.put('http://localhost:8080/updateRoom3/' +id+ '/'+this.roomImData.nameInput+'/4/'+type.id,RoomAddComponent.getId)
             .subscribe(
             data => {
 
@@ -178,7 +178,7 @@ export class RoomAddComponent implements OnInit {
 
              },
             error => {
-                alert('เพิ่มไม่สำเร็จ ผู้สูงอายุมีห้องพักแล้ว');
+                alert(error.error.message);
                 console.log('Error', error);
             });
           }else if(older3!==null){

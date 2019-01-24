@@ -59,7 +59,7 @@ const appRoutes: Routes = [
   { path: '',  redirectTo: '/loginpage', pathMatch: 'full' },
   { path: 'loginpage',component : LoginpageComponent},
   { path: 'main',component:MainComponent},
-  { path: 'InputDataOlder' , component : AddDataOlderPageComponent}
+  { path: 'InputDataOlder' , component : AddDataOlderPageComponent},
   {path:'roomInformation',component : RoomImformationComponent},
   {path:'roomEdit',component : RoomEditComponent},
   {path:'roomAll',component : RoomAllComponent},
@@ -74,7 +74,10 @@ const appRoutes: Routes = [
     RoomEditComponent,
     RoomAllComponent,
     RoomAddComponent,
-    RoomDeleteComponent
+    RoomDeleteComponent,
+    LoginpageComponent,
+    MainComponent,
+    AddDataOlderPageComponent
   ],
   imports: [
     BrowserModule,
