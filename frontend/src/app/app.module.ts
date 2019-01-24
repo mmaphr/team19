@@ -49,8 +49,12 @@ import { RoomImformationService } from './shared/room-imformation/room-imformati
 import { RoomAllComponent } from './room-all/room-all.component';
 import { RoomAddComponent } from './room-add/room-add.component';
 import { RoomDeleteComponent } from './room-delete/room-delete.component';
+import { LoginpageComponent } from './loginpage/loginpage.component';
+import {LoginpageService} from './shared/loginmain/loginpage.service';
 
 const appRoutes: Routes = [
+  { path: '',  redirectTo: '/loginpage', pathMatch: 'full' },
+  { path: 'loginpage',component : LoginpageComponent},
   {path:'roomInformation',component : RoomImformationComponent},
   {path:'roomEdit',component : RoomEditComponent},
   {path:'roomAll',component : RoomAllComponent},
@@ -106,7 +110,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [RoomImformationService],
+  providers: [RoomImformationService,LoginpageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
