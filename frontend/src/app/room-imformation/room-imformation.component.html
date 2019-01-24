@@ -1,0 +1,23 @@
+<div class="blackground" align="center" >
+  <div class="form">
+    <h1>ระบบจัดการห้องพักผู้สูงอายุ</h1>
+    <p>เติมชื่อผู้สูงอายุเพื่อค้นหาห้องพัก</p>
+    <p>ค้นหาคำสั่ง "allData" เพื่อค้นหาห้องทั้งหมด</p>
+    <hr>
+
+
+
+    <mat-form-field class="full-width" >
+      <mat-label>ชื่อผู้สูงอายุ</mat-label>
+      <input matInput placeholder="สมชาย" [(ngModel)]="roomImData.nameInput">
+    </mat-form-field>
+
+
+
+    <br>
+    <button mat-flat-button color="primary" (click)="search()" >ค้นหา</button>
+    <p><button mat-raised-button color="accent" (click)="add(roomImData.nameInput)">เพิ่มเข้าห้องพัก</button>
+    <button mat-raised-button color="warn"(click)="delete()">ลบออกจากห้องพัก</button></p>
+    <p>ต้องการเพิ่มจำนวนห้องพัก <a href="roomEdit">เพิ่มห้องพัก</a></p>
+  </div>
+</div>
