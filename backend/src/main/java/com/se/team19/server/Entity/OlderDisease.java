@@ -15,7 +15,11 @@ public class OlderDisease {
     private @NonNull Long id;
     private @NonNull String diseasename;
 
+    public OlderDisease() {}
 
+    public OlderDisease(String diseasename) {
+        this.diseasename = diseasename;
+    }
 
 
 }
