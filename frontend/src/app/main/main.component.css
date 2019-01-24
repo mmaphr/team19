@@ -1,0 +1,67 @@
+.header {
+  text-align: center;
+  min-width: 400px;
+  margin-top: -50px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  text-decoration: underline;
+  text-shadow : 2px 4px 3px rgb(0, 76, 204);
+  font-family: 'Itim', DilleniaUPC;
+}
+.header > h1 {
+  font-size: 80px;
+}
+mat-grid-list {
+  margin: auto 15% 100px;
+}
+mat-card {
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 2px 4px 3px rgb(0, 76, 204);
+  font-family: 'Itim', DilleniaUPC;
+  font-size: 80px;
+  min-width: 400px;
+  height: 200px;
+  background-color: rgb(38, 50, 56);
+  transition: 0.5s;
+}
+
+mat-card > p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+mat-card:hover {
+  background-color: rgba(127, 127, 127, 0.5);
+  color: #fff;
+  cursor: pointer;
+}
+@media only screen and (max-width: 1600px) {
+  mat-grid-list {
+    margin: auto 10% 100px;  }
+  mat-card{
+    min-width: 400px;
+    height: 200px;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  mat-grid-list {
+    margin: auto auto 100px;
+  }
+  mat-card{
+    min-width: 400px;
+    height: 200px;
+  }
+}
+.main{
+  background-image: url("Login.jpg");
+  background-color: #cccccc;
+  height: 900px;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
