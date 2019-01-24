@@ -52,11 +52,14 @@ import { RoomDeleteComponent } from './room-delete/room-delete.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
 import {LoginpageService} from './shared/loginmain/loginpage.service';
 import { MainComponent } from './main/main.component';
+import { AddDataOlderPageComponent } from './add-data-older-page/add-data-older-page.component';
+import { AddDataOlderService } from './shared/DataOlder/add-data-older.service';
 
 const appRoutes: Routes = [
   { path: '',  redirectTo: '/loginpage', pathMatch: 'full' },
   { path: 'loginpage',component : LoginpageComponent},
   { path: 'main',component:MainComponent},
+  { path: 'InputDataOlder' , component : AddDataOlderPageComponent}
   {path:'roomInformation',component : RoomImformationComponent},
   {path:'roomEdit',component : RoomEditComponent},
   {path:'roomAll',component : RoomAllComponent},
@@ -112,7 +115,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [RoomImformationService,LoginpageService],
+  providers: [RoomImformationService,LoginpageService,AddDataOlderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
