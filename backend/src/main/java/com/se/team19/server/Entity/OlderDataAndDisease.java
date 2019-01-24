@@ -23,4 +23,6 @@ public class OlderDataAndDisease {
     @JoinColumn(name = "OlderDisease_ID", insertable = true)
     private Province dataOlderAndDiseaseOlderDisease;
 
+    public OlderDataAndDisease(){}
+
 }
