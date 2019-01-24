@@ -1,7 +1,7 @@
-package com.example.demo.controller;
+package com.se.team19.server.Controller;
 
-import com.example.demo.repository.*;
-import com.example.demo.entity.*;
+import com.se.team19.server.Entity.*;
+import com.se.team19.server.Repository.*;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
