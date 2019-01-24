@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.se.team19.server.Entity;
 
 import lombok.*;
 import org.springframework.data.jpa.repository.JpaRepository;
