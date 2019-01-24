@@ -36,7 +36,7 @@ import {
   MatTableModule,
   MatTabsModule,
   MatToolbarModule,
-  MatTreeModule } from '@angular/material';
+  } from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -102,7 +102,6 @@ const appRoutes: Routes = [
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTreeModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
