@@ -1,0 +1,44 @@
+<body class="main">
+<div class="header">
+  <br>
+  <br>
+  <br>
+  <br>
+  <marquee class="header">
+    <h1>Software Engineering. Team 19 ศูนย์ดูแลผู้สูงอายุ  Sprint 1 </h1>
+  </marquee>
+  <br>
+</div>
+<mat-grid-list [cols]="breakpoint" rowHeight="240px" (window:resize)="onResize($event)">
+  <mat-grid-tile>
+    <mat-card routerLink="/" routerLinkActive="active">
+      <p>ใส่เอาเองนะชื่อ</p>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card routerLink="/payment" routerLinkActive="active">
+      <p>ใส่เอาเองนะชื่อ</p>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card routerLink="/additem" routerLinkActive="active">
+      <p>คลังสินค้า</p>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card routerLink="/cardata" routerLinkActive="active">
+      <p>ใส่เอาเองนะชื่อ</p>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card routerLink="/carservice" routerLinkActive="active">
+      <p>ใส่เอาเองนะชื่อ</p>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card routerLink="/hospital" routerLinkActive="active">
+      <p>ใส่เอาเองนะชื่อ</p>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+</body>
