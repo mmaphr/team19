@@ -79,15 +79,20 @@ public class RoomInformationController {
 
 
 
-    @PutMapping("/updateRoom1/{roomID}/{olderID}/{statusID}")
+    @PutMapping("/updateRoom1/{roomID}/{olderID}/{statusID}/{typeID}")
     RoomInformation update1(RoomInformation roomImformation,
                             @PathVariable Long roomID,
                             @PathVariable Long olderID,
-                            @PathVariable Long statusID ) throws Exception{
+                            @PathVariable Long statusID,
+                            @PathVariable int typeID ) throws Exception{
         if(roomInformationRepository.findByOlder1(olderDataRepository.findById(olderID).get())!=null||
                 roomInformationRepository.findByOlder2(olderDataRepository.findById(olderID).get())!=null||
                 roomInformationRepository.findByOlder3(olderDataRepository.findById(olderID).get())!=null)
-            throw new Exception("Room number already exist");
+            throw new Exception("เพิ่มไม่สำเร็จ ผู้สูงอายุมีห้องพักแล้ว");
+        if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="ชาย"&&typeID==2)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักชาย");
+        if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="ชาย"&&typeID==4)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักชาย");
+        if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="หญิง"&&typeID==1)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักหญิง");
+        if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="หญิง"&&typeID==3)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักหญิง");
 
         return roomInformationRepository.findById(roomID)
 
@@ -102,15 +107,21 @@ public class RoomInformationController {
                     return roomInformationRepository.save(roomImformation);
                 });
     }
-    @PutMapping("/updateRoom2/{roomID}/{olderID}/{statusID}")
+    @PutMapping("/updateRoom2/{roomID}/{olderID}/{statusID}/{typeID}")
     RoomInformation update2(RoomInformation roomImformation,
                             @PathVariable Long roomID,
                             @PathVariable Long olderID,
-                            @PathVariable Long statusID) throws Exception{
+                            @PathVariable Long statusID,
+                            @PathVariable int typeID) throws Exception{
         if(roomInformationRepository.findByOlder1(olderDataRepository.findById(olderID).get())!=null||
                 roomInformationRepository.findByOlder2(olderDataRepository.findById(olderID).get())!=null||
                 roomInformationRepository.findByOlder3(olderDataRepository.findById(olderID).get())!=null)
-            throw new Exception("Room number already exist");
+            throw new Exception("เพิ่มไม่สำเร็จ ผู้สูงอายุมีห้องพักแล้ว");
+        if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="ชาย"&&typeID==2)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักชาย");
+        if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="ชาย"&&typeID==4)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักชาย");
+        if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="หญิง"&&typeID==1)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักหญิง");
+        if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="หญิง"&&typeID==3)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักหญิง");
+
         return roomInformationRepository.findById(roomID)
 
                 .map(update ->{
@@ -124,15 +135,21 @@ public class RoomInformationController {
                     return roomInformationRepository.save(roomImformation);
                 });
     }
-    @PutMapping("/updateRoom3/{roomID}/{olderID}/{statusID}")
+    @PutMapping("/updateRoom3/{roomID}/{olderID}/{statusID}/{typeID}")
     RoomInformation update3(RoomInformation roomImformation,
                             @PathVariable Long roomID,
                             @PathVariable Long olderID,
-                            @PathVariable Long statusID) throws Exception{
+                            @PathVariable Long statusID,
+                            @PathVariable int typeID) throws Exception{
         if(roomInformationRepository.findByOlder1(olderDataRepository.findById(olderID).get())!=null||
                 roomInformationRepository.findByOlder2(olderDataRepository.findById(olderID).get())!=null||
                 roomInformationRepository.findByOlder3(olderDataRepository.findById(olderID).get())!=null)
-            throw new Exception("Room number already exist");
+            throw new Exception("เพิ่มไม่สำเร็จ ผู้สูงอายุมีห้องพักแล้ว");
+        if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="ชาย"&&typeID==2)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักชาย");
+        if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="ชาย"&&typeID==4)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักชาย");
+        if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="หญิง"&&typeID==1)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักหญิง");
+        if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="หญิง"&&typeID==3)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักหญิง");
+
         return roomInformationRepository.findById(roomID)
 
                 .map(update ->{

@@ -176,11 +176,8 @@ public class ServerApplication {
 
 			RoomInformation	room5 = new RoomInformation();
 			room5.setRoomnumber("A105");
-			room5.setRoomstatus(roomStatusRepository.findById(4));
+			room5.setRoomstatus(roomStatusRepository.findById(1));
 			room5.setTyperoom(typeRoomRepository.findById(1));
-			room5.setOlder1(DataolderRepository.findById(7));
-			room5.setOlder2(DataolderRepository.findById(8));
-			room5.setOlder3(DataolderRepository.findById(9));
 			roomInformationRepository.save(room5);
 
 			RoomInformation	room6 = new RoomInformation();
