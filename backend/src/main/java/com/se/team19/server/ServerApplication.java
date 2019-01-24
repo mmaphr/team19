@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import java.util.stream.Stream;
+import java.util.Date;
 
 @SpringBootApplication
 public class ServerApplication {
@@ -36,8 +37,18 @@ public class ServerApplication {
 						   RoomStatusRepository roomStatusRepository,
 						   TypeRoomRepository typeRoomRepository,
 						   DataOlderRepository DataolderRepository,
-						   RoomInformationRepository roomInformationRepository) {
+						   RoomInformationRepository roomInformationRepository,
+						   OlderDiseaseRepository olderDiseaseRepository,
+						   DataOlderRepository dataOlderRepository) {
 		return args -> {
+
+			//<!==========  AddOlderDisease ==========!>
+			Stream.of("โรคความดันโลหิตสูง","โรคเบาหวาน","โรคหัวใจขาดเลือด","โรคสมองเสื่อม","โรคกระดูกพรุน","โรคซึมเศร้า").forEach(Disseasename -> {
+				olderDiseaseRepository.save(new OlderDisease(Disseasename));
+			});
+			olderDiseaseRepository.findAll().forEach(System.out::println);
+			//<!========== END!! AddOlderDisease ==========!>
+
 
 			//<!==========  AddProductToStock ==========!>
 			Category category1 = new Category();
@@ -94,6 +105,33 @@ public class ServerApplication {
 
 			//<!================= END!! Staff =================!>
 
+			//<!==========  Add DataOlder ==========!>
+			DataOlder Older1 = new DataOlder("ตาสว่าง ขนนิ่ม", new Date(60,1,1),"สมคิด","1/11","1111111111",genderRepository.findById(1),provinceRepository.findById(1));
+			DataOlder Older2 = new DataOlder("หมู หน้ารัก", new Date(60,2,2),"สมใจ","2/22","2222222222",genderRepository.findById(2),provinceRepository.findById(2));
+			DataOlder Older3 = new DataOlder("หนุ่ม จุกจอก", new Date(60,3,3),"สมนา","3/33","3333333333",genderRepository.findById(1),provinceRepository.findById(3));
+			DataOlder Older4 = new DataOlder("ดำ ขำ", new Date(60,4,4),"หมาย","4/44","4444444444",genderRepository.findById(2),provinceRepository.findById(4));
+			DataOlder Older5 = new DataOlder("โม็ะ", new Date(60,5,5),"หนาม","5/55","5555555555",genderRepository.findById(1),provinceRepository.findById(5));
+			DataOlder Older6 = new DataOlder("เอ", new Date(60,6,6),"A","6/66","6666666666",genderRepository.findById(1),provinceRepository.findById(6));
+			DataOlder Older7 = new DataOlder("บี", new Date(60,7,7),"B","7/77","7777777777",genderRepository.findById(2),provinceRepository.findById(7));
+			DataOlder Older8 = new DataOlder("ซี", new Date(60,8,8),"C","8/88","8888888888",genderRepository.findById(1),provinceRepository.findById(8));
+			DataOlder Older9 = new DataOlder("ดี", new Date(60,9,9),"D","9/99","9999999999",genderRepository.findById(2),provinceRepository.findById(9));
+			DataOlder Older10 = new DataOlder("อี", new Date(60,10,10),"F","1/00","000000000",genderRepository.findById(1),provinceRepository.findById(10));
+
+			dataOlderRepository.save(Older1);
+			dataOlderRepository.save(Older2);
+			dataOlderRepository.save(Older3);
+			dataOlderRepository.save(Older4);
+			dataOlderRepository.save(Older5);
+			dataOlderRepository.save(Older6);
+			dataOlderRepository.save(Older7);
+			dataOlderRepository.save(Older8);
+			dataOlderRepository.save(Older9);
+			dataOlderRepository.save(Older10);
+
+
+			//<!================= END!! Add DataOlder =================!>
+
+
 			//<!==========  RoomInformation ==========!>
 			Stream.of("ห้องว่าง","ขาด1คน","ขาด2คน","เต็ม").forEach(statusName -> {
 				RoomStatus roomstatus = new RoomStatus ();
@@ -116,33 +154,33 @@ public class ServerApplication {
 			room2.setRoomnumber("A102");
 			room2.setRoomstatus(roomStatusRepository.findById(2));
 			room2.setTyperoom(typeRoomRepository.findById(1));
-//			room2.setOlder1(DataolderRepository.findById(1));
-//			room2.setOlder2(DataolderRepository.findById(2));
+			room2.setOlder1(DataolderRepository.findById(1));
+			room2.setOlder2(DataolderRepository.findById(2));
 			roomInformationRepository.save(room2);
 
 			RoomInformation	room3 = new RoomInformation();
 			room3.setRoomnumber("A103");
 			room3.setRoomstatus(roomStatusRepository.findById(3));
 			room3.setTyperoom(typeRoomRepository.findById(1));
-//			room3.setOlder1(DataolderRepository.findById(3));
+			room3.setOlder1(DataolderRepository.findById(3));
 			roomInformationRepository.save(room3);
 
 			RoomInformation	room4 = new RoomInformation();
 			room4.setRoomnumber("A104");
 			room4.setRoomstatus(roomStatusRepository.findById(4));
 			room4.setTyperoom(typeRoomRepository.findById(1));
-//			room4.setOlder1(DataolderRepository.findById(4));
-//			room4.setOlder2(DataolderRepository.findById(5));
-//			room4.setOlder3(DataolderRepository.findById(6));
+			room4.setOlder1(DataolderRepository.findById(4));
+			room4.setOlder2(DataolderRepository.findById(5));
+			room4.setOlder3(DataolderRepository.findById(6));
 			roomInformationRepository.save(room4);
 
 			RoomInformation	room5 = new RoomInformation();
 			room5.setRoomnumber("A105");
 			room5.setRoomstatus(roomStatusRepository.findById(4));
 			room5.setTyperoom(typeRoomRepository.findById(1));
-//			room5.setOlder1(DataolderRepository.findById(7));
-//			room5.setOlder2(DataolderRepository.findById(8));
-//			room5.setOlder3(DataolderRepository.findById(9));
+			room5.setOlder1(DataolderRepository.findById(7));
+			room5.setOlder2(DataolderRepository.findById(8));
+			room5.setOlder3(DataolderRepository.findById(9));
 			roomInformationRepository.save(room5);
 
 			RoomInformation	room6 = new RoomInformation();
