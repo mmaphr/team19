@@ -16,12 +16,12 @@ public class OlderDataAndDisease {
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = DataOlder.class)
     @JoinColumn(name = "DataOlder_ID", insertable = true)
-    private Gender dataOlderAndDiseaseDataOlder;
+    private DataOlder dataOlderAndDiseaseDataOlder;
 
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = OlderDisease.class)
     @JoinColumn(name = "OlderDisease_ID", insertable = true)
-    private Province dataOlderAndDiseaseOlderDisease;
+    private OlderDisease dataOlderAndDiseaseOlderDisease;
 
     public OlderDataAndDisease(){}
 
