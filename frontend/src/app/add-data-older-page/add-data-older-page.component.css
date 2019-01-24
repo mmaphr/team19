@@ -1,0 +1,36 @@
+background{
+  width: 100%;
+  min-height : 100vh;
+}
+.left {
+  float: left;
+  width: 30%;
+}
+
+.right {
+  float: left;
+  width: 70%;
+
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.table {
+  height: 500px;
+  overflow: auto;
+  width: 95%;
+}
+
+.full-width{
+  width: 95%;
+  height: 54px;
+}
+
+hr {
+  border: 1px solid #cccccc;
+  width: 70%;
+  margin-bottom: 20px;
+}
