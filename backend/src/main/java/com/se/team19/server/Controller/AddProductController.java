@@ -1,13 +1,7 @@
 package com.se.team19.server.Controller;
 
-import com.se.team19.server.Entity.AddProducts;
-import com.se.team19.server.Entity.Category;
-import com.se.team19.server.Entity.Note;
-import com.se.team19.server.Entity.Stock;
-import com.se.team19.server.Repository.AddProductsRepository;
-import com.se.team19.server.Repository.CategoryRepository;
-import com.se.team19.server.Repository.NoteRepository;
-import com.se.team19.server.Repository.StockRepository;
+import com.se.team19.server.Entity.*;
+import com.se.team19.server.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -30,13 +24,16 @@ public class AddProductController {
     private NoteRepository noteRepository;
     @Autowired
     private StockRepository stockRepository;
+    @Autowired
+    private StaffRepository staffRepository;
 
     @Autowired
-    public AddProductController(AddProductsRepository addProductsRepository,CategoryRepository categoryRepository,NoteRepository noteRepository,StockRepository stockRepository){
+    public AddProductController(AddProductsRepository addProductsRepository,CategoryRepository categoryRepository,NoteRepository noteRepository,StockRepository stockRepository,StaffRepository staffRepository){
         this.addProductsRepository = addProductsRepository;
         this.categoryRepository = categoryRepository;
         this.noteRepository = noteRepository;
         this.stockRepository = stockRepository;
+        this.staffRepository = staffRepository;
 
     }
 
@@ -53,11 +50,12 @@ public class AddProductController {
     }
 
     //  <!========== SaveAndUpdateToStock || SavetoAddProduct==========!>
-    @RequestMapping(path = "/AddStock/{category}/{itemname}/{amount}/{noteitem}")
-    public AddProducts newAddProducts(AddProducts addProducts, Stock newStock, @PathVariable String category, @PathVariable String itemname, @PathVariable Long amount, @PathVariable String noteitem) {
+    @RequestMapping(path = "/AddStock/{category}/{itemname}/{amount}/{noteitem}/{username}/{password}")
+    public AddProducts newAddProducts(AddProducts addProducts, Stock newStock, @PathVariable String category, @PathVariable String itemname, @PathVariable Long amount, @PathVariable String noteitem,@PathVariable String username,@PathVariable String password) {
         Category cat = categoryRepository.findBycategoryName(category);
         Stock Sid = stockRepository.findByCategoryNameAndProductName(cat,itemname);
         Note newnote = noteRepository.findBynoteName(noteitem);
+        Staff userandpass = staffRepository.findByUsernameAndPassword(username,password);
         Date date = new Date();
         String dateInString = "dd.MM.yyyy HH:mm:ss";
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
@@ -93,6 +91,7 @@ public class AddProductController {
         addProducts.setNoteName(newnote);
         addProducts.setAddDate(date);
         addProducts.setStockName(Aid);
+        addProducts.setStaffName(userandpass);
         return addProductsRepository.save(addProducts);
     }
 
