@@ -41,8 +41,8 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
-
+import { StaffComponent } from './staff/staff.component';
+import { StaffService } from './shared/staff-service/staff.service';
 import { RoomImformationComponent } from './room-imformation/room-imformation.component';
 import { RoomEditComponent } from './room-edit/room-edit.component';
 import { RoomImformationService } from './shared/room-imformation/room-imformation.service';
@@ -75,7 +75,8 @@ const appRoutes: Routes = [
   {path:'roomDelete',component : RoomDeleteComponent},
   {path: 'outactivity', component: OutactivityComponent} ,
   {path: 'showsOutActivity', component: ShowsOutActivityComponent},
-  {path: 'inAct-add',component: InActAddComponent}
+  {path: 'inAct-add',component: InActAddComponent},
+  {path: 'newStaff',component: StaffComponent}
 ];
 
 @NgModule({
@@ -92,7 +93,8 @@ const appRoutes: Routes = [
     AdditemComponent,
     OutactivityComponent,
     ShowsOutActivityComponent,
-    InActAddComponent
+    InActAddComponent,
+    StaffComponent
   ],
   imports: [
     BrowserModule,
@@ -133,7 +135,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [RoomImformationService,AdditemService,LoginpageService,AddDataOlderService,OutactivityService,InActService],
+  providers: [StaffService,RoomImformationService,AdditemService,LoginpageService,AddDataOlderService,OutactivityService,InActService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
