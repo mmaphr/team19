@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<body>
+<section>
+  <mat-drawer-container class="left-container">
+    <h1 class="stay-h1">เพิ่มรายการกิจกรรม</h1>
+
+    <p>ชื่อกิจกรรม</p>
+    <mat-form-field class="input">
+      <input matInput placeholder="กรุณากรอกชื่อกิจกรรม" [(ngModel)]="inActData.actNameInput">
+    </mat-form-field>
+
+    <p>รายละเอียดกิจกรรม</p>
+    <mat-form-field class="input">
+      <input matInput placeholder="กรอกรายละเอียดกิจกรรม" [(ngModel)]="inActData.descriptionInput">
+    </mat-form-field>
+
+    <p>เลือกวัน และช่วงเวลา</p>
+    <mat-form-field class="select-half">
+      <mat-select placeholder="กรุณาเลือกวัน" [(ngModel)]="inActData.daySelect">
+        <mat-option *ngFor="let day of day" [value]="day.dayId">
+          {{day.dayName}}
+        </mat-option>
+      </mat-select>
+      <span matPrefix>&nbsp;</span>
+    </mat-form-field>
+
+    <mat-form-field class="select-half">
+      <mat-select placeholder="กรุณาเลือกช่วงเวลา" [(ngModel)]="inActData.timeSelect">
+        <mat-option *ngFor="let time of time" [value]="time.timeId">
+          {{time.timeDuration}}
+        </mat-option>
+      </mat-select>
+      <span matPrefix>&nbsp;</span>
+    </mat-form-field>
+
+    <p>เลือกผู้ดูแลกิจกรรมหรือผู้รับผิดชอบกิจกรรม</p>
+    <mat-form-field class="select">
+      <mat-select placeholder="กรุณาเลือกพนักงาน" [(ngModel)]="inActData.staffSelect">
+        <mat-option *ngFor="let staff of staff" [value]="staff.staffId">
+          {{staff.staffName}}
+        </mat-option>
+      </mat-select>
+      <span matPrefix>&nbsp;</span>
+    </mat-form-field>
+    <br>
+    <br>
+    <div>
+      <button mat-flat-button class="buttom-back" routerLink="/main">กลับ</button>
+      <button mat-flat-button class="buttom-save" (click)="save()">บันทึก</button>
+    </div>
+  </mat-drawer-container>
+  <article>
+    <h1 class="stay-h1-2">รายการกิจกรรม</h1>
+    <mat-table [dataSource]="showAct" class="table">
+
+      <ng-container matColumnDef="day">
+        <mat-header-cell *matHeaderCellDef> วัน </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.day.dayName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="time">
+        <mat-header-cell *matHeaderCellDef> เวลา </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.time.timeDuration}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actName">
+        <mat-header-cell *matHeaderCellDef> ชื่อกิจกรรม </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.actName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef> รายละเอียดกิจกรรม </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="staff">
+        <mat-header-cell *matHeaderCellDef> ผู้ดูแล/ผู้รับผิดชอบ </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.staff.staffName}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </article>
+</section>
+</body>
+</html>

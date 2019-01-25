@@ -59,6 +59,8 @@ import {AdditemService} from './shared/Additem/additem.service';
 import {OutactivityComponent} from "./outactivity/outactivity.component";
 import { OutactivityService } from './service/outactivity.service';
 import { ShowsOutActivityComponent } from './shows-out-activity/shows-out-activity.component';
+import { InActService } from './shared/inAct/in-act.service';
+import { InActAddComponent } from './in-act-add/in-act-add.component';
 
 const appRoutes: Routes = [
   { path: '',  redirectTo: '/loginpage', pathMatch: 'full' },
@@ -72,7 +74,8 @@ const appRoutes: Routes = [
   {path:'roomAdd',component : RoomAddComponent},
   {path:'roomDelete',component : RoomDeleteComponent},
   {path: 'outactivity', component: OutactivityComponent} ,
-  {path: 'showsOutActivity', component: ShowsOutActivityComponent}
+  {path: 'showsOutActivity', component: ShowsOutActivityComponent},
+  {path: 'inAct-add',component: InActAddComponent}
 ];
 
 @NgModule({
@@ -88,7 +91,8 @@ const appRoutes: Routes = [
     AddDataOlderPageComponent,
     AdditemComponent,
     OutactivityComponent,
-    ShowsOutActivityComponent
+    ShowsOutActivityComponent,
+    InActAddComponent
   ],
   imports: [
     BrowserModule,
@@ -129,7 +133,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [RoomImformationService,AdditemService,LoginpageService,AddDataOlderService,OutactivityService],
+  providers: [RoomImformationService,AdditemService,LoginpageService,AddDataOlderService,OutactivityService,InActService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
