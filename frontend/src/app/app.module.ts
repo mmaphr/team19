@@ -54,7 +54,8 @@ import {LoginpageService} from './shared/loginmain/loginpage.service';
 import { MainComponent } from './main/main.component';
 import { AddDataOlderPageComponent } from './add-data-older-page/add-data-older-page.component';
 import { AddDataOlderService } from './shared/DataOlder/add-data-older.service';
-
+import { AdditemComponent } from './additem/additem.component';
+import {AdditemService} from './shared/Additem/additem.service';
 const appRoutes: Routes = [
   { path: '',  redirectTo: '/loginpage', pathMatch: 'full' },
   { path: 'loginpage',component : LoginpageComponent},
@@ -77,7 +78,8 @@ const appRoutes: Routes = [
     RoomDeleteComponent,
     LoginpageComponent,
     MainComponent,
-    AddDataOlderPageComponent
+    AddDataOlderPageComponent,
+    AdditemComponent
   ],
   imports: [
     BrowserModule,
@@ -118,7 +120,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [RoomImformationService,LoginpageService,AddDataOlderService],
+  providers: [RoomImformationService,AdditemService,LoginpageService,AddDataOlderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

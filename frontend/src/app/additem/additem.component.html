@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<body>
+<section>
+  <mat-drawer-container class="left-container">
+    <h1 class="stay-h1">กรอกข้อมูลสินค้า</h1>
+
+    <p>เลือกชนิดสินค้า</p>
+    <mat-form-field class="itemcategory-select">
+      <mat-select placeholder="กรุณาเลือกชนิดสินค้า" [(ngModel)]="Input.categoryInput">
+        <mat-option *ngFor="let category of category" [value]="category.categoryName">
+          {{category.categoryName}}
+        </mat-option>
+      </mat-select>
+      <span matPrefix>&nbsp;</span>
+      <mat-icon matSuffix>ballot</mat-icon>
+    </mat-form-field>
+
+    <p>ชื่อสินค้า</p>
+    <mat-form-field class="itemname-input">
+      <input matInput placeholder="กรุณาพิมพ์ชื่อสินค้า" [(ngModel)]="Input.itemNameInput">
+      <mat-icon matSuffix>assignment</mat-icon>
+    </mat-form-field>
+
+    <p>จำนวนสินค้า</p>
+    <mat-form-field class="itemamount-input">
+      <input matInput type="number" min="1" placeholder="กรุณากรอดจำนวนสินค้า" class="amount-right-align" [(ngModel)]="Input.amountItemInput">
+      <span matPrefix>$&nbsp;</span>
+      <span matSuffix>&nbsp;ชิ้น&nbsp;</span>
+      <mat-icon matSuffix>shopping_cart</mat-icon>
+    </mat-form-field>
+
+    <p>การที่ได้รับมา!</p>
+    <mat-form-field class="itemcategory-select">
+      <mat-select placeholder="กรุณาเลือกหมายเหตุ" [(ngModel)]="Input.noteItemInput">
+        <mat-option *ngFor="let note of note" [value]="note.noteName">
+          {{note.noteName}}
+        </mat-option>
+      </mat-select>
+      <span matPrefix>&nbsp;</span>
+      <mat-icon matSuffix>how_to_vote</mat-icon>
+    </mat-form-field>
+    <br>
+    <br>
+    <br>
+    <div>
+      <button mat-flat-button color="warn" routerLink="/main" routerLinkActive="active" >กลับ</button>
+      <button mat-flat-button class="buttom-save" (click)="saveStock()">บันทึก</button>
+    </div>
+    <br>
+  </mat-drawer-container>
+  <article>
+    <header>
+      <h1 class="stay-h1-2">ข้อมูลสินค้าที่เพิ่มเข้ามาใหม่</h1>
+      <mat-table [dataSource]="Showitem" class="table">
+
+        <!-- addCategory Column -->
+        <ng-container matColumnDef="addCategory">
+          <mat-header-cell *matHeaderCellDef> ชนิดสินค้า </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.categoryName.categoryName}} </mat-cell>
+        </ng-container>
+
+        <!-- addItemName Column -->
+        <ng-container matColumnDef="addItemName">
+          <mat-header-cell *matHeaderCellDef> ชื่อสินค้า </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.addProductName}} </mat-cell>
+        </ng-container>
+
+        <!-- addAmount Column -->
+        <ng-container matColumnDef="addAmount">
+          <mat-header-cell *matHeaderCellDef> จำนวนสินค้า </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.addAmount}} </mat-cell>
+        </ng-container>
+
+        <!-- addNote Column -->
+        <ng-container matColumnDef="addNote">
+          <mat-header-cell *matHeaderCellDef> หมายเหตุ </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.noteName.noteName}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <br>
+      <br>
+    </header>
+    <div class="main">
+      <br>
+    <h1 class="stay-h1-2">ลายละเอียดจำนวนสิ้นค้าทั้งหมด</h1>
+    <mat-table [dataSource]="stock" class="table">
+
+      <!-- No Column -->
+      <ng-container matColumnDef="No">
+        <mat-header-cell *matHeaderCellDef> ลำดับ </mat-header-cell>
+        <mat-cell *matCellDef="let element; let i = index"> {{i+1}} </mat-cell>
+      </ng-container>
+
+      <!-- addCategory Column -->
+      <ng-container matColumnDef="categoryName">
+        <mat-header-cell *matHeaderCellDef> ชนิดสินค้า </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.categoryName.categoryName}} </mat-cell>
+      </ng-container>
+
+      <!-- addItemName Column -->
+      <ng-container matColumnDef="productName">
+        <mat-header-cell *matHeaderCellDef> ชื่อสินค้า </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.productName}} </mat-cell>
+      </ng-container>
+
+      <!-- addAmount Column -->
+      <ng-container matColumnDef="amountTotal">
+        <mat-header-cell *matHeaderCellDef> จำนวนสินค้าในคลัง </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.amountTotal}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumnsStock"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumnsStock;"></mat-row>
+    </mat-table>
+    </div>
+  </article>
+</section>
+</body>
+</html>
