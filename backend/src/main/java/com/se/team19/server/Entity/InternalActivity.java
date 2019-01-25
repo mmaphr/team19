@@ -1,13 +1,15 @@
 package com.se.team19.server.Entity;
 
-import lombok.Data;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Data
 @Entity
-@Table
+@NoArgsConstructor
+@Table(uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"dayId", "timeId"})
+})
 public class InternalActivity {
     @Id
     @GeneratedValue(generator = "InternalActivity_Seq")

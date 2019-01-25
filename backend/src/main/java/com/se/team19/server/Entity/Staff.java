@@ -37,5 +37,8 @@ public class Staff {
     @JoinColumn(name = "POSITION_ID", insertable = true)
     private Position staffPosition;
 
+    public Staff(@NonNull String staffName) {
+        this.staffName = staffName;
+    }
 
 }

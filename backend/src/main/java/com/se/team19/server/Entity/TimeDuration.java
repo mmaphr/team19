@@ -1,7 +1,6 @@
 package com.se.team19.server.Entity;
 
-import lombok.Data;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +9,7 @@ import javax.persistence.Table;
 
 @Data
 @Entity
+@NoArgsConstructor
 @Table
 public class TimeDuration {
     @Id

@@ -43,14 +43,16 @@ public class ServerApplication {
 						   CategoryActivityRepository categoryActivityRepository,
 						   OutActivityRepository outActivityRepository,
 						   OrganizedRepository organizedRepository,
-						   PeriodTimeRepository periodTimeRepository) {
+						   PeriodTimeRepository periodTimeRepository,
+						   DaysOfTheWeekRepository daysOfTheWeekRepository,
+						   InternalActivityRepository internalActivityRepository,
+						   TimeDurationRepository timeDurationRepository) {
 		return args -> {
 
 			//<!==========  AddOlderDisease ==========!>
 			Stream.of("โรคความดันโลหิตสูง","โรคเบาหวาน","โรคหัวใจขาดเลือด","โรคสมองเสื่อม","โรคกระดูกพรุน","โรคซึมเศร้า").forEach(Disseasename -> {
 				olderDiseaseRepository.save(new OlderDisease(Disseasename));
 			});
-			olderDiseaseRepository.findAll().forEach(System.out::println);
 			//<!========== END!! AddOlderDisease ==========!>
 
 
@@ -82,17 +84,14 @@ public class ServerApplication {
 			Stream.of("ชาย", "หญิง").forEach(GenderName -> {
 				genderRepository.save(new Gender(GenderName));
 			});
-			genderRepository.findAll().forEach(System.out::println);
 
 			Stream.of("ฝ่ายบุคคล", "พนักงานทั่วไป").forEach(PositionName -> {
 				positionRepository.save(new Position(PositionName));
 			});
-			positionRepository.findAll().forEach(System.out::println);
 
 			Stream.of("กระบี่","กรุงเทพมหานคร","กาญจนบุรี","กาฬสินธุ์","กำแพงเพชร","ขอนแก่น","จันทบุรี","ฉะเชิงเทรา" ,"ชลบุรี","ชัยนาท","ชัยภูมิ","ชุมพร","เชียงราย","เชียงใหม่","ตรัง","ตราด","ตาก","นครนายก","นครปฐม","นครพนม","นครราชสีมา" ,"นครศรีธรรมราช","นครสวรรค์","นนทบุรี","นราธิวาส","น่าน","บุรีรัมย์","บึงกาฬ","ปทุมธานี","ประจวบคีรีขันธ์","ปราจีนบุรี","ปัตตานี" ,"พะเยา","พังงา","พัทลุง","พิจิตร","พิษณุโลก","เพชรบุรี","เพชรบูรณ์","แพร่","ภูเก็ต","มหาสารคาม","มุกดาหาร","แม่ฮ่องสอน" ,"ยโสธร","ยะลา","ร้อยเอ็ด","ระนอง","ระยอง","ราชบุรี","ลพบุรี","ลำปาง","ลำพูน","เลย","ศรีสะเกษ","สกลนคร","สงขลา" ,"สตูล","สมุทรปราการ","สมุทรสงคราม","สมุทรสาคร","สระแก้ว","สระบุรี","สิงห์บุรี","สุโขทัย","สุพรรณบุรี","สุราษฎร์ธานี" ,"สุรินทร์","หนองคาย","หนองบัวลำภู","อยุธยา","อ่างทอง","อำนาจเจริญ","อุดรธานี","อุตรดิตถ์","อุทัยธานี","อุบลราชธานี").forEach(Provincename -> {
 				provinceRepository.save(new Province(Provincename));
 			});
-			provinceRepository.findAll().forEach(System.out::println);
 
 			Staff S1 = new Staff();
 			S1.setStaffName("SomA");
@@ -105,7 +104,6 @@ public class ServerApplication {
 			S1.setStaffProvince(provinceRepository.findById(13));
 			S1.setStaffPosition(positionRepository.findById(2));
 			staffRepository.save(S1);
-			staffRepository.findAll().forEach(System.out::println);
 
 			//<!================= END!! Staff =================!>
 
@@ -250,6 +248,25 @@ public class ServerApplication {
 					}
 			);
 			//<!==========  End OutActivity ==========!>
+
+			Stream.of("วันอาทิตย์", "วันจันทร์", "วันอังคาร", "วันพุธ", "วันพฤหัสบดี", "วันศุกร์", "วันเสาร์").forEach(dayName -> {
+				daysOfTheWeekRepository.save(new DaysOfTheWeek(dayName));
+			});
+			Stream.of("06.00-07.00น.", "07.00-08.00น.", "08.00-09.00น.", "09.00-10.00น.", "10.00-11.00น.", "11.00-12.00น.", "12.00-13.00น.", "13.00-14.00น.",
+					"14.00-15.00น.", "15.00-16.00น.", "16.00-17.00น.", "17.00-18.00น.", "18.00-19.00น.", "19.00-20.00น.").forEach(timeDuration -> {
+				timeDurationRepository.save(new TimeDuration(timeDuration));
+			});
+			for (int i = 1; i <= 20; i++) {
+				staffRepository.save(new Staff("Staff" + i));
+			}
+
+			internalActivityRepository.save(new InternalActivity("ทำบุญตักบาตร","ทำบุญร่วมกัน",staffRepository.findById(1),daysOfTheWeekRepository.findById(5),timeDurationRepository.findById(1)));
+			internalActivityRepository.save(new InternalActivity("ออกกำลังกาย","ออกกำลังกายตอนเช้าเพื่อสุขภาพ",staffRepository.findById(2),daysOfTheWeekRepository.findById(6),timeDurationRepository.findById(3)));
+			internalActivityRepository.save(new InternalActivity("ทำบุญตักบาตร","ทำบุญร่วมกัน",staffRepository.findById(1),daysOfTheWeekRepository.findById(1),timeDurationRepository.findById(1)));
+			internalActivityRepository.save(new InternalActivity("ออกกำลังกาย","ออกกำลังกายตอนเช้าเพื่อสุขภาพ",staffRepository.findById(2),daysOfTheWeekRepository.findById(2),timeDurationRepository.findById(3)));
+			internalActivityRepository.save(new InternalActivity("ร้องเพลง","ร้องเพลงผ่อนคลายอารมณ์",staffRepository.findById(3),daysOfTheWeekRepository.findById(3),timeDurationRepository.findById(11)));
+			internalActivityRepository.save(new InternalActivity("ร้องเพลง","ร้องเพลงผ่อนคลายอารมณ์",staffRepository.findById(2),daysOfTheWeekRepository.findById(3),timeDurationRepository.findById(12)));
+
 		};
 	}
 
