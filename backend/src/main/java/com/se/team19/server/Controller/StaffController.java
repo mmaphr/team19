@@ -44,15 +44,6 @@ public class StaffController {
         return staffRepository.findById(staffID);
     }
 
-    @GetMapping("/Gender")
-    public  Collection<Gender> Gender(){
-        return genderRepository.findAll().stream().collect(Collectors.toList());
-    }
-    @GetMapping("/Gender/{genderID}")
-    public  Optional<Gender> Gender(@PathVariable Long genderID){
-        return genderRepository.findById(genderID);
-    }
-
     @GetMapping("/Position")
     public  Collection<Position> Position(){
         return positionRepository.findAll().stream().collect(Collectors.toList());
@@ -60,15 +51,6 @@ public class StaffController {
     @GetMapping("/Position/{positionID}")
     public  Optional<Position> Position(@PathVariable Long positionID){
         return positionRepository.findById(positionID);
-    }
-
-    @GetMapping("/Province")
-    public  Collection<Province> Province(){
-        return provinceRepository.findAll().stream().collect(Collectors.toList());
-    }
-    @GetMapping("/Province/{provinceID}")
-    public  Optional<Province> Province(@PathVariable Long provinceID){
-        return provinceRepository.findById(provinceID);
     }
 
     @PostMapping("/newStaff/{genderID}/{provinceID}/{positionID}/{staffAge}")
