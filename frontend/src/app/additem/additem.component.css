@@ -18,6 +18,8 @@ header {
   color: white;
 }
 .left-container{
+  color: white;
+  background-color: #263238;
   padding-top: 20px;
   padding-left: 30px;
   width: 500px;

@@ -59,6 +59,7 @@ import {AdditemService} from './shared/Additem/additem.service';
 const appRoutes: Routes = [
   { path: '',  redirectTo: '/loginpage', pathMatch: 'full' },
   { path: 'loginpage',component : LoginpageComponent},
+  { path: 'additem',component : AdditemComponent},
   { path: 'main',component:MainComponent},
   { path: 'InputDataOlder' , component : AddDataOlderPageComponent},
   {path:'roomInformation',component : RoomImformationComponent},
