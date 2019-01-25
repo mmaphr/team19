@@ -26,7 +26,7 @@ export class OutactivityService {
     return this.http.get(this.API + '/PeriodTime');
   }
   public getStaff(): Observable<any> {
-    return this.http.get(this.API + '/Staff');
+    return this.http.get(this.API + '/staff/getAll');
   }
 
   public postOutActivity(object: any, category_id: number, organized_id: number, periodTimeS_id: number, periodTimeE_id: number, staffId: number): Observable<any> {

@@ -1,0 +1,16 @@
+.blackground{
+    width: 100%;
+    background-color:  #263238;
+    min-height: 100vh;
+  }
+.form {
+    width: 70%;
+    background-color:  #ffffff;
+    padding: 20px;
+  }
+.full-width {
+    width: 100%;
+  }
+.text{
+    color: white;
+  }

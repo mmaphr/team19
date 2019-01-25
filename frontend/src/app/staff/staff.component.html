@@ -1,0 +1,62 @@
+<div class="blackground" align = "center" >
+  <div class="form">
+
+    <h1 align = "left" >จัดเก็บข้อมูลพนักงาน</h1>
+    <p align = "left" >กรอกรายละเอียดข้อมูลของพนักงาน</p>
+    <hr>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="ชื่อ - สกุล" [(ngModel)]="staffData.staffName">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="อายุ" [(ngModel)]="staffData.staffAge">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-select placeholder="เพศ" name="genderName" [(ngModel)]="staffData.genderSelect"> 
+        <mat-option *ngFor="let gender of genders" [value]="gender.genderId"> 
+            {{gender.genderName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <textarea matInput placeholder="ที่อยู่" [(ngModel)]="staffData.address"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-select placeholder="จังหวัด" name="provincename" [(ngModel)]="staffData.provinceSelect">
+        <mat-option *ngFor="let province of provinces" [value]="province.provinceId">
+          {{province.provinceName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="หมายเลขโทรศัพท์" [(ngModel)]="staffData.phone">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-select placeholder="ตำแหน่งงาน" name="positionName" [(ngModel)]="staffData.positionSelect"> 
+        <mat-option *ngFor="let position of positions" [value]="position.positionId"> 
+            {{position.positionName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Username" [(ngModel)]="staffData.username">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Password" [(ngModel)]="staffData.password">
+    </mat-form-field>
+
+   
+    <div class="full-width">
+      <button mat-flat-button (click)="save()" >ยืนยัน</button>
+    </div>
+
+  </div>
+</div>
