@@ -1,0 +1,77 @@
+<div class="blackground" align="center" >
+  <div class="form">
+
+    <h1>External Activity</h1>
+
+
+    <mat-form-field class="full-width" >
+      <input  matInput  placeholder="ชื่อกิจกรรม" class = "text" [(ngModel)]="outact.nameActivity">
+    </mat-form-field>
+    <br/>
+    <mat-form-field class="full-width" >
+      <input  matInput  placeholder="ชื่อผู้ขอจัดกิจกรรม" class = "text" [(ngModel)]="outact.nameRequestor">
+    </mat-form-field>
+    <br/>
+    <mat-form-field class="full-width" >
+      <input  matInput  placeholder="เบอร์โทรติดต่อ" class = "text" [(ngModel)]="outact.phonenum">
+    </mat-form-field>
+    <br/>
+    <mat-form-field class="full-width">
+      <mat-select  [(ngModel)]="categoryActivityIDSelected"  placeholder="ประเภทกิจกรรม" class = "text">
+        <mat-option *ngFor="let typ of typs" [value]="typ.category_id">
+          {{typ.namecategory}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br/>
+    <mat-form-field class="full-width">
+      <mat-select [(ngModel)]="organizedIDSelected"  placeholder="organized" class = "text">
+        <mat-option *ngFor="let organ of organiz" [value]="organ.organized_id">
+          {{organ.organized}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br/>
+    <mat-form-field class="full-width">
+      <textarea [(ngModel)]="outact.descriptionActivity" matInput placeholder="รายละเอียดกิจกรรม"></textarea>
+    </mat-form-field>
+    <br/>
+    <mat-form-field style="width: 50%">
+      <mat-select [(ngModel)]="periodTimeSIDSelected"  placeholder="เวลาเริ่ม" class = "text">
+        <mat-option *ngFor="let period of dat" [value]="period.periodTime_id">
+          {{period.periodTime}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field style="width: 50%">
+      <mat-select [(ngModel)]="periodTimeEIDSelected"  placeholder="เวลาจบ" class = "text">
+        <mat-option *ngFor="let period of dat" [value]="period.periodTime_id">
+          {{period.periodTime}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br/>
+    <mat-form-field class="full-width">
+      <mat-label>วันจัดกิจกรรม</mat-label>
+      <input matInput [matDatepicker]="picker" placeholder="เดือน/วัน/ปี" [(ngModel)]="outact.date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <br/>
+    <mat-form-field class="full-width">
+      <mat-select  [(ngModel)]="staffIDSelected"  placeholder="STAFF ผู้รับผิดชอบกิจกรรม" class = "text">
+        <mat-option *ngFor="let staff of staf" [value]="staff.staffId">
+          {{staff.staffName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br/>
+
+    <div class="full-width"  >
+      <button mat-flat-button (click)="submit()" >submit</button>
+    </div>
+    <p><a href="main">กลับหน้าหลัก</a></p>
+  </div>
+
+</div>
