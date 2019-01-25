@@ -9,7 +9,6 @@ export interface Typ {
   value: string;
   viewValue: string;
 }
-
 @Component({
   selector: 'app-outactivity',
   templateUrl: './outactivity.component.html',
@@ -45,15 +44,10 @@ export class OutactivityComponent implements OnInit {
 
   ngOnInit() {
     this.getCategorys();
-    // console.log(this.typs);
     this.getOrganizeds();
-    // console.log(this.typs);
     this.getPeriodTimes();
     this.getStaffs();
-    // this.outactivityService.getCategory().subscribe(data => {
-    //   this.dat = data;
-    //   console.log(this.dat);
-    // });
+
   }
 
   getCategorys() {
@@ -96,8 +90,8 @@ export class OutactivityComponent implements OnInit {
         this.categoryActivityIDSelected, this.organizedIDSelected,
         this.periodTimeSIDSelected, this.periodTimeEIDSelected, this.staffIDSelected ).subscribe(data => {
         console.log(data);
-        // alert('success');
-          this.router.navigate(['shows-out-activity']);
+           alert('success');
+          this.router.navigate(['showsOutActivity']);
       }
       ,error => {
         alert('Error');
