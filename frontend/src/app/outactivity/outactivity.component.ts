@@ -96,8 +96,8 @@ export class OutactivityComponent implements OnInit {
         this.categoryActivityIDSelected, this.organizedIDSelected,
         this.periodTimeSIDSelected, this.periodTimeEIDSelected, this.staffIDSelected ).subscribe(data => {
         console.log(data);
-        // alert('success');
-          this.router.navigate(['shows-out-activity']);
+         alert('success');
+          this.router.navigate(['showsOutActivity']);
       }
       ,error => {
         alert('Error');
