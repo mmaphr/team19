@@ -6,6 +6,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource
 public interface DaysOfTheWeekRepository extends JpaRepository<DaysOfTheWeek, Long> {
-
+    DaysOfTheWeek findById(long id);
 }
 
