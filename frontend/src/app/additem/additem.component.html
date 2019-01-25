@@ -86,36 +86,36 @@
     </header>
     <div class="main">
       <br>
-    <h1 class="stay-h1-2">ลายละเอียดจำนวนสิ้นค้าทั้งหมด</h1>
-    <mat-table [dataSource]="stock" class="table">
+      <h1 class="stay-h1-2">ลายละเอียดจำนวนสิ้นค้าทั้งหมด</h1>
+      <mat-table [dataSource]="stock" class="table">
 
-      <!-- No Column -->
-      <ng-container matColumnDef="No">
-        <mat-header-cell *matHeaderCellDef> ลำดับ </mat-header-cell>
-        <mat-cell *matCellDef="let element; let i = index"> {{i+1}} </mat-cell>
-      </ng-container>
+        <!-- No Column -->
+        <ng-container matColumnDef="No">
+          <mat-header-cell *matHeaderCellDef> ลำดับ </mat-header-cell>
+          <mat-cell *matCellDef="let element; let i = index"> {{i+1}} </mat-cell>
+        </ng-container>
 
-      <!-- addCategory Column -->
-      <ng-container matColumnDef="categoryName">
-        <mat-header-cell *matHeaderCellDef> ชนิดสินค้า </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.categoryName.categoryName}} </mat-cell>
-      </ng-container>
+        <!-- addCategory Column -->
+        <ng-container matColumnDef="categoryName">
+          <mat-header-cell *matHeaderCellDef> ชนิดสินค้า </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.categoryName.categoryName}} </mat-cell>
+        </ng-container>
 
-      <!-- addItemName Column -->
-      <ng-container matColumnDef="productName">
-        <mat-header-cell *matHeaderCellDef> ชื่อสินค้า </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.productName}} </mat-cell>
-      </ng-container>
+        <!-- addItemName Column -->
+        <ng-container matColumnDef="productName">
+          <mat-header-cell *matHeaderCellDef> ชื่อสินค้า </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.productName}} </mat-cell>
+        </ng-container>
 
-      <!-- addAmount Column -->
-      <ng-container matColumnDef="amountTotal">
-        <mat-header-cell *matHeaderCellDef> จำนวนสินค้าในคลัง </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.amountTotal}} </mat-cell>
-      </ng-container>
+        <!-- addAmount Column -->
+        <ng-container matColumnDef="amountTotal">
+          <mat-header-cell *matHeaderCellDef> จำนวนสินค้าในคลัง </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.amountTotal}} </mat-cell>
+        </ng-container>
 
-      <mat-header-row *matHeaderRowDef="displayedColumnsStock"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumnsStock;"></mat-row>
-    </mat-table>
+        <mat-header-row *matHeaderRowDef="displayedColumnsStock"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumnsStock;"></mat-row>
+      </mat-table>
     </div>
   </article>
 </section>
