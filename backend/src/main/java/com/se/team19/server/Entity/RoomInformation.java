@@ -2,6 +2,7 @@ package com.se.team19.server.Entity;
 
 import lombok.*;
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.*;
 
 @Data
@@ -16,8 +17,9 @@ public class RoomInformation {
     @SequenceGenerator(name="room_seq",sequenceName="room_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="room_seq")
     @Column(name="room_ID",unique = true, nullable = true)
-    private @NonNull Long Id;
-    private @NonNull String roomnumber;
+    private @NotNull Long Id;
+    @Pattern(regexp = "^[A-Z][0-9]{3}$")
+    private @NotNull String roomnumber;
 
     @ManyToOne
     @JoinColumn(name = "ROOMSTATUS_ID", nullable = true)

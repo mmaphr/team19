@@ -204,7 +204,7 @@ public class ServerApplication {
 			roomInformationRepository.save(room9);
 
 			RoomInformation	room10 = new RoomInformation();
-			room10.setRoomnumber("A 110");
+			room10.setRoomnumber("A110");
 			room10.setRoomstatus(roomStatusRepository.findById(1));
 			room10.setTyperoom(typeRoomRepository.findById(3));
 			roomInformationRepository.save(room10);
