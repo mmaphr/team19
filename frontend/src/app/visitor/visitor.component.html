@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<body>
+<section>
+  <mat-drawer-container class="left-container">
+    <h1 class="stay-h1">กรอกข้อมูลผู้มาเยี่ยม</h1>
+
+    <mat-form-field class="full-width">
+      <mat-label>ชื่อผู้มาเยี่ยม</mat-label>
+      <input matInput placeholder="กรอก ชื่อผู้สูงอายุ" [(ngModel)]="inputData.namevisitor">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>เลขบัตรประชาชน</mat-label>
+      <input matInput #message maxlength="13" placeholder="กรอก เลขบัตรประชาชน" [(ngModel)]="inputData.numid">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-select placeholder="เพศ" name="gendername" [(ngModel)]="inputData.gender">
+        <mat-option *ngFor="let gender of genders" [value]="gender.genderId" >
+          {{gender.genderName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput type="number" min="1" placeholder="กรอก อายุ" class="amount-right-align" [(ngModel)]="inputData.age">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>ที่อยู่</mat-label>
+      <input matInput placeholder="กรอก ที่อยู่" [(ngModel)]="inputData.address">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+    <mat-select placeholder="จังหวัด" name="provincename" [(ngModel)]="inputData.provice">
+      <mat-option *ngFor="let province of provinces" [value]="province.provinceId">
+        {{province.provinceName}}
+      </mat-option>
+    </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>เบอร์โทร</mat-label>
+      <input matInput #message maxlength="10" placeholder="0812345678" [(ngModel)]="inputData.phone">
+
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-select placeholder="เลือกชื่อผู้สูงอายุที่จะเยี่ยม" [(ngModel)]="inputData.older">
+        <mat-option *ngFor="let dataolder of ShowName" [value]="dataolder.id">
+          {{dataolder.oldername}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-select placeholder="สถานะกับผู้สูงอายุ" [(ngModel)]="inputData.status">
+        <mat-option *ngFor="let relativesstaus of status" [value]="relativesstaus.id">
+          {{relativesstaus.relative}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <br>
+    <br>
+    <div>
+      <button mat-flat-button color="warn" routerLink="/main" routerLinkActive="active" >กลับ</button>
+      <button mat-flat-button class="buttom-save" (click)="save()">บันทึก</button>
+    </div>
+  </mat-drawer-container>
+
+
+
+
+  <article>
+    <header>
+      <h1 class="stay-h1">ข้อมูลผู้มาเยี่ยม</h1>
+      <mat-table [dataSource]="visitorData" class="table">
+
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> ลำดับ </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="visitorname">
+          <mat-header-cell *matHeaderCellDef> ชื่อ </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.nameVisitor}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="numid">
+          <mat-header-cell *matHeaderCellDef> เลขบัตรประชาชน </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.numIdVisitor}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="gender">
+          <mat-header-cell *matHeaderCellDef> อายุ </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.genders.genderName}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="age">
+          <mat-header-cell *matHeaderCellDef> อายุ </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.ageVisitor}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+          <mat-header-cell *matHeaderCellDef> ที่อยู่ </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.addressVisitor +' '+element.province.provinceName}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef> เบอร์โทร </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.phoneVisitor}} </mat-cell>
+      </ng-container>
+
+        <ng-container matColumnDef="older">
+          <mat-header-cell *matHeaderCellDef> ผู้สูงอายุที่มาเยี่ยม </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.olders.oldername}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <mat-header-cell *matHeaderCellDef> สถานะกับผู้สูงอายุ </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.relativesStatus.relative}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <mat-header-cell *matHeaderCellDef> วันที่มาเยี่ยม </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.dayVisitor+" "+element.timeVisitor}} </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="dataColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: dataColumns;"></mat-row>
+      </mat-table>
+      <br>
+      <br>
+    </header>
+  </article>
+
+
+</section>
+</body>
+</html>
