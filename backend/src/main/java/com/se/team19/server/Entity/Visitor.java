@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.*;
 
 @Data
@@ -20,8 +21,10 @@ public class Visitor {
     @Column(name="Visitor_ID",unique = true, nullable = true)
     private @NonNull Long Id;
     private @NonNull String nameVisitor;
+    @Pattern(regexp = "^[0-9]{13}$")
     private @NonNull String numIdVisitor;
     private @NonNull int ageVisitor;
+    @Pattern(regexp = "^[0][0-9]{9}$")
     private @NonNull String phoneVisitor;
     @Temporal(TemporalType.DATE)
 //    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
