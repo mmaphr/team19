@@ -48,7 +48,9 @@ public class ServerApplication {
 						   InternalActivityRepository internalActivityRepository,
 						   TimeDurationRepository timeDurationRepository,
                            RelativesStatusRepository relativesStatusRepository,
-                           VisitorRepository visitorRepository) {
+                           VisitorRepository visitorRepository,
+						   TypeHealthCheckRepository typeHealthCheckRepository,
+						   HealthCheckRepository healthCheckRepository) {
 		return args -> {
 
 			//<!==========  AddOlderDisease ==========!>
@@ -119,7 +121,7 @@ public class ServerApplication {
 			DataOlder Older7 = new DataOlder("นางบี ซีดี", new Date(60,7,7),"B","7/77","7777777777",genderRepository.findById(2),provinceRepository.findById(7));
 			DataOlder Older8 = new DataOlder("นายซี บีเอฟ", new Date(60,8,8),"C","8/88","8888888888",genderRepository.findById(1),provinceRepository.findById(8));
 			DataOlder Older9 = new DataOlder("นางดี จริงจริง", new Date(60,9,9),"D","9/99","9999999999",genderRepository.findById(2),provinceRepository.findById(9));
-			DataOlder Older10 = new DataOlder("นายอี นี่", new Date(60,10,10),"F","1/00","000000000",genderRepository.findById(1),provinceRepository.findById(10));
+			DataOlder Older10 = new DataOlder("นายอี นี่", new Date(60,10,10),"F","1/00","0000000000",genderRepository.findById(1),provinceRepository.findById(10));
 
 			dataOlderRepository.save(Older1);
 			dataOlderRepository.save(Older2);
@@ -279,6 +281,20 @@ public class ServerApplication {
             visitorRepository.save(new Visitor("นางสมใจ ไม่มี","1110923823411",39,"0878734529",new Date(),new Date(),"101 หลังบ้าน",genderRepository.findById(2),provinceRepository.findById(44),relativesStatusRepository.findById(3),dataOlderRepository.findById(2)));
             visitorRepository.save(new Visitor("นางสมหญิง ไม่รู้","1212341234343",50,"0498798674",new Date(),new Date(),"581 บนบ้าน",genderRepository.findById(2),provinceRepository.findById(28),relativesStatusRepository.findById(3),dataOlderRepository.findById(3)));
 
+
+			//<!==========  TypeHealthCheck ==========!>
+			Stream.of("ตรวจร่างกายทั่วไป", "ตรวจสุขภาพช่องปาก", "ตรวจการได้ยิน", "ตรวจสุขภาพประจำปี", "ตรวจสุขภาพด้วยเอกซเรย์").forEach(typename -> {
+				typeHealthCheckRepository.save(new TypeHealthCheck(typename));
+			});
+			//<!==========  END TypeHealthCheck ==========!>
+
+			//<!==========  HealthCheck ==========!>
+			healthCheckRepository.save(new HealthCheck("โรงพยาบาลมหาวิทยาลัยเทคโนโลยีสุรนารี",new Date(118,1,1),"1000" ,typeHealthCheckRepository.findById(1),dataOlderRepository.findById(1)));
+			healthCheckRepository.save(new HealthCheck("โรงพยาบาลเกษมราษฏร์",new Date(118,2,2),"2000" ,typeHealthCheckRepository.findById(2),dataOlderRepository.findById(2)));
+			healthCheckRepository.save(new HealthCheck("โรงพยาบาลจุฬารัตน์",new Date(118,3,3),"3000" ,typeHealthCheckRepository.findById(3),dataOlderRepository.findById(3)));
+			healthCheckRepository.save(new HealthCheck("โรงพยาบาลพญาไท",new Date(118,4,4),"4000" ,typeHealthCheckRepository.findById(4),dataOlderRepository.findById(4)));
+
+			//<!==========  END HealthCheck ==========!>
         };
 
     }
