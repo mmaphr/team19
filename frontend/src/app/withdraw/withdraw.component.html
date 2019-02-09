@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<body>
+<section>
+  <mat-drawer-container class="left-container">
+    <h1 class="stay-h1">กรอกข้อมูลสินค้าที่ต้องการเบิก</h1>
+
+    <p>เลือกชนิดสินค้า</p>
+    <mat-form-field class="itemcategory-select">
+      <mat-select placeholder="กรุณาเลือกชนิดสินค้า"  [(ngModel)]="Withdraw.categoryInput">
+        <mat-option (click)="selectStock()" *ngFor="let category of category" [value]="category.categoryName">
+          {{category.categoryName}}
+        </mat-option>
+      </mat-select>
+      <span matPrefix>&nbsp;</span>
+      <mat-icon matSuffix>ballot</mat-icon>
+    </mat-form-field>
+
+    <p>เลือกสินค้า</p>
+    <mat-form-field class="itemname-withdraw">
+      <mat-select placeholder="กรุณาเลือกชนิดสินค้า" [(ngModel)]="Withdraw.itemNameInput">
+        <mat-option *ngFor="let itemname of itemname" [value]="itemname.productName">
+          {{itemname.productName}}
+        </mat-option>
+      </mat-select>
+      <span matPrefix>&nbsp;</span>
+      <mat-icon matSuffix>assignment</mat-icon>
+    </mat-form-field>
+
+    <p>จำนวนสินค้า</p>
+    <mat-form-field class="itemamount-withdraw">
+      <input matInput type="number" min="1" placeholder="กรุณากรอดจำนวนสินค้า" class="amount-right-align" [(ngModel)]="Withdraw.amountItemInput">
+      <span matPrefix>$&nbsp;</span>
+      <span matSuffix>&nbsp;ชิ้น&nbsp;</span>
+      <mat-icon matSuffix>shopping_cart</mat-icon>
+    </mat-form-field>
+
+    <p>ส่วนงานที่เบิกสินค้า</p>
+    <mat-form-field class="department-select">
+      <mat-select placeholder="กรุณาเลือกส่วนงาน" [(ngModel)]="Withdraw.departmentInput">
+        <mat-option *ngFor="let department of department" [value]="department.departmentName">
+          {{department.departmentName}}
+        </mat-option>
+      </mat-select>
+      <span matPrefix>&nbsp;</span>
+      <mat-icon matSuffix>business</mat-icon>
+    </mat-form-field>
+
+    <p>สาเหตุที่เบิก</p>
+    <mat-form-field class="withdrawdnote-input">
+      <input matInput #message maxlength="50" placeholder="ข้อความ" [(ngModel)]="Withdraw.descriptionInput">
+      <mat-hint align="start"><strong>กรุณากรอกสาเหตุที่เบิกสินค้าไม่เกิน</strong> </mat-hint>
+      <mat-hint align="end">{{message.value.length}} / 50</mat-hint>
+      <span matPrefix>&nbsp;</span>
+      <mat-icon matSuffix>description</mat-icon>
+    </mat-form-field>
+
+    <br>
+    <br>
+    <br>
+    <div>
+      <button mat-flat-button color="warn" routerLink="/main" routerLinkActive="active" >กลับ</button>
+      <button mat-flat-button class="buttom-save" (click)="saveStock()">ยืนยัน</button>
+    </div>
+    <br>
+  </mat-drawer-container>
+  <article>
+    <header>
+      <h1 class="stay-h1-2">ข้อมูลสินค้าที่เบิก</h1>
+      <mat-table [dataSource]="Showitem" class="table">
+
+        <!-- addCategory Column -->
+        <ng-container matColumnDef="addCategory">
+          <mat-header-cell *matHeaderCellDef> ชนิดสินค้า </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.categoryName.categoryName}} </mat-cell>
+        </ng-container>
+
+        <!-- addItemName Column -->
+        <ng-container matColumnDef="addItemName">
+          <mat-header-cell *matHeaderCellDef> ชื่อสินค้า </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.withdrawName}} </mat-cell>
+        </ng-container>
+
+        <!-- addAmount Column -->
+        <ng-container matColumnDef="addAmount">
+          <mat-header-cell *matHeaderCellDef> จำนวนสินค้า </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.withdrawAmount}} </mat-cell>
+        </ng-container>
+
+        <!-- addNote Column -->
+        <ng-container matColumnDef="addNote">
+          <mat-header-cell *matHeaderCellDef> ส่วนงานที่เบิก </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.departmentName.departmentName}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <br>
+      <br>
+    </header>
+    <div class="main">
+      <br>
+      <h1 class="stay-h1-2">ลายละเอียดจำนวนสินค้าทั้งหมด</h1>
+      <mat-table [dataSource]="stock" class="table">
+
+        <!-- No Column -->
+        <ng-container matColumnDef="No">
+          <mat-header-cell *matHeaderCellDef> ลำดับ </mat-header-cell>
+          <mat-cell *matCellDef="let element; let i = index"> {{i+1}} </mat-cell>
+        </ng-container>
+
+        <!-- addCategory Column -->
+        <ng-container matColumnDef="categoryName">
+          <mat-header-cell *matHeaderCellDef> ชนิดสินค้า </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.categoryName.categoryName}} </mat-cell>
+        </ng-container>
+
+        <!-- addItemName Column -->
+        <ng-container matColumnDef="productName">
+          <mat-header-cell *matHeaderCellDef> ชื่อสินค้า </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.productName}} </mat-cell>
+        </ng-container>
+
+        <!-- addAmount Column -->
+        <ng-container matColumnDef="amountTotal">
+          <mat-header-cell *matHeaderCellDef> จำนวนสินค้าในคลัง </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.amountTotal}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumnsStock"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumnsStock;"></mat-row>
+      </mat-table>
+    </div>
+  </article>
+</section>
+</body>
+</html>

@@ -10,9 +10,9 @@ export class MainComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.breakpoint = (window.innerWidth <= 1024) ? 1 : 3;
+    this.breakpoint = (window.innerWidth <= 1024) ? 1 : 4;
   }
   onResize(event) {
-    this.breakpoint = (event.target.innerWidth <= 1024) ? 1 : 3;
+    this.breakpoint = (event.target.innerWidth <= 1024) ? 1 : 4;
   }
 }
