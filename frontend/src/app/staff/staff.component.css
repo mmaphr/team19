@@ -1,16 +1,60 @@
-.blackground{
-    width: 100%;
-    background-color:  #263238;
-    min-height: 100vh;
-  }
-.form {
-    width: 70%;
-    background-color:  #ffffff;
-    padding: 20px;
-  }
+.column {
+  float: left;
+  height: 100%;
+  min-height: 880px;
+  text-align: center;
+  color: white;
+  background-size: cover;
+}
+
+.left {
+  width: 40%;
+  background-color: #263238;
+}
+
+.right {
+  width: 60%;
+  background-color: #666666;
+}
+.full-width-phone {
+  width: 85%;
+  background-color: rgb(226, 225, 225);
+  color: rgb(0, 0, 0);
+  border-radius: 8px ;
+  padding: 1% 2% 5% 2%;
+  margin: 4px 0;
+  height: 47px;
+}
+.full-width-textarea {
+  width: 85%;
+  background-color: rgb(226, 225, 225);
+  color: rgb(0, 0, 0);
+  border-radius: 8px ;
+  padding: 1% 2% 0% 2%;
+  margin: 4px 0;
+}
 .full-width {
-    width: 100%;
-  }
-.text{
-    color: white;
-  }
+  width: 85%;
+  background-color: rgb(226, 225, 225);
+  color: rgb(0, 0, 0);
+  border-radius: 8px ;
+  padding: 1% 2% 2% 2%;
+  margin: 4px 0;
+  height: 47px;
+}
+
+.button{
+  width: 30%;
+}
+
+.save{
+  margin-left: 50%;
+  background-color: #4CAF50;
+}
+
+.table {
+  height: 100%;
+  
+  margin-left: 40px;
+  margin-right: 40px;
+}
