@@ -1,0 +1,80 @@
+<div class="column left">
+  <h1>กรอกข้อมูลการตรวขสุขภาพ</h1>
+
+  <mat-form-field class="full-width">
+    <mat-label>โรงพยาบาล</mat-label>
+    <input matInput placeholder="กรอก ชื่อโรงพยาบาล" [(ngModel)]="inputHealthCheck.hospital">
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>วันตรวจสุขภาพ</mat-label>
+    <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY" [(ngModel)]="inputHealthCheck.datecheck">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-select placeholder="ประเภทการตรวจสุขภาพ" name="HealthCheckType" [(ngModel)]="inputHealthCheck.healthCheckType">
+      <mat-option *ngFor="let type of types" [value]="type.id">
+        {{type.typename}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>ค่าใช้จ่าย</mat-label>
+    <input matInput placeholder="กรอก ค่าใช้จ่าย" [(ngModel)]="inputHealthCheck.expenses">
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>หมายเหตุ</mat-label>
+    <input matInput placeholder="กรอก หมายเหตุ" [(ngModel)]="inputHealthCheck.description">
+  </mat-form-field>
+
+  <br>
+  <br>
+  <button mat-flat-button class="buttom" color="warn" routerLink="/InputDataOlder" routerLinkActive="active" >กลับ</button>
+  <button mat-flat-button class="buttom save" (click)="save()" >บันทึก</button>
+</div>
+
+<div class="column right" >
+  <h1>ข้อมูลการตรวขสุขภาพ</h1>
+  <mat-table [dataSource]="healthChecks" class="table">
+
+    <ng-container matColumnDef="no">
+      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+      <mat-cell *matCellDef="let element ; let i = index"> {{i+1}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="hospital">
+      <mat-header-cell *matHeaderCellDef> Hospital </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.hospital}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="datecheck">
+      <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.datecheck}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="healthCheckType">
+      <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.healthCheckType.typename}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="expenses">
+      <mat-header-cell *matHeaderCellDef> Expenses </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.expenses}} </mat-cell>
+    </ng-container>
+
+
+
+    <mat-header-row *matHeaderRowDef="dataColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: dataColumns;"></mat-row>
+  </mat-table>
+</div>
+

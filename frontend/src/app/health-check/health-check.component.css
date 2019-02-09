@@ -1,0 +1,42 @@
+.column {
+  float: left;
+  height: 100vh;
+  text-align: center;
+  color: white;
+}
+
+.left {
+  width: 35%;
+  background-color: #263238;
+}
+
+.right {
+  width: 65%;
+  background-color: #666666;
+}
+
+.full-width {
+  width: 85%;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 8px ;
+  padding: 1% 2% 2% 2%;
+  margin: 4px 0;
+  height: 47px;
+}
+
+.button{
+  width: 30%;
+}
+
+.save{
+  margin-left: 50%;
+  background-color: #4CAF50;
+}
+
+.table {
+  height: 500px;
+  overflow: auto;
+  margin-left: 40px;
+  margin-right: 40px;
+}

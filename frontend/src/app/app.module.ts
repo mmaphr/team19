@@ -52,7 +52,7 @@ import { RoomDeleteComponent } from './room-delete/room-delete.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
 import {LoginpageService} from './shared/loginmain/loginpage.service';
 import { MainComponent } from './main/main.component';
-import { AddDataOlderPageComponent } from './add-data-older-page/add-data-older-page.component';
+import { AddDataOlderPageComponent} from './add-data-older-page/add-data-older-page.component';
 import { AddDataOlderService } from './shared/DataOlder/add-data-older.service';
 import { AdditemComponent } from './additem/additem.component';
 import {AdditemService} from './shared/Additem/additem.service';
@@ -63,7 +63,9 @@ import { InActService } from './shared/inAct/in-act.service';
 import { InActAddComponent } from './in-act-add/in-act-add.component';
 import { VisitorComponent } from './visitor/visitor.component';
 import { VisitorService } from './shared/visitor/visitor.service';
-
+import { HealthCheckComponent } from './health-check/health-check.component';
+import { HealthCheckService } from './shared/healthcheck/health-check.service';
+import { MoreDateOlderComponent } from './more-date-older/more-date-older.component';
 const appRoutes: Routes = [
   { path: '',  redirectTo: '/loginpage', pathMatch: 'full' },
   { path: 'loginpage',component : LoginpageComponent},
@@ -79,9 +81,9 @@ const appRoutes: Routes = [
   {path: 'showsOutActivity', component: ShowsOutActivityComponent},
   {path: 'inAct-add',component: InActAddComponent},
   {path: 'newStaff',component: StaffComponent},
-
-  {path: 'visitor',component: VisitorComponent}
-
+  {path: 'visitor',component: VisitorComponent},
+  {path: 'HealthCheck/:id', component : HealthCheckComponent },
+  {path: 'MoreDataOlder/:id', component : MoreDateOlderComponent },
 ];
 
 @NgModule({
@@ -100,7 +102,9 @@ const appRoutes: Routes = [
     ShowsOutActivityComponent,
     InActAddComponent,
     StaffComponent,
-    VisitorComponent
+    VisitorComponent,
+    HealthCheckComponent,
+    MoreDateOlderComponent
   ],
   imports: [
     BrowserModule,
@@ -141,7 +145,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [StaffService,RoomImformationService,AdditemService,LoginpageService,AddDataOlderService,OutactivityService,InActService,VisitorService],
+  providers: [HealthCheckService,StaffService,RoomImformationService,AdditemService,LoginpageService,AddDataOlderService,OutactivityService,InActService,VisitorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
