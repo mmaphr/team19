@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-<body>
-<section>
-  <mat-drawer-container class="left-container">
-    <h1 class="stay-h1">กรอกข้อมูลสผู้สูงอายุ</h1>
+<div class="column left">
+    <h1>กรอกข้อมูลสผู้สูงอายุ</h1>
 
     <mat-form-field class="full-width">
       <mat-label>ชื่อผู้สูงอายุ</mat-label>
@@ -56,20 +52,18 @@
       <input matInput placeholder="กรอก เบอร์โทร" [(ngModel)]="inputDataOlder.parentphone">
     </mat-form-field>
     <br>
-    <br>
-    <div>
-      <button mat-flat-button color="warn" routerLink="/main" routerLinkActive="active" >กลับ</button>
-      <button mat-flat-button class="buttom-save" (click)="save()">บันทึก</button>
-    </div>
-  </mat-drawer-container>
-  <article>
-    <header>
-      <h1 class="stay-h1">ข้อมูลผู้สูงอายุ</h1>
+      <button mat-flat-button class="buttom"color="warn" routerLink="/main" routerLinkActive="active" >กลับ</button>
+      <button mat-flat-button class="buttom save" (click)="save()">บันทึก</button>
+</div>
+
+<div class="column right" >
+
+  <h1>ข้อมูลผู้สูงอายุ</h1>
       <mat-table [dataSource]="olderData" class="table">
 
         <ng-container matColumnDef="Id">
           <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+          <mat-cell *matCellDef="let element ; let i = index"> {{i+1}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="oldername">
@@ -81,6 +75,8 @@
           <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.dataOlderGender.genderName}} </mat-cell>
         </ng-container>
+
+
 
         <ng-container matColumnDef="parentname">
           <mat-header-cell *matHeaderCellDef> Parant Name </mat-header-cell>
@@ -97,15 +93,19 @@
           <mat-cell *matCellDef="let element"> {{element.parentphone}} </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="more">
+          <mat-header-cell *matHeaderCellDef> More </mat-header-cell>
+          <mat-cell *matCellDef="let element"> <button mat-flat-button routerLink="/MoreDataOlder/{{element.id}}" routerLinkActive="active" > More </button>
+          </mat-cell>
+        </ng-container>
 
+        <ng-container matColumnDef="healthCheck">
+          <mat-header-cell *matHeaderCellDef> Health Check </mat-header-cell>
+          <mat-cell *matCellDef="let element"> <button mat-flat-button color="warn" routerLink="/HealthCheck/{{element.id}}" routerLinkActive="active" > Check </button>
+          </mat-cell>
+        </ng-container>
 
         <mat-header-row *matHeaderRowDef="dataColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: dataColumns;"></mat-row>
       </mat-table>
-      <br>
-      <br>
-    </header>
-  </article>
-</section>
-</body>
-</html>
+</div>
