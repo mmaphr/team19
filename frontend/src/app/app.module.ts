@@ -36,7 +36,7 @@ import {
   MatTableModule,
   MatTabsModule,
   MatToolbarModule,
-  } from '@angular/material';
+} from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -107,6 +107,7 @@ const appRoutes: Routes = [
     StaffComponent,
     VisitorComponent,
     HealthCheckComponent,
+    WithdrawComponent,
     MoreDateOlderComponent
   ],
   imports: [
