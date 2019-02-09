@@ -1,0 +1,64 @@
+<div class="blackground" align="center" >
+  <div class="form">
+    <h1>ระบบฝึกฝันทักษะพนักงาน</h1>
+    <hr>
+
+    <mat-table [dataSource]="trainstaff" class="table">
+  
+      <ng-container matColumnDef="no">
+        <mat-header-cell *matHeaderCellDef> หมายเลข </mat-header-cell>
+        <mat-cell *matCellDef="let element ; let i = index"> {{i+1}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="trainname">
+        <mat-header-cell *matHeaderCellDef> ชื่อการฝึกฝน </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.trainName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="staffname">
+          <mat-header-cell *matHeaderCellDef> ผู้ดูแล </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.trainStaff.staffName}} </mat-cell>
+        </ng-container>
+  
+      <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef> วันที่ </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.trainDate}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef> ชนิดของการฝึก </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.trainType.typeName}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef> รายละเอียด </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.trainDescription}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="etc">
+        <mat-header-cell *matHeaderCellDef> หมายเหตุ </mat-header-cell>
+        <mat-cell *matCellDef="let elment"><button mat-flat-button color="primary" (click)="save(elment.trainId)">เข้าร่วม</button></mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="dataColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: dataColumns;"></mat-row>
+    </mat-table>
+    <br>
+    <br>
+    <h2>เลือกพนักงานเข้าร่วม</h2>
+
+    <mat-form-field class="full-width">
+      <mat-select placeholder="เลือกพนักงาน" name="staffName" [(ngModel)]="trainingData.staffsSelect"  >
+        <mat-option *ngFor="let staff of staffs" [value]="staff.staffId">
+          {{staff.staffName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <br>
+    <br>
+    <button mat-flat-button class="buttom" color="warn" routerLink="/main" routerLinkActive="active">กลับ</button>
+    <button mat-flat-button class="buttom new" routerLink="/newTrain" routerLinkActive="active">เพิ่มกิจกรรม</button>
+
+  </div>
+</div>

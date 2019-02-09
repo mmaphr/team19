@@ -68,6 +68,10 @@ import { HealthCheckService } from './shared/healthcheck/health-check.service';
 import { WithdrawComponent } from './withdraw/withdraw.component';
 import { MoreDateOlderComponent } from './more-date-older/more-date-older.component';
 import {WithdrawService} from './shared/Withdarw/withdraw.service';
+import { TrainStaffComponent } from './train-staff/train-staff.component';
+import { TrainAddComponent } from './train-add/train-add.component';
+import { TrainAddService } from './shared/train-add/train-add.service';
+import { TrainStaffService } from './shared/train-staff/train-staff.service';
 const appRoutes: Routes = [
   { path: '',  redirectTo: '/loginpage', pathMatch: 'full' },
   { path: 'loginpage',component : LoginpageComponent},
@@ -87,6 +91,8 @@ const appRoutes: Routes = [
   {path: 'HealthCheck/:id', component : HealthCheckComponent },
   {path: 'withdraw',component: WithdrawComponent},
   {path: 'MoreDataOlder/:id', component : MoreDateOlderComponent },
+  {path: 'newTrain',component: TrainAddComponent},
+  {path: 'Training',component: TrainStaffComponent}
 ];
 
 @NgModule({
@@ -108,7 +114,9 @@ const appRoutes: Routes = [
     VisitorComponent,
     HealthCheckComponent,
     WithdrawComponent,
-    MoreDateOlderComponent
+    MoreDateOlderComponent,
+    TrainStaffComponent,
+    TrainAddComponent
   ],
   imports: [
     BrowserModule,
@@ -149,7 +157,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [WithdrawService,HealthCheckService,StaffService,RoomImformationService,AdditemService,LoginpageService,AddDataOlderService,OutactivityService,InActService,VisitorService],
+  providers: [TrainStaffService,TrainAddService,WithdrawService,HealthCheckService,StaffService,RoomImformationService,AdditemService,LoginpageService,AddDataOlderService,OutactivityService,InActService,VisitorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
