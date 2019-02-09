@@ -1,0 +1,27 @@
+<div class="from">
+  <br>
+  <br>
+  <h1>รายละเอียดเพิ่มเติ่ม</h1>
+  <br>
+  <mat-label>ชื่อผู้สูงอายุ : {{dataOlder.oldername}}</mat-label>
+  <br>
+  <mat-label>เพศ : {{dataOlder.dataOlderGender.genderName}}</mat-label>
+  <br>
+  <mat-label>วันเกิดผู้สูงอายุ : {{dataOlder.olderbirth}}</mat-label>
+  <br>
+  <mat-label>ชื่อญาติ : {{dataOlder.parentname}}</mat-label>
+  <br>
+  <mat-label>ที่อยู่ญาติ : {{dataOlder.parentaddress+' '+dataOlder.dataOlderProvince.provinceName}}</mat-label>
+  <br>
+  <mat-label>เบอร์โทรญาติ : {{dataOlder.parentphone}}</mat-label>
+  <br>
+  <mat-label>โรคประจำตัว :</mat-label>
+  <mat-label *ngFor="let OlderDataAndDisease of OlderDataAndDiseases">{{OlderDataAndDisease.dataOlderADiseaseOlderDisease.diseasename }}<br></mat-label>
+
+
+  <br>
+  <br>
+  <button mat-flat-button class="buttom"color="warn" routerLink="/InputDataOlder" routerLinkActive="active" >กลับ</button>
+</div>
+
+
