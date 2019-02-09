@@ -27,7 +27,10 @@ public class ServerApplication {
 
 
 	@Bean
-	ApplicationRunner init(PositionRepository positionRepository,
+	ApplicationRunner init(TrainAndStaffRepository trainAndStaffRepository,
+                           TrainTypeRepository trainTypeRepository,
+                           TrainStaffRepository trainStaffRepository,
+                           PositionRepository positionRepository,
 						   ProvinceRepository provinceRepository,
 						   GenderRepository genderRepository,
 						   StaffRepository staffRepository,
