@@ -49,7 +49,7 @@ export class AdditemComponent implements OnInit {
       || this.Input.amountItemInput === ''
       || this.Input.amountItemInput === 0
       || this.Input.noteItemInput === ''
-    ) {
+    ){
       this.snackBar.open('กรุณาใส่ข้อมูลให้ครับ', 'KO', {});
     } else {
       this.usernameInput = localStorage.getItem('id');
