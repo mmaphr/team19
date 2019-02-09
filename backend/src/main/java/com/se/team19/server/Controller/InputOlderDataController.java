@@ -66,8 +66,8 @@ public class InputOlderDataController {
 
         for(int i = 0 ; i<(int)olderdisease.length ; i++) {
             OlderDataAndDisease newODAD = new OlderDataAndDisease();
-            newODAD.setDataOlderAndDiseaseDataOlder(dataOlderRepository.findById(dataOlderRepository.count()));
-            newODAD.setDataOlderAndDiseaseOlderDisease(olderDiseaseRepository.findById(olderdisease[i]));
+            newODAD.setDataOlderADiseaseDataOlder(dataOlderRepository.findById(dataOlderRepository.count()));
+            newODAD.setDataOlderADiseaseOlderDisease(olderDiseaseRepository.findById(olderdisease[i]));
             olderDataAndDiseaseRepository.save(newODAD);
             System.out.println(newODAD);
         }
@@ -83,6 +83,16 @@ public class InputOlderDataController {
     @GetMapping("/DataOlderAll")
     public Collection<DataOlder> DataOlder() {
         return dataOlderRepository.findAll().stream().collect(Collectors.toList());
+    }
+
+    @GetMapping("/DataOlder/{id}")
+    public DataOlder DataOlder(@PathVariable long id) {
+        return dataOlderRepository.findById(id);
+    }
+
+    @GetMapping("/OlderDataAndDisease/{id}")
+    public Collection<OlderDataAndDisease> OlderDataAndDiseaseId(@PathVariable long id) {
+        return olderDataAndDiseaseRepository.findByDataOlderADiseaseDataOlder(dataOlderRepository.findById(id));
     }
 
 

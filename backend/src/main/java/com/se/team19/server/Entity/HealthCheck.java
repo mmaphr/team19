@@ -16,24 +16,25 @@ public class HealthCheck {
     private @NotNull Long id;
     private @NotNull String hospital;
     private @NotNull Date datecheck;
-    private @NotNull String expenses;
+    private @NotNull int expenses;
+    private @NotNull String description;
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = TypeHealthCheck.class)
     @JoinColumn(name = "typeHealthCheck_ID", insertable = true)
-    private @NotNull TypeHealthCheck HealthCheckType;
+    private @NotNull TypeHealthCheck healthCheckType;
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = DataOlder.class)
     @JoinColumn(name = "Dataolder_ID", insertable = true)
-    private @NotNull DataOlder HealthCheckData;
+    private @NotNull DataOlder healthCheckData;
 
     public HealthCheck() {}
 
-    public HealthCheck(String hospital, Date datecheck, String expenses, TypeHealthCheck healthCheckType, DataOlder healthCheckData) {
+    public HealthCheck( String hospital, Date datecheck, int expenses, String description, TypeHealthCheck healthCheckType, DataOlder healthCheckData) {
         this.hospital = hospital;
         this.datecheck = datecheck;
         this.expenses = expenses;
-        HealthCheckType = healthCheckType;
-        HealthCheckData = healthCheckData;
+        this.description = description;
+        this.healthCheckType = healthCheckType;
+        this.healthCheckData = healthCheckData;
     }
-
 }

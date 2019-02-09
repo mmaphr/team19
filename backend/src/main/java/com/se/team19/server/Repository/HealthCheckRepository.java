@@ -10,4 +10,5 @@ import java.util.Collection;
 @CrossOrigin(origins = "http://localhost:4200")
 public interface HealthCheckRepository extends JpaRepository<HealthCheck,Long> {
     HealthCheck findById(long id);
+    Collection<HealthCheck> findByHealthCheckData(DataOlder dataOlder);
 }
