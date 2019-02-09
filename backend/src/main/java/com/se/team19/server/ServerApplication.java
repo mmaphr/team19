@@ -47,10 +47,11 @@ public class ServerApplication {
 						   DaysOfTheWeekRepository daysOfTheWeekRepository,
 						   InternalActivityRepository internalActivityRepository,
 						   TimeDurationRepository timeDurationRepository,
-                           RelativesStatusRepository relativesStatusRepository,
-                           VisitorRepository visitorRepository,
+						   RelativesStatusRepository relativesStatusRepository,
+						   VisitorRepository visitorRepository,
 						   TypeHealthCheckRepository typeHealthCheckRepository,
 						   HealthCheckRepository healthCheckRepository,
+						   DepartmentRepository departmentRepository,
 						   OlderDataAndDiseaseRepository olderDataAndDiseaseRepository) {
 		return args -> {
 
@@ -83,6 +84,21 @@ public class ServerApplication {
 			noteRepository.save(note2);
 
 			//<!========== END!! AddProductToStock ==========!>
+
+			//<!==========  WithdrawToStock ==========!>
+			Department department = new Department();
+			department.setDepartmentName("ส่วนงานอาคารสถานที่");
+			departmentRepository.save(department);
+			Department department1 = new Department();
+			department1.setDepartmentName("ส่วนงานพยาบาล");
+			departmentRepository.save(department1);
+			Department department2 = new Department();
+			department2.setDepartmentName("ส่วนงานเอกสาร");
+			departmentRepository.save(department2);
+			Department department3 = new Department();
+			department3.setDepartmentName("ส่วนงานกิจกรรม");
+			departmentRepository.save(department3);
+			//<!========== END!! WithdrawToStock ==========!>
 
 
 			//<!==================== Staff ====================!>
@@ -272,15 +288,15 @@ public class ServerApplication {
 			internalActivityRepository.save(new InternalActivity("ร้องเพลง","ร้องเพลงผ่อนคลายอารมณ์",staffRepository.findById(3),daysOfTheWeekRepository.findById(3),timeDurationRepository.findById(11)));
 			internalActivityRepository.save(new InternalActivity("ร้องเพลง","ร้องเพลงผ่อนคลายอารมณ์",staffRepository.findById(2),daysOfTheWeekRepository.findById(3),timeDurationRepository.findById(12)));
 
-            Stream.of("ลูก", "หลาน", "เพื่อน", "คนรู้จัก", "พี่", "น้อง").forEach(relative -> {
-                relativesStatusRepository.save(new RelativesStatus(relative));
-            });
+			Stream.of("ลูก", "หลาน", "เพื่อน", "คนรู้จัก", "พี่", "น้อง").forEach(relative -> {
+				relativesStatusRepository.save(new RelativesStatus(relative));
+			});
 
-            visitorRepository.save(new Visitor("นายสมใจ มีหม้อ","1128192731234",34,"0891234579",new Date(),new Date(),"901 บ้านใหญ่",genderRepository.findById(1),provinceRepository.findById(65),relativesStatusRepository.findById(1),dataOlderRepository.findById(3)));
-            visitorRepository.save(new Visitor("นางสมศรี มีไหม","1123334123432",34,"0891234579",new Date(),new Date(),"888 บ้านเล็ก",genderRepository.findById(2),provinceRepository.findById(62),relativesStatusRepository.findById(1),dataOlderRepository.findById(4)));
-            visitorRepository.save(new Visitor("นายสมหมาย มีไห","1987138901123",25,"0123455559",new Date(),new Date(),"9/1 บ้านใน",genderRepository.findById(1),provinceRepository.findById(22),relativesStatusRepository.findById(2),dataOlderRepository.findById(1)));
-            visitorRepository.save(new Visitor("นางสมใจ ไม่มี","1110923823411",39,"0878734529",new Date(),new Date(),"101 หลังบ้าน",genderRepository.findById(2),provinceRepository.findById(44),relativesStatusRepository.findById(3),dataOlderRepository.findById(2)));
-            visitorRepository.save(new Visitor("นางสมหญิง ไม่รู้","1212341234343",50,"0498798674",new Date(),new Date(),"581 บนบ้าน",genderRepository.findById(2),provinceRepository.findById(28),relativesStatusRepository.findById(3),dataOlderRepository.findById(3)));
+			visitorRepository.save(new Visitor("นายสมใจ มีหม้อ","1128192731234",34,"0891234579",new Date(),new Date(),"901 บ้านใหญ่",genderRepository.findById(1),provinceRepository.findById(65),relativesStatusRepository.findById(1),dataOlderRepository.findById(3)));
+			visitorRepository.save(new Visitor("นางสมศรี มีไหม","1123334123432",34,"0891234579",new Date(),new Date(),"888 บ้านเล็ก",genderRepository.findById(2),provinceRepository.findById(62),relativesStatusRepository.findById(1),dataOlderRepository.findById(4)));
+			visitorRepository.save(new Visitor("นายสมหมาย มีไห","1987138901123",25,"0123455559",new Date(),new Date(),"9/1 บ้านใน",genderRepository.findById(1),provinceRepository.findById(22),relativesStatusRepository.findById(2),dataOlderRepository.findById(1)));
+			visitorRepository.save(new Visitor("นางสมใจ ไม่มี","1110923823411",39,"0878734529",new Date(),new Date(),"101 หลังบ้าน",genderRepository.findById(2),provinceRepository.findById(44),relativesStatusRepository.findById(3),dataOlderRepository.findById(2)));
+			visitorRepository.save(new Visitor("นางสมหญิง ไม่รู้","1212341234343",50,"0498798674",new Date(),new Date(),"581 บนบ้าน",genderRepository.findById(2),provinceRepository.findById(28),relativesStatusRepository.findById(3),dataOlderRepository.findById(3)));
 
 
 			//<!==========  TypeHealthCheck ==========!>
@@ -313,10 +329,6 @@ public class ServerApplication {
 
 			//<!==========  END OlderDataAndDisease ==========!>
 
-        };
-
-    }
-
-
-
+		};
+	}
 }
