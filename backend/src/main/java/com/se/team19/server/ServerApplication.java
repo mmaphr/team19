@@ -118,13 +118,28 @@ public class ServerApplication {
 			S1.setStaffName("SomA");
 			S1.setAge(20);
 			S1.setAddress("123/2");
-			S1.setPhone("081-2345678");
-			S1.setUsername("SomA");
+			S1.setPhone("0812345678");
+			S1.setUsername("S0001");
 			S1.setPassword("123456");
 			S1.setStaffGender(genderRepository.findById(1));
 			S1.setStaffProvince(provinceRepository.findById(13));
 			S1.setStaffPosition(positionRepository.findById(2));
 			staffRepository.save(S1);
+
+			Staff S2 = new Staff("SomB",21,"12/3","0823456789","S0002","123",genderRepository.findById(1),provinceRepository.findById(44),positionRepository.findById(2));
+			staffRepository.save(S2);
+			Staff S3 = new Staff("SomC",33,"13/1","0820987654","S0003","123",genderRepository.findById(1),provinceRepository.findById(32),positionRepository.findById(2));
+			staffRepository.save(S3);
+			Staff S4 = new Staff("SomD",26,"14/5","0845677868","S0004","123",genderRepository.findById(1),provinceRepository.findById(55),positionRepository.findById(2));
+			staffRepository.save(S4);
+			Staff S5 = new Staff("SomE",34,"15/4","0856785673","S0005","123",genderRepository.findById(2),provinceRepository.findById(23),positionRepository.findById(2));
+			staffRepository.save(S5);
+			Staff S6 = new Staff("SomF",31,"16/3","0854635635","S0006","123",genderRepository.findById(1),provinceRepository.findById(67),positionRepository.findById(2));
+			staffRepository.save(S6);
+			Staff S7 = new Staff("SomG",32,"17/2","0934634654","S0007","123",genderRepository.findById(2),provinceRepository.findById(23),positionRepository.findById(2));
+			staffRepository.save(S7);
+			Staff S8 = new Staff("SomH",21,"18/1","0943534654","S0008","123",genderRepository.findById(2),provinceRepository.findById(11),positionRepository.findById(2));
+			staffRepository.save(S8);
 
 			//<!================= END!! Staff =================!>
 
@@ -277,9 +292,6 @@ public class ServerApplication {
 					"14.00-15.00น.", "15.00-16.00น.", "16.00-17.00น.", "17.00-18.00น.", "18.00-19.00น.", "19.00-20.00น.").forEach(timeDuration -> {
 				timeDurationRepository.save(new TimeDuration(timeDuration));
 			});
-			for (int i = 1; i <= 20; i++) {
-				staffRepository.save(new Staff("Staff" + i));
-			}
 
 			internalActivityRepository.save(new InternalActivity("ทำบุญตักบาตร","ทำบุญร่วมกัน",staffRepository.findById(1),daysOfTheWeekRepository.findById(5),timeDurationRepository.findById(1)));
 			internalActivityRepository.save(new InternalActivity("ออกกำลังกาย","ออกกำลังกายตอนเช้าเพื่อสุขภาพ",staffRepository.findById(2),daysOfTheWeekRepository.findById(6),timeDurationRepository.findById(3)));
@@ -329,6 +341,23 @@ public class ServerApplication {
 
 			//<!==========  END OlderDataAndDisease ==========!>
 
+			//<!==================== TrainStaff ====================!>
+
+			Stream.of("การแพทย์", "วิทยาศาสตร์สุขภาพ","ทักษะงานฝีมือ").forEach(typeName -> {
+				trainTypeRepository.save(new TrainType(typeName));
+			});
+
+
+			TrainStaff T1 = new TrainStaff();
+			T1.setTrainName("อมรมฝึกสอนฉีดยา");
+			T1.setTrainDescription("การอบรมฝึกสอนวิธีการฉีดยาผู้สูงอายุตลอดจนถึงการดูแลรักษาอุปกรณื");
+			T1.setTrainDate(new Date(118,2,9));
+			T1.setTrainTime(timeDurationRepository.findById(8));
+			T1.setTrainType(trainTypeRepository.findById(1));
+			T1.setTrainStaff(staffRepository.findById(1));
+			trainStaffRepository.save(T1);
+			//<!================= END!! TrainStaff =================!>
+				
 		};
 	}
 }
