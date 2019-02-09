@@ -50,7 +50,8 @@ public class ServerApplication {
                            RelativesStatusRepository relativesStatusRepository,
                            VisitorRepository visitorRepository,
 						   TypeHealthCheckRepository typeHealthCheckRepository,
-						   HealthCheckRepository healthCheckRepository) {
+						   HealthCheckRepository healthCheckRepository,
+						   OlderDataAndDiseaseRepository olderDataAndDiseaseRepository) {
 		return args -> {
 
 			//<!==========  AddOlderDisease ==========!>
@@ -289,12 +290,29 @@ public class ServerApplication {
 			//<!==========  END TypeHealthCheck ==========!>
 
 			//<!==========  HealthCheck ==========!>
-			healthCheckRepository.save(new HealthCheck("โรงพยาบาลมหาวิทยาลัยเทคโนโลยีสุรนารี",new Date(118,1,1),"1000" ,typeHealthCheckRepository.findById(1),dataOlderRepository.findById(1)));
-			healthCheckRepository.save(new HealthCheck("โรงพยาบาลเกษมราษฏร์",new Date(118,2,2),"2000" ,typeHealthCheckRepository.findById(2),dataOlderRepository.findById(2)));
-			healthCheckRepository.save(new HealthCheck("โรงพยาบาลจุฬารัตน์",new Date(118,3,3),"3000" ,typeHealthCheckRepository.findById(3),dataOlderRepository.findById(3)));
-			healthCheckRepository.save(new HealthCheck("โรงพยาบาลพญาไท",new Date(118,4,4),"4000" ,typeHealthCheckRepository.findById(4),dataOlderRepository.findById(4)));
+			healthCheckRepository.save(new HealthCheck("โรงพยาบาลมหาวิทยาลัยเทคโนโลยีสุรนารี",new Date(118,1,1),1000 ,"เจ็บหน้า",typeHealthCheckRepository.findById(1),dataOlderRepository.findById(1)));
+			healthCheckRepository.save(new HealthCheck("โรงพยาบาลเกษมราษฏร์",new Date(118,2,2),2000 ,"เจ็บหัว",typeHealthCheckRepository.findById(2),dataOlderRepository.findById(2)));
+			healthCheckRepository.save(new HealthCheck("โรงพยาบาลจุฬารัตน์",new Date(118,3,3),3000 ,"เจ็บแขน",typeHealthCheckRepository.findById(3),dataOlderRepository.findById(3)));
+			healthCheckRepository.save(new HealthCheck("โรงพยาบาลพญาไท",new Date(118,4,4),4000 ,"เจ็บขา" ,typeHealthCheckRepository.findById(4),dataOlderRepository.findById(4)));
 
 			//<!==========  END HealthCheck ==========!>
+
+			//<!==========  OlderDataAndDisease ==========!>
+			olderDataAndDiseaseRepository.save(new OlderDataAndDisease(dataOlderRepository.findById(1),olderDiseaseRepository.findById(1)));
+			olderDataAndDiseaseRepository.save(new OlderDataAndDisease(dataOlderRepository.findById(1),olderDiseaseRepository.findById(2)));
+			olderDataAndDiseaseRepository.save(new OlderDataAndDisease(dataOlderRepository.findById(2),olderDiseaseRepository.findById(2)));
+			olderDataAndDiseaseRepository.save(new OlderDataAndDisease(dataOlderRepository.findById(2),olderDiseaseRepository.findById(3)));
+			olderDataAndDiseaseRepository.save(new OlderDataAndDisease(dataOlderRepository.findById(3),olderDiseaseRepository.findById(4)));
+			olderDataAndDiseaseRepository.save(new OlderDataAndDisease(dataOlderRepository.findById(4),olderDiseaseRepository.findById(5)));
+			olderDataAndDiseaseRepository.save(new OlderDataAndDisease(dataOlderRepository.findById(5),olderDiseaseRepository.findById(6)));
+			olderDataAndDiseaseRepository.save(new OlderDataAndDisease(dataOlderRepository.findById(6),olderDiseaseRepository.findById(1)));
+			olderDataAndDiseaseRepository.save(new OlderDataAndDisease(dataOlderRepository.findById(7),olderDiseaseRepository.findById(2)));
+			olderDataAndDiseaseRepository.save(new OlderDataAndDisease(dataOlderRepository.findById(8),olderDiseaseRepository.findById(3)));
+			olderDataAndDiseaseRepository.save(new OlderDataAndDisease(dataOlderRepository.findById(9),olderDiseaseRepository.findById(4)));
+			olderDataAndDiseaseRepository.save(new OlderDataAndDisease(dataOlderRepository.findById(10),olderDiseaseRepository.findById(5)));
+
+			//<!==========  END OlderDataAndDisease ==========!>
+
         };
 
     }

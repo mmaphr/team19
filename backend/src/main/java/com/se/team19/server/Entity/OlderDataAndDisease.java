@@ -2,6 +2,7 @@ package com.se.team19.server.Entity;
 
 import lombok.*;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
@@ -12,17 +13,21 @@ public class OlderDataAndDisease {
     @SequenceGenerator(name = "olderdataanddisease_seq", sequenceName = "olderdataanddisease_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "olderdataanddisease_seq")
     @Column(name = "OlderDataAndDisease_ID", unique = true, nullable = false)
-    private @NonNull Long id;
+    private @NotNull Long id;
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = DataOlder.class)
     @JoinColumn(name = "DataOlder_ID", insertable = true)
-    private DataOlder dataOlderAndDiseaseDataOlder;
+    private @NotNull DataOlder dataOlderADiseaseDataOlder;
 
 
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = OlderDisease.class)
+    @OneToOne(fetch = FetchType.EAGER, targetEntity = OlderDisease.class)
     @JoinColumn(name = "OlderDisease_ID", insertable = true)
-    private OlderDisease dataOlderAndDiseaseOlderDisease;
+    private @NotNull  OlderDisease dataOlderADiseaseOlderDisease;
 
     public OlderDataAndDisease(){}
 
+    public OlderDataAndDisease( DataOlder dataOlderADiseaseDataOlder, OlderDisease dataOlderADiseaseOlderDisease) {
+        this.dataOlderADiseaseDataOlder = dataOlderADiseaseDataOlder;
+        this.dataOlderADiseaseOlderDisease = dataOlderADiseaseOlderDisease;
+    }
 }
