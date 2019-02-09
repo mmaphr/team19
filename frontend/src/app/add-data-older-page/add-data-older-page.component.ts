@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Inject} from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { AddDataOlderService } from '../shared/DataOlder/add-data-older.service';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-data-older-page',
@@ -10,9 +10,9 @@ import { AddDataOlderService } from '../shared/DataOlder/add-data-older.service'
 })
 export class AddDataOlderPageComponent implements OnInit {
 
-  dataColumns: string[] = ['Id','oldername','oldergender','parentname','parentaddress','parentphone'/**/];
+  dataColumns: string[] = ['Id','oldername','oldergender','parentname','parentaddress','parentphone','more','healthCheck'];
   olderData: Array<any>;
-
+  olderid: number;
   provinces: Array<any>;
   genders: Array<any>;
   diseases:  Array<any>;
@@ -27,7 +27,7 @@ export class AddDataOlderPageComponent implements OnInit {
     parentphone: ''
 
   };
-  constructor(private addDataOlderService: AddDataOlderService , private httpClient: HttpClient) { }
+  constructor(private addDataOlderService: AddDataOlderService , private httpClient: HttpClient , private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.addDataOlderService.getProvince().subscribe(data => {
@@ -61,12 +61,12 @@ export class AddDataOlderPageComponent implements OnInit {
       this.inputDataOlder.parentaddress === '' ||
       this.inputDataOlder.parentprovince === '' ||
       this.inputDataOlder.parentphone === '') {
-      alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+      this.snackBar.open('กรุณากรอกข้อมูลให้ครบถ้วน', 'Ok');
     } else {
       this.httpClient.post('http://localhost:8080/AddDataOlder/' + this.inputDataOlder.olderbirth + '/' + this.inputDataOlder.oldergender + '/' +
         this.inputDataOlder.olderdisease + '/' + this.inputDataOlder.parentprovince, this.inputDataOlder)
         .subscribe(data => {
-          alert('Request is successful');
+          this.snackBar.open('Request is successful', 'Ok');
           console.log('PUT Request is successful', data);
             this.addDataOlderService.getOlder().subscribe(data => {
               this.olderData = data;
@@ -74,12 +74,12 @@ export class AddDataOlderPageComponent implements OnInit {
             });
         },
         error => {
-          alert('Request is not successful');
+          this.snackBar.open('Request is not successful', 'Ok');
           console.log('Error', error);
         }
       );
-
-
     }
   }
 }
+
+
