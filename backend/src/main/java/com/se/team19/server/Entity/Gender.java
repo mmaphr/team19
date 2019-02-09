@@ -18,7 +18,6 @@ public class Gender {
     private @NotNull String GenderName;
 
     public Gender() {}
-
     public Gender(String genderName) {
         GenderName = genderName;
     }
