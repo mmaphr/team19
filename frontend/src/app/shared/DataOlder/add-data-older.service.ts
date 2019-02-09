@@ -22,4 +22,11 @@ export class AddDataOlderService {
   getOlder():Observable<any> {
     return this.http.get(this.API + '/DataOlderAll');
   }
+
+  getOlderid(id):Observable<any> {
+    return this.http.get(this.API + '/DataOlder/' + id );
+  }
+  getOlderDataAndDiseaseid(id):Observable<any> {
+    return this.http.get(this.API + '/OlderDataAndDisease/'+id);
+  }
 }
