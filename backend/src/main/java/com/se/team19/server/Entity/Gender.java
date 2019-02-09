@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NonNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -13,8 +14,8 @@ public class Gender {
     @SequenceGenerator(name="gender_seq",sequenceName="gender_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="gender_seq")
     @Column(name="GENDER_ID",unique = true, nullable = false)
-    private @NonNull Long GenderId;
-    private @NonNull String GenderName;
+    private @NotNull Long GenderId;
+    private @NotNull String GenderName;
 
     public Gender() {}
 
