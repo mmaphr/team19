@@ -65,7 +65,9 @@ import { VisitorComponent } from './visitor/visitor.component';
 import { VisitorService } from './shared/visitor/visitor.service';
 import { HealthCheckComponent } from './health-check/health-check.component';
 import { HealthCheckService } from './shared/healthcheck/health-check.service';
+import { WithdrawComponent } from './withdraw/withdraw.component';
 import { MoreDateOlderComponent } from './more-date-older/more-date-older.component';
+import {WithdrawService} from './shared/Withdarw/withdraw.service';
 const appRoutes: Routes = [
   { path: '',  redirectTo: '/loginpage', pathMatch: 'full' },
   { path: 'loginpage',component : LoginpageComponent},
@@ -83,6 +85,7 @@ const appRoutes: Routes = [
   {path: 'newStaff',component: StaffComponent},
   {path: 'visitor',component: VisitorComponent},
   {path: 'HealthCheck/:id', component : HealthCheckComponent },
+  {path: 'withdraw',component: WithdrawComponent},
   {path: 'MoreDataOlder/:id', component : MoreDateOlderComponent },
 ];
 
@@ -145,7 +148,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [HealthCheckService,StaffService,RoomImformationService,AdditemService,LoginpageService,AddDataOlderService,OutactivityService,InActService,VisitorService],
+  providers: [WithdrawService,HealthCheckService,StaffService,RoomImformationService,AdditemService,LoginpageService,AddDataOlderService,OutactivityService,InActService,VisitorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
