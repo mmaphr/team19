@@ -2,6 +2,9 @@ package com.se.team19.server.Entity;
 
 import lombok.*;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Data
@@ -18,23 +21,34 @@ public class AddProducts {
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="addProducts_seq")
     @Column(name="addProductId",unique = true, nullable = false)
 
-    private  @NonNull Long addProductId;
-    private  @NonNull String addProductName;
-    private  @NonNull Long addAmount;
-    private  @NonNull Date addDate;
+    @NotNull
+    private   Long addProductId;
+    @NotNull
+    @Size(min = 4, max = 20)
+    @Pattern(regexp = "^[A-Z]([A-z*0-9*' '])+|^([ก-๙*0-9*' '])+")
+    private   String addProductName;
+    @NotNull
+    private   Long addAmount;
+    @NotNull
+    @Column(unique = true)
+    private   Date addDate;
 
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Note.class)
     @JoinColumn(name = "noteId")
     private Note noteName;
 
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Category.class)
     @JoinColumn(name = "categoryId")
     private Category categoryName;
 
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Staff.class)
     @JoinColumn(name = "staff_id")
     private Staff staffName;
 
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Stock.class)
     @JoinColumn(name = "stockId")
     private Stock stockName;
