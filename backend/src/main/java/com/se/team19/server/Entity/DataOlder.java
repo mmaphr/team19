@@ -1,4 +1,4 @@
-package com.se.team19.server.Entity;
+﻿package com.se.team19.server.Entity;
 
 import lombok.*;
 import javax.persistence.*;
@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "DataOlder" ,uniqueConstraints = {@UniqueConstraint(columnNames = {"oldername", "olderbirth","parentname","parentaddress","parentphone","Gender_ID","Province_ID"})})
+@Table(name = "DataOlder" ,uniqueConstraints = {@UniqueConstraint(columnNames = {"oldername","parentname"})})
 public class DataOlder {
     @Id
     @SequenceGenerator(name = "dataolder_seq", sequenceName = "dataolder_seq")
