@@ -13,6 +13,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.*;
 
 @Data
@@ -23,32 +26,43 @@ public class OutActivity {
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="activity_seq")
     @Column(name="activity_id",unique = true)
 
-    private @NonNull Long activity_id;
-    private @NonNull String nameActivity;
-    private @NonNull String nameRequestor;
-    private @NonNull String descriptionActivity;
-    private @NonNull String phonenum;
-    private @NonNull Date date;
-//
+    private @NotNull Long activity_id;
+    private @NotNull  String nameActivity;
+    private @NotNull String nameRequestor;
+    @NotNull
+    @Size(min = 10, max = 50)
+    private  String descriptionActivity;
+    @NotNull
+    @Pattern(regexp = "^[0-9]{10}$")
+    private String phonenum;
+    @NotNull
+    @Column(unique = true)
+    private  Date date;
+
     @ManyToOne
     @JoinColumn(name="category_id")
+    @NotNull
     private CategoryActivity categoryActivity;
 
     @ManyToOne
     @JoinColumn(name="periodTimeS_id")
+    @NotNull
     private PeriodTime periodTimeS;
 
     @ManyToOne
     @JoinColumn(name="periodTimeE_id")
+    @NotNull
     private PeriodTime periodTimeE;
 
    @OneToOne
    @JoinColumn(name="StaffId")
+   @NotNull
     private Staff staff;
 
 
     @OneToOne
     @JoinColumn(name="organized_id")
+    @NotNull
     private Organized organized;
 
     public OutActivity(){}
