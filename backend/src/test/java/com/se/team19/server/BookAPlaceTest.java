@@ -334,10 +334,10 @@ public class BookAPlaceTest {
     public void testDesPat() {
         BookAPlace p = new BookAPlace();
         p.setCardid("1133226655447");
-        p.setNameCaretaker("นายสมพร อินจันทร์");
+        p.setNameCaretaker("นายสมพร อินจันทร");
         p.setPhonCaretaker("0123456789");
         p.setNamePlace("สนามหญ้า");
-        p.setDescriptionPlace("งานดน++**ตรีกลางแจ้งจัดเพื่อให้ผู้สูงอายุได้ฟังเพลงผ่อนคลายมากที่สุดและยังเป็นการทำกิจ");
+        p.setDescriptionPlace("งานดน++**ตรีกลางแจ้งจัดเพอา");
         p.setOutActivity(outActivityRepository.findById(1));
         p.setPlaceTy(placeTyRepository.findById(1));
 
@@ -389,7 +389,7 @@ public class BookAPlaceTest {
         p.setNameCaretaker("นายสมพร อิน");
         p.setPhonCaretaker("0123456689");
         p.setNamePlace("สนามหญ้า");
-        p.setDescriptionPlace("งานดนตรีกลางแจ้งจัดเพื่อให้ผู้สูงอายุได้ฟังเพลงผ่อนคลายมากที่สุดและยังเป็นการทำกิจ");
+        p.setDescriptionPlace("งานดนตรีกลางแจ้งจัดเพื่อให้ผู้สูงอายุได้ฟังเพล");
         p.setOutActivity(outActivityRepository.findById(2));
         p.setPlaceTy(placeTyRepository.findById(2));
 
@@ -398,7 +398,7 @@ public class BookAPlaceTest {
         p1.setNameCaretaker("นายสมพร อินจันทร์");
         p1.setPhonCaretaker("0123456789");
         p1.setNamePlace("สนามหญ้า");
-        p1.setDescriptionPlace("งานดน++**ตรีกลางแจ้งจัดเพื่อให้ผู้สูงอายุได้ฟังเพลงผ่อนคลายมากที่สุดและยังเป็นการทำกิจ");
+        p1.setDescriptionPlace("งานดน++**ตรีกลางแจ้งจัดเพื่อให้ผู้สูงอายุได้ฟังเ");
         p1.setOutActivity(outActivityRepository.findById(1));
         p1.setPlaceTy(placeTyRepository.findById(1));
         try {
@@ -416,14 +416,14 @@ public class BookAPlaceTest {
             e.printStackTrace();
             System.out.println("===========================================================================================================================================");        }
     }
-      @Test
+    @Test
     public void testActivityNull() {
         BookAPlace p = new BookAPlace();
         p.setCardid("1133226655447");
         p.setNameCaretaker("นายสมพร อินจันทร์");
         p.setPhonCaretaker("0123456789");
         p.setNamePlace("สนามหญ้า");
-        p.setDescriptionPlace("งานดนตรีกลางแจ้งจัดเพื่อให้ผู้สูงอายุได้ฟังเพลงผ่อนคลายมากที่สุดและยังเป็นการทำกิจ");
+        p.setDescriptionPlace("งานดนตรีกลางแจ้งจัดเพื่อให้ผู้สูงอ");
         p.setOutActivity(null);
         p.setPlaceTy(placeTyRepository.findById(1));
 
@@ -445,11 +445,11 @@ public class BookAPlaceTest {
     @Test
     public void tesPlaceTyNull() {
         BookAPlace p = new BookAPlace();
-        p.setCardid("1133226655447");
+        p.setCardid("1111111111234");
         p.setNameCaretaker("นายสมพร อินจันทร์");
         p.setPhonCaretaker("0123456789");
         p.setNamePlace("สนามหญ้า");
-        p.setDescriptionPlace("งานดนตรีกลางแจ้งจัดเพื่อให้ผู้สูงอายุได้ฟังเพลงผ่อนคลายมากที่สุดและยังเป็นการทำกิจ");
+        p.setDescriptionPlace("งานดนตรีกลางแจ้งจัดเพื่อให้ผู้สูงอายุได้ฟังเพ");
         p.setOutActivity(outActivityRepository.findById(1));
         p.setPlaceTy(null);
 
@@ -468,5 +468,4 @@ public class BookAPlaceTest {
             e.printStackTrace();
             System.out.println("===========================================================================================================================================");        }
     }
-
 }
