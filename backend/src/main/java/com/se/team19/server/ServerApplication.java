@@ -152,11 +152,11 @@ public class ServerApplication {
 			DataOlder Older3 = new DataOlder("นายหนุ่ม จุกจอก", new Date(60,3,3),"สมนา","3/33","3333333333",genderRepository.findById(1),provinceRepository.findById(3));
 			DataOlder Older4 = new DataOlder("นางสาวดำ ขำ", new Date(60,4,4),"หมาย","4/44","4444444444",genderRepository.findById(2),provinceRepository.findById(4));
 			DataOlder Older5 = new DataOlder("นายโม็ะ โง๊ะ", new Date(60,5,5),"หนาม","5/55","5555555555",genderRepository.findById(1),provinceRepository.findById(5));
-			DataOlder Older6 = new DataOlder("นายเอ บีซี", new Date(60,6,6),"A","6/66","6666666666",genderRepository.findById(1),provinceRepository.findById(6));
-			DataOlder Older7 = new DataOlder("นางบี ซีดี", new Date(60,7,7),"B","7/77","7777777777",genderRepository.findById(2),provinceRepository.findById(7));
-			DataOlder Older8 = new DataOlder("นายซี บีเอฟ", new Date(60,8,8),"C","8/88","8888888888",genderRepository.findById(1),provinceRepository.findById(8));
-			DataOlder Older9 = new DataOlder("นางดี จริงจริง", new Date(60,9,9),"D","9/99","9999999999",genderRepository.findById(2),provinceRepository.findById(9));
-			DataOlder Older10 = new DataOlder("นายอี นี่", new Date(60,10,10),"F","1/00","0000000000",genderRepository.findById(1),provinceRepository.findById(10));
+			DataOlder Older6 = new DataOlder("นายเอ บีซี", new Date(60,6,6),"เอ","6/66","6666666666",genderRepository.findById(1),provinceRepository.findById(6));
+			DataOlder Older7 = new DataOlder("นางบี ซีดี", new Date(60,7,7),"บี","7/77","7777777777",genderRepository.findById(2),provinceRepository.findById(7));
+			DataOlder Older8 = new DataOlder("นายซี บีเอฟ", new Date(60,8,8),"ซี","8/88","8888888888",genderRepository.findById(1),provinceRepository.findById(8));
+			DataOlder Older9 = new DataOlder("นางดี จริงจริง", new Date(60,9,9),"ดี","9/99","9999999999",genderRepository.findById(2),provinceRepository.findById(9));
+			DataOlder Older10 = new DataOlder("นายอี นี่", new Date(60,10,10),"เอฟ","1/00","0000000000",genderRepository.findById(1),provinceRepository.findById(10));
 
 			dataOlderRepository.save(Older1);
 			dataOlderRepository.save(Older2);
