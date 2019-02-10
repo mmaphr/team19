@@ -1,0 +1,74 @@
+<div class="blackground" align="center">
+  <div class="form">
+
+    <h1>Accept Activity</h1>
+
+    <mat-label>ชื่อกิจกรรม : {{out.nameActivity}}</mat-label>
+    <br/>
+
+    <mat-label>ประเภทกิจกรรม : {{out.categoryActivity.namecategory}}</mat-label>
+    <br/>
+
+    <mat-label>organized : {{out.organized.organized}}</mat-label>
+    <br/>
+
+    <mat-form-field class="haft-width">
+      <mat-select  [(ngModel)]="bplace.placeTypeIDSelected"  placeholder="ประเภทสถานที่" class = "text">
+        <mat-option *ngFor="let typ of placet" [value]="typ.place_id">
+          {{typ.typePlace}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br/>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="ชื่อสถานที่" class="text" [(ngModel)]="bplace.namePlace">
+    </mat-form-field>
+    <br/>
+    <mat-form-field class="full-width">
+      <textarea [(ngModel)]="bplace.descriptionPlace" matInput placeholder="รายละเอียดสถานที่"></textarea>
+    </mat-form-field>
+    <br/>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="บัตรประชาชน" class="text" [(ngModel)]="bplace.cardid">
+      </mat-form-field>
+      <br/>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="ชื่อจริง นามสกุล" class="text" [(ngModel)]="bplace.nameCaretaker">
+      </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="เบอร์โทรติดต่อสอบถาม" class="text" [(ngModel)]="bplace.phonCaretaker">
+    </mat-form-field>
+    <br/>
+
+    <div class="full-width2"  >
+      <button mat-flat-button (click)="accept()" >ยืนยัน</button>
+    </div>
+    <p><a href="main">กลับสู่หน้าหลัก</a></p>
+
+<br/>
+    <br/>
+
+    <h2>List Activity</h2>
+    <mat-label>ชื่อกิจกรรม : {{out.nameActivity}}</mat-label>
+    <br/>
+
+    <mat-label>ประเภทกิจกรรม : {{out.categoryActivity.namecategory}}</mat-label>
+    <br/>
+
+    <mat-label>organized : {{out.organized.organized}}</mat-label>
+    <br/>
+    <mat-label>ประเภทสถานที่ : {{bplace.placeTypeIDSelected}}</mat-label>
+    <br/>
+    <mat-label>ชื่อสถานที่ : {{bplace.namePlace}}</mat-label>
+    <br/>
+    <mat-label>บัตรประชาชน : {{bplace.cardid}}</mat-label>
+    <br/>
+    <mat-label>ชื่อจริง นามสกุล : {{bplace.nameCaretaker}}</mat-label>
+    <br/>
+    <mat-label>เบอร์โทรติดต่อสอบถาม : {{bplace.phonCaretaker}}</mat-label>
+    <br/>
+
+
+  </div>
+</div>

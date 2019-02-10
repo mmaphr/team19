@@ -73,6 +73,7 @@ import { TrainAddComponent } from './train-add/train-add.component';
 import { TrainAddService } from './shared/train-add/train-add.service';
 import { TrainStaffService } from './shared/train-staff/train-staff.service';
 import {ConfirmActivityComponent} from './confirm-activity/confirm-activity.component';
+import {BookaplaceComponent} from './bookaplace/bookaplace.component';
 const appRoutes: Routes = [
   { path: '',  redirectTo: '/loginpage', pathMatch: 'full' },
   { path: 'loginpage',component : LoginpageComponent},
@@ -93,7 +94,9 @@ const appRoutes: Routes = [
   {path: 'withdraw',component: WithdrawComponent},
   {path: 'MoreDataOlder/:id', component : MoreDateOlderComponent },
   {path: 'newTrain',component: TrainAddComponent},
-  {path: 'Training',component: TrainStaffComponent}
+  {path: 'Training',component: TrainStaffComponent},
+  {path: 'bookaplace/:id', component :  BookaplaceComponent},
+  {path: 'bookaplace', component :  ConfirmActivityComponent}
 ];
 
 @NgModule({
@@ -118,7 +121,8 @@ const appRoutes: Routes = [
     MoreDateOlderComponent,
     TrainStaffComponent,
     TrainAddComponent,
-    ConfirmActivityComponent
+    ConfirmActivityComponent,
+    BookaplaceComponent
   ],
   imports: [
     BrowserModule,
