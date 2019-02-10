@@ -300,6 +300,7 @@ public class ServerApplication {
 			o.setOrganized(organizedRepository.findById(1));
 
 			outActivityRepository.save(new OutActivity("งานดนตรี","นายสมใจ มีหม้อ","งานดนตรีนอกสถานที่","0123456789",new Date(118,4,4),categoryActivityRepository.findById(2),periodTimeRepository.findById(1),periodTimeRepository.findById(3),organizedRepository.findById(2),staffRepository.findById(1)));
+
 			BookAPlace p = new BookAPlace();
 			p.setCardid("1199900643611");
 			p.setNameCaretaker("นายสมพร สีทา");
