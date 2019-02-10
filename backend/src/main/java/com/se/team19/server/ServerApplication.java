@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.filter.CharacterEncodingFilter;
+
+import java.text.SimpleDateFormat;
 import java.util.stream.Stream;
 import java.util.Date;
 
@@ -56,7 +58,11 @@ public class ServerApplication {
 						   HealthCheckRepository healthCheckRepository,
 						   DepartmentRepository departmentRepository,
 						   OlderDataAndDiseaseRepository olderDataAndDiseaseRepository,
-						   PlaceTyRepository placeTyRepository) {
+						   PlaceTyRepository placeTyRepository,
+						   PlaceRepository placeRepository,
+						   MaintenanceStatusRepository maintenanceStatusRepository,
+						   MaintenanceRepository maintenanceRepository
+						   ) {
 		return args -> {
 
 			//<!==========  AddOlderDisease ==========!>
@@ -319,12 +325,10 @@ public class ServerApplication {
 				timeDurationRepository.save(new TimeDuration(timeDuration));
 			});
 
-			internalActivityRepository.save(new InternalActivity("ทำบุญตักบาตร","ทำบุญร่วมกัน",staffRepository.findById(1),daysOfTheWeekRepository.findById(5),timeDurationRepository.findById(1)));
-			internalActivityRepository.save(new InternalActivity("ออกกำลังกาย","ออกกำลังกายตอนเช้าเพื่อสุขภาพ",staffRepository.findById(2),daysOfTheWeekRepository.findById(6),timeDurationRepository.findById(3)));
-			internalActivityRepository.save(new InternalActivity("ทำบุญตักบาตร","ทำบุญร่วมกัน",staffRepository.findById(1),daysOfTheWeekRepository.findById(1),timeDurationRepository.findById(1)));
-			internalActivityRepository.save(new InternalActivity("ออกกำลังกาย","ออกกำลังกายตอนเช้าเพื่อสุขภาพ",staffRepository.findById(2),daysOfTheWeekRepository.findById(2),timeDurationRepository.findById(3)));
-			internalActivityRepository.save(new InternalActivity("ร้องเพลง","ร้องเพลงผ่อนคลายอารมณ์",staffRepository.findById(3),daysOfTheWeekRepository.findById(3),timeDurationRepository.findById(11)));
-			internalActivityRepository.save(new InternalActivity("ร้องเพลง","ร้องเพลงผ่อนคลายอารมณ์",staffRepository.findById(2),daysOfTheWeekRepository.findById(3),timeDurationRepository.findById(12)));
+			//<!==========  Add InternalActivity ==========!>
+			internalActivityRepository.save(new InternalActivity("exercise", "ออกกำลังกายตอนเช้าเพื่อสุขภาพ", staffRepository.findById(2), daysOfTheWeekRepository.findById(6), timeDurationRepository.findById(3)));
+			internalActivityRepository.save(new InternalActivity("exercise", "ออกกำลังกายตอนเช้าเพื่อสุขภาพ", staffRepository.findById(2), daysOfTheWeekRepository.findById(2), timeDurationRepository.findById(3)));
+			//<!==========  End InternalActivity ==========!>
 
 			Stream.of("ลูก", "หลาน", "เพื่อน", "คนรู้จัก", "พี่", "น้อง").forEach(relative -> {
 				relativesStatusRepository.save(new RelativesStatus(relative));
@@ -383,7 +387,52 @@ public class ServerApplication {
 			T1.setTrainStaff(staffRepository.findById(1));
 			trainStaffRepository.save(T1);
 			//<!================= END!! TrainStaff =================!>
-				
+
+			//<!==========  Add MaintenceStatus ==========!>
+			Stream.of("อยู่ระหว่างการซ่อมบำรุง", "ซ่อมบำรุงสำเร็จ").forEach(statusName -> {
+				maintenanceStatusRepository.save(new MaintenanceStatus(statusName));
+			});
+			//<!==========  END MaintenceStatus ==========!>
+
+			//<!==========  Add Place ==========!>
+			placeRepository.save(new Place("โถงกิจกรรม","โซนA ชั้น1"));
+			placeRepository.save(new Place("โถงกิจกรรม","โซนฺB ชั้น1"));
+			placeRepository.save(new Place("โถงกิจกรรม","โซนC ชั้น1"));
+			placeRepository.save(new Place("โถงกิจกรรม","โซนA ชั้น2"));
+			placeRepository.save(new Place("โถงกิจกรรม","โซนฺB ชั้น2"));
+			placeRepository.save(new Place("โถงกิจกรรม","โซนC ชั้น2"));
+			placeRepository.save(new Place("ห้องพักA101","โซนห้องพัก ชั้น1"));
+			placeRepository.save(new Place("ห้องพักA102","โซนห้องพัก ชั้น1"));
+			placeRepository.save(new Place("ห้องพักA103","โซนห้องพัก ชั้น1"));
+			placeRepository.save(new Place("ห้องพักA104","โซนห้องพัก ชั้น1"));
+			placeRepository.save(new Place("ห้องพักA105","โซนห้องพัก ชั้น1"));
+			placeRepository.save(new Place("ห้องน้ำชาย","โซนA ชั้น1"));
+			placeRepository.save(new Place("ห้องน้ำหญิง","โซนA ชั้น1"));
+			placeRepository.save(new Place("ห้องน้ำชาย","โซนB ชั้น1"));
+			placeRepository.save(new Place("ห้องน้ำหญิง","โซนB ชั้น1"));
+			placeRepository.save(new Place("ห้องน้ำชาย","โซนC ชั้น1"));
+			placeRepository.save(new Place("ห้องน้ำหญิง","โซนC ชั้น1"));
+			placeRepository.save(new Place("ห้องน้ำชาย","โซนA ชั้น2"));
+			placeRepository.save(new Place("ห้องน้ำหญิง","โซนA ชั้น2"));
+			placeRepository.save(new Place("ห้องน้ำชาย","โซนB ชั้น2"));
+			placeRepository.save(new Place("ห้องน้ำหญิง","โซนB ชั้น2"));
+			placeRepository.save(new Place("ห้องน้ำชาย","โซนC ชั้น2"));
+			placeRepository.save(new Place("ห้องน้ำหญิง","โซนC ชั้น2"));
+			//<!==========  END Place ==========!>
+
+			//<!==========  Add Maintenance ==========!>
+			SimpleDateFormat formatterForMaintenance = new SimpleDateFormat("dd.MM.yyyy HH");
+			Maintenance newMaintenance01 = new Maintenance();
+			newMaintenance01.setMaintenanceName("ซ่อมเครื่องเสียง");
+			newMaintenance01.setDescription("มันติดๆดับๆ");
+			newMaintenance01.setDateStart(new Date(2019-1900,0,5));
+			newMaintenance01.setTimeStart(new Date(0,0,0,12,0));
+			newMaintenance01.setStatus(maintenanceStatusRepository.findById(1));
+			newMaintenance01.setStaff(staffRepository.findById(1));
+			newMaintenance01.setPlace(placeRepository.findById(1));
+
+			maintenanceRepository.save(newMaintenance01);
+			//<!==========  END Maintenance ==========!>
 		};
 	}
 }
