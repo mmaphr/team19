@@ -55,7 +55,8 @@ public class ServerApplication {
 						   TypeHealthCheckRepository typeHealthCheckRepository,
 						   HealthCheckRepository healthCheckRepository,
 						   DepartmentRepository departmentRepository,
-						   OlderDataAndDiseaseRepository olderDataAndDiseaseRepository) {
+						   OlderDataAndDiseaseRepository olderDataAndDiseaseRepository,
+						   PlaceTyRepository placeTyRepository) {
 		return args -> {
 
 			//<!==========  AddOlderDisease ==========!>
