@@ -74,6 +74,7 @@ import { TrainAddService } from './shared/train-add/train-add.service';
 import { TrainStaffService } from './shared/train-staff/train-staff.service';
 import {ConfirmActivityComponent} from './confirm-activity/confirm-activity.component';
 import {BookaplaceComponent} from './bookaplace/bookaplace.component';
+import {BookaplaceService} from './service/bookaplace.service';
 const appRoutes: Routes = [
   { path: '',  redirectTo: '/loginpage', pathMatch: 'full' },
   { path: 'loginpage',component : LoginpageComponent},
@@ -163,7 +164,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [TrainStaffService,TrainAddService,WithdrawService,HealthCheckService,StaffService,RoomImformationService,AdditemService,LoginpageService,AddDataOlderService,OutactivityService,InActService,VisitorService],
+  providers: [TrainStaffService,TrainAddService,WithdrawService,HealthCheckService,StaffService,RoomImformationService,AdditemService,LoginpageService,AddDataOlderService,OutactivityService,InActService,VisitorService,BookaplaceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
