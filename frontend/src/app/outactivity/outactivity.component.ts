@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {OutactivityService} from '../service/outactivity.service';
 import {RouterModule, Routes, Router} from '@angular/router';
 import { ShowsOutActivityComponent } from '../shows-out-activity/shows-out-activity.component';
-
+import {MatSnackBar} from '@angular/material';
 
 export interface Typ {
   value: string;
@@ -39,7 +39,7 @@ export class OutactivityComponent implements OnInit {
 
     }
 
-  constructor(private httpClient: HttpClient, private outactivityService: OutactivityService, private router: Router) {
+  constructor(private httpClient: HttpClient, private outactivityService: OutactivityService, private router: Router , private snackBar: MatSnackBar ) {
   }
 
   ngOnInit() {
@@ -84,17 +84,18 @@ export class OutactivityComponent implements OnInit {
       this.outact.periodTimeE === '' ||
       this.outact.date === ''||
     this.outact.staffIDSelected==='')
-      alert('กรอกข้อมูลให้ครบ');
+      this.snackBar.open('กรุณากรอกข้อมูลให้ครบถ้วน', 'Ok');
     else {
       this.outactivityService.postOutActivity(this.outact,
         this.categoryActivityIDSelected, this.organizedIDSelected,
         this.periodTimeSIDSelected, this.periodTimeEIDSelected, this.staffIDSelected ).subscribe(data => {
         console.log(data);
-           alert('success');
+          this.snackBar.open('Request is successful', 'Ok');
           this.router.navigate(['showsOutActivity']);
       }
       ,error => {
-        alert('Error');
+          this.snackBar.
+          open('Request is not successful', 'Ok');
         console.log('Error', error);
       }
     )
