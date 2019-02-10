@@ -286,6 +286,27 @@ public class ServerApplication {
 						periodTimeRepository.save(periodtime);
 					}
 			);
+			OutActivity o = new OutActivity();
+			o.setNameActivity("งานดนตรี");
+			o.setNameRequestor("นายสมชาย");
+			o.setDescriptionActivity("งายดนตรีกลางแจ้ง");
+			o.setPhonenum("0922818151");
+			o.setDate(new Date(1,1,2));
+			o.setCategoryActivity(categoryActivityRepository.findById(1));
+			o.setPeriodTimeS(periodTimeRepository.findById(1));
+			o.setPeriodTimeE(periodTimeRepository.findById(3));
+			o.setStaff(staffRepository.findById(1));
+			o.setOrganized(organizedRepository.findById(1));
+
+			outActivityRepository.save(new OutActivity("งานดนตรี","นายสมใจ มีหม้อ","งานดนตรีนอกสถานที่","0123456789",new Date(118,4,4),categoryActivityRepository.findById(2),periodTimeRepository.findById(1),periodTimeRepository.findById(3),organizedRepository.findById(2),staffRepository.findById(1)));
+			BookAPlace p = new BookAPlace();
+			p.setCardid("1199900643611");
+			p.setNameCaretaker("นายสมพร สีทา");
+			p.setPhonCaretaker("0942381728");
+			p.setNamePlace("สนามหญ้า");
+			p.setDescriptionPlace("งานกีฬาผ่อนคาย");
+			p.setOutActivity(outActivityRepository.findById(2));
+			p.setPlaceTy(placeTyRepository.findById(1));
 			//<!==========  End OutActivity ==========!>
 
 			Stream.of("วันอาทิตย์", "วันจันทร์", "วันอังคาร", "วันพุธ", "วันพฤหัสบดี", "วันศุกร์", "วันเสาร์").forEach(dayName -> {
