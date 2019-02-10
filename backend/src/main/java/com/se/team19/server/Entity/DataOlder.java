@@ -1,4 +1,4 @@
-﻿package com.se.team19.server.Entity;
+package com.se.team19.server.Entity;
 
 import lombok.*;
 import javax.persistence.*;
