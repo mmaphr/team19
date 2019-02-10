@@ -62,7 +62,7 @@ public class AddProductTest {
         entityManager.flush();
         category = categoryRepository.findBycategoryName("TestCategory");
         stock1 = stockRepository.findByCategoryNameAndProductName(category,"Drug");
-        staff = staffRepository.findByUsernameAndPassword("SomA","123456");
+        staff = staffRepository.findByUsernameAndPassword("S0001","123456");
         note = noteRepository.findBynoteName("TestNote");
     }
     /////////////////////////////////////////////////////////////////////////////////////////////
