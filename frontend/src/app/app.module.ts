@@ -40,6 +40,7 @@ import {
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {AmazingTimePickerModule} from 'amazing-time-picker';
 
 import { StaffComponent } from './staff/staff.component';
 import { StaffService } from './shared/staff-service/staff.service';
@@ -75,6 +76,8 @@ import { TrainStaffService } from './shared/train-staff/train-staff.service';
 import {ConfirmActivityComponent} from './confirm-activity/confirm-activity.component';
 import {BookaplaceComponent} from './bookaplace/bookaplace.component';
 import {BookaplaceService} from './service/bookaplace.service';
+import {MaintenanceComponent} from './maintenance/maintenance.component';
+import {MaintenanceService} from './shared/maintenance/maintenance.service';
 const appRoutes: Routes = [
   { path: '',  redirectTo: '/loginpage', pathMatch: 'full' },
   { path: 'loginpage',component : LoginpageComponent},
@@ -97,7 +100,8 @@ const appRoutes: Routes = [
   {path: 'newTrain',component: TrainAddComponent},
   {path: 'Training',component: TrainStaffComponent},
   {path: 'bookaplace/:id', component :  BookaplaceComponent},
-  {path: 'bookaplace', component :  ConfirmActivityComponent}
+  {path: 'bookaplace', component :  ConfirmActivityComponent},
+  {path: 'maintenance', component: MaintenanceComponent}
 ];
 
 @NgModule({
@@ -123,7 +127,8 @@ const appRoutes: Routes = [
     TrainStaffComponent,
     TrainAddComponent,
     ConfirmActivityComponent,
-    BookaplaceComponent
+    BookaplaceComponent,
+    MaintenanceComponent
   ],
   imports: [
     BrowserModule,
@@ -162,9 +167,10 @@ const appRoutes: Routes = [
     MatToolbarModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    AmazingTimePickerModule
   ],
-  providers: [TrainStaffService,TrainAddService,WithdrawService,HealthCheckService,StaffService,RoomImformationService,AdditemService,LoginpageService,AddDataOlderService,OutactivityService,InActService,VisitorService,BookaplaceService],
+  providers: [TrainStaffService,TrainAddService,WithdrawService,HealthCheckService,StaffService,RoomImformationService,AdditemService,LoginpageService,AddDataOlderService,OutactivityService,InActService,VisitorService,BookaplaceService,MaintenanceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
