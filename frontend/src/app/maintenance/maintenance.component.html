@@ -1,0 +1,125 @@
+<div class="column left">
+    <h1 class="stay-h1">เพิ่มรายการการซ่อมบำรุง</h1>
+
+    <mat-form-field class="input">
+      <input matInput placeholder="ชื่อการซ่อมบำรุง" [(ngModel)]="maintenanceData.maintenanceNameInput">
+    </mat-form-field>
+
+    <mat-form-field class="select">
+      <mat-select placeholder="สถานที่" [(ngModel)]="maintenanceData.placeSelect">
+        <mat-option *ngFor="let place of place" [value]="place.placeId">
+          {{place.placeName + ' ' + place.location}}
+        </mat-option>
+      </mat-select>
+      <span matPrefix>&nbsp;</span>
+    </mat-form-field>
+
+    <mat-form-field class="input">
+      <input matInput placeholder="รายละเอียดการซ่อมบำรุง" [(ngModel)]="maintenanceData.descriptionInput">
+    </mat-form-field>
+
+    <p>วัน-เวลาที่จะเริ่มซ่อม</p>
+    <mat-form-field class="select-half">
+      <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY" [(ngModel)]="maintenanceData.dateStart">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="select-half">
+      <input matInput type="time" atp-time-picker value="--:00" onlyHour="true" placeholder="HH:00"
+             [(ngModel)]="maintenanceData.timeStart">
+    </mat-form-field>
+
+    <mat-form-field class="select">
+      <mat-select placeholder="ผู้รับผิดชอบ" [(ngModel)]="maintenanceData.staffSelect">
+        <mat-option *ngFor="let staff of staff" [value]="staff.staffId">
+          {{staff.staffName}}
+        </mat-option>
+      </mat-select>
+      <span matPrefix>&nbsp;</span>
+    </mat-form-field>
+
+    <br>
+    <br>
+    <div>
+      <button mat-flat-button class="buttom-back" routerLink="/main">กลับ</button>
+      <button mat-flat-button class="buttom-save" (click)="save()">บันทึก</button>
+    </div>
+</div>
+<div class="column right" >
+    <h1 class="stay-h1-2">รายการการซ่อมบำรุง</h1>
+    <mat-table [dataSource]="showMaintenanceStart" class="table">
+
+      <ng-container matColumnDef="dateStartAndTimeStart">
+        <mat-header-cell *matHeaderCellDef> วัน-เวลาซ่อม</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.dateStart + ' ' + element.timeStart}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="place">
+        <mat-header-cell *matHeaderCellDef> สถานที่</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.place.placeName + ' ' + element.place.location}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="maintenanceName">
+        <mat-header-cell *matHeaderCellDef> ชื่อการซ่อมบำรุง</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.maintenanceName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef> รายละเอียดการซ่อมบำรุง</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="staff">
+        <mat-header-cell *matHeaderCellDef> ผู้รับผิดชอบ</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.staff.staffName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="update">
+        <mat-header-cell *matHeaderCellDef> Update</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-raised-button color="primary" (click)="update(element.maintenanceId)">เสร็จสิ้น</button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedStartColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedStartColumns;"></mat-row>
+    </mat-table>
+
+    <h1 class="stay-h1-2">รายการการซ่อมบำรุงที่เสร็จแล้ว</h1>
+    <mat-table [dataSource]="showMaintenanceFinish" class="table">
+
+      <ng-container matColumnDef="dateStartAndTimeStart">
+        <mat-header-cell *matHeaderCellDef> วัน-เวลาซ่อม</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.dateStart + ' ' + element.timeStart}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="dateFinishAndTimeFinish">
+        <mat-header-cell *matHeaderCellDef> วัน-เวลาที่ซ่อมเสร็จ</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.dateFinish + ' ' + element.timeFinish}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="place">
+        <mat-header-cell *matHeaderCellDef> สถานที่</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.place.placeName + ' ' + element.place.location}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="maintenanceName">
+        <mat-header-cell *matHeaderCellDef> ชื่อการซ่อมบำรุง</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.maintenanceName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef> รายละเอียดการซ่อมบำรุง</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="staff">
+        <mat-header-cell *matHeaderCellDef> ผู้รับผิดชอบ</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.staff.staffName}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedFinishColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedFinishColumns;"></mat-row>
+    </mat-table>
+</div>

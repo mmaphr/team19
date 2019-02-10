@@ -1,0 +1,91 @@
+.column {
+  float: left;
+  height: 1000px;
+  text-align: center;
+  color: white;
+}
+
+.left {
+  width: 35%;
+  background-color: #263238;
+}
+
+.right {
+  width: 65%;
+  background-color: #666666;
+}
+
+.stay-h1{
+  text-align: center;
+}
+.stay-h1-2{
+  text-align: center;
+  font-size: 30px;
+}
+.select{
+  width: 390px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 0px 20px;
+  margin: 8px 0;
+  border-radius: 4px;
+  height: 50px;
+}
+.select-half{
+  width: 173px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 0px 20px;
+  margin: 8px 0;
+  border-radius: 4px;
+  height: 50px;
+}
+.input{
+  width: 390px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 0px 20px;
+  margin: 8px 0;
+  border-radius: 4px;
+  height: 50px;
+}
+
+.amount-right-align {
+  text-align: right;
+}
+.note{
+  width: 390px;
+  background-color: #af3a3c;
+  color: white;
+  padding: 0px 20px;
+  margin: 8px 0;
+  border-radius: 4px;
+}
+.buttom-save{
+  margin-left: 53%;
+  background-color: #4CAF50;
+}
+
+.buttom-back{
+
+  background-color: red;
+}
+.table {
+  height: 400px;
+  overflow: auto;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+tr.mat-footer-row {
+  font-weight: bold;
+}
+
+.full-width {
+  width: 85%;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 8px ;
+  padding: 1% 2% 2% 2%;
+  margin: 4px 0;
+  height: 38px;
+}
