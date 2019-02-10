@@ -1,0 +1,70 @@
+<div class="blackground" align="center">
+  <div class="form">
+    <h1>External Activity</h1>
+    <mat-table [dataSource]="outActivity" class ="mat-elevation-z8">
+      <ng-container matColumnDef="nameActivity">
+        <mat-header-cell *matHeaderCellDef> Activity Name </mat-header-cell>
+        <mat-cell *matCellDef="let element" >{{element.nameActivity}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="nameRequestor">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Requestor </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.nameRequestor}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="phonenum">
+        <mat-header-cell *matHeaderCellDef> Phonenum </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.phonenum}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <mat-header-cell *matHeaderCellDef> Category Activity </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.categoryActivity.namecategory}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="organized">
+        <mat-header-cell *matHeaderCellDef> Organized </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.organized.organized}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="descriptionActivity">
+        <mat-header-cell *matHeaderCellDef> Description Activity </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.descriptionActivity}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="periodTimeS">
+        <mat-header-cell *matHeaderCellDef> Period Start </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.periodTimeS.periodTime}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="periodTimeE">
+        <mat-header-cell *matHeaderCellDef> Period End </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.periodTimeE.periodTime}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="staff">
+        <mat-header-cell *matHeaderCellDef> Staff </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.staff.staffName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="confirm">
+        <mat-header-cell *matHeaderCellDef> Confirm </mat-header-cell>
+        <!--<mat-cell *matCellDef="let element"> <button mat-flat-button routerLink="/bookaplace/{{element.id}}" routerLinkActive="active" > ยอมรับ </button> -->
+        <!--</mat-cell>-->
+        <mat-cell *matCellDef="let element">
+          <button mat-flat-button routerLink="/bookaplace/{{element.activity_id}}" routerLinkActive="active" > ยอมรับ </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="dataColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: dataColumns;"></mat-row>
+    </mat-table>
+    <p><a href="outactivity">เพิ่มกิจกรรม</a></p>
+    <p><a href="main">กลับสู่หน้าหลัก</a></p>
+  </div>
+</div>

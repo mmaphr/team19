@@ -72,6 +72,7 @@ import { TrainStaffComponent } from './train-staff/train-staff.component';
 import { TrainAddComponent } from './train-add/train-add.component';
 import { TrainAddService } from './shared/train-add/train-add.service';
 import { TrainStaffService } from './shared/train-staff/train-staff.service';
+import {ConfirmActivityComponent} from './confirm-activity/confirm-activity.component';
 const appRoutes: Routes = [
   { path: '',  redirectTo: '/loginpage', pathMatch: 'full' },
   { path: 'loginpage',component : LoginpageComponent},
@@ -116,7 +117,8 @@ const appRoutes: Routes = [
     WithdrawComponent,
     MoreDateOlderComponent,
     TrainStaffComponent,
-    TrainAddComponent
+    TrainAddComponent,
+    ConfirmActivityComponent
   ],
   imports: [
     BrowserModule,
