@@ -8,6 +8,8 @@ import {Router} from '@angular/router';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { RoomImformationComponent } from '../room-imformation/room-imformation.component';
+import {MatSnackBar} from '@angular/material';
+
 @Component({
   selector: 'app-room-add',
   templateUrl: './room-add.component.html',
@@ -27,13 +29,13 @@ export class RoomAddComponent implements OnInit {
 
 
   constructor(private roomImformationService : RoomImformationService,private router: Router, private rout: ActivatedRoute,
-  private sanitizer: DomSanitizer,private matdialog : MatDialog, private httpClient: HttpClient) { }
+  private sanitizer: DomSanitizer,private matdialog : MatDialog, private httpClient: HttpClient,private snackBar: MatSnackBar) { }
 
 
   ngOnInit() {
   if(RoomImformationComponent.older11){
       this.router.navigate(['roomAll']);
-      alert('มีในห้องพักแล้ว');
+    this.snackBar.open('มีในห้องพักแล้ว',"OK",{duration: 10000});
   }
     this.roomImformationService.getRoomAll()
     .subscribe(
@@ -55,7 +57,7 @@ export class RoomAddComponent implements OnInit {
     console.log(this.roomImData.nameInput);
     console.log(id,older1,older2,older3);
     if(this.roomImData.nameInput === ''){
-      alert('กรุณาเลือก');
+      this.snackBar.open('กรุณาเลือก',"OK",{duration: 10000});
     }else{
       if(older1===null){
         if(older2===null){
@@ -65,14 +67,14 @@ export class RoomAddComponent implements OnInit {
             this.httpClient.put('http://localhost:8080/updateRoom1/' +id+ '/'+this.roomImData.nameInput+'/3/'+type.id,RoomAddComponent.getId)
             .subscribe(
             data => {
+              this.snackBar.open('เพิ่มสำเร็จ',"OK",{duration: 10000});
 
-                alert('เพิ่มสำเร็จ');
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
              },
             error => {
-                alert(error.error.message);
+              this.snackBar.open(error.error.message,"OK",{duration: 10000});
                 console.log('Error', error);
             });
 
@@ -82,13 +84,13 @@ export class RoomAddComponent implements OnInit {
             .subscribe(
             data => {
 
-                alert('เพิ่มสำเร็จ');
+              this.snackBar.open('เพิ่มสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
              },
             error => {
-                alert(error.error.message);
+              this.snackBar.open(error.error.message,"OK",{duration: 10000});
                 console.log('Error', error);
             });
           }
@@ -101,13 +103,13 @@ export class RoomAddComponent implements OnInit {
             .subscribe(
             data => {
 
-                alert('เพิ่มสำเร็จ');
+              this.snackBar.open('เพิ่มสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
              },
             error => {
-                alert(error.error.message);
+              this.snackBar.open(error.error.message,"OK",{duration: 10000});
                 console.log('Error', error);
             });
 
@@ -117,13 +119,13 @@ export class RoomAddComponent implements OnInit {
             .subscribe(
             data => {
 
-                alert('เพิ่มสำเร็จ');
+              this.snackBar.open('เพิ่มสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
              },
             error => {
-                alert(error.error.message);
+              this.snackBar.open(error.error.message,"OK",{duration: 10000});
                 console.log('Error', error);
             });
 
@@ -138,13 +140,13 @@ export class RoomAddComponent implements OnInit {
             .subscribe(
             data => {
 
-                alert('เพิ่มสำเร็จ');
+              this.snackBar.open('เพิ่มสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
              },
             error => {
-                alert(error.error.message);
+              this.snackBar.open(error.error.message,"OK",{duration: 10000});
                 console.log('Error', error);
             });
 
@@ -154,12 +156,12 @@ export class RoomAddComponent implements OnInit {
             .subscribe(
             data => {
 
-                alert('เพิ่มสำเร็จ');
+              this.snackBar.open('เพิ่มสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
              },
             error => {
-                alert(error.error.message);
+              this.snackBar.open(error.error.message,"OK",{duration: 10000});
                 console.log('Error', error);
             });
           }
@@ -172,18 +174,18 @@ export class RoomAddComponent implements OnInit {
             .subscribe(
             data => {
 
-                alert('เพิ่มสำเร็จ');
+              this.snackBar.open('เพิ่มสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
              },
             error => {
-                alert(error.error.message);
-                console.log('Error', error);
+              this.snackBar.open(error.error.message,"OK",{duration: 10000});
+               console.log('Error', error);
             });
           }else if(older3!==null){
             console.log("ห้องเต็ม");
-            alert("ห้องพักเต็ม ไม่สามารถเพิ่มเข้าห้องนี้ได้");
+            this.snackBar.open("ห้องพักเต็ม ไม่สามารถเพิ่มเข้าห้องนี้ได้","OK",{duration: 10000});
           }
         }
     }

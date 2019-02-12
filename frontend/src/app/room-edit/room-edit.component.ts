@@ -5,6 +5,7 @@ import { MatDialogRef } from '@angular/material';
 import {Router} from '@angular/router';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-room-edit',
@@ -19,7 +20,7 @@ export class RoomEditComponent implements OnInit {
     roomNumInput:'',
     typeSelect:''
   };
-  constructor(private router: Router, private rout: ActivatedRoute,private roomEditService:RoomImformationService , private httpClient: HttpClient,private sanitizer: DomSanitizer) {
+  constructor(private router: Router, private rout: ActivatedRoute,private roomEditService:RoomImformationService ,private snackBar: MatSnackBar, private httpClient: HttpClient,private sanitizer: DomSanitizer) {
         this.sanitizer = sanitizer;
   }
 
@@ -35,18 +36,20 @@ export class RoomEditComponent implements OnInit {
   save(){
   console.log(this.roomImData.roomNumInput);
   if(this.roomImData.roomNumInput ===''||this.roomImData.typeSelect ===''){
-    alert('กรุณากรอกข้อมูลให้ครบถ้วน เพิ่มไม่สำเร็จ');
+    this.snackBar.open('กรุณากรอกข้อมูลให้ครบถ้วน เพิ่มไม่สำเร็จ',"OK",{duration: 10000});
   }else{
     console.log(this.roomImData.roomNumInput);
     this.httpClient.post('http://localhost:8080/newRoom/'+this.roomImData.roomNumInput+'/'+this.roomImData.typeSelect,this.roomImData).subscribe(
     data => {
-              alert('เพิ่มห้องพักสำเร็จ');
+      this.snackBar.open('เพิ่มห้องพักสำเร็จ',"OK",{duration: 10000});
+
               console.log('เพิ่มห้องพักสำเร็จ', data);
               this.router.navigate(['roomInformation']);
 
           },
           error => {
-              alert(error.error.message);
+            this.snackBar.open(error.error.message,"OK",{duration: 10000});
+
               console.log('Error', error.error.message);
           }
     );

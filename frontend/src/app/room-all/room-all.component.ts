@@ -7,6 +7,8 @@ MatSortHeader, MatRow, MatRowDef,  MatCell, MatCellDef,MatDialog} from '@angular
 import {Router} from '@angular/router';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import {MatSnackBar} from '@angular/material';
+
 
 @Component({
   selector: 'app-room-all',
@@ -17,7 +19,7 @@ export class RoomAllComponent implements OnInit {
   showAllColumns: string[] = ['no','roomnumber','type','status','older1','older2','older3'];
   ShowAll: Array<any>;
   constructor(private roomImformationService : RoomImformationService,private router: Router, private rout: ActivatedRoute,
-    private sanitizer: DomSanitizer,private matdialog : MatDialog, private httpClient: HttpClient) { }
+    private sanitizer: DomSanitizer,private matdialog : MatDialog, private httpClient: HttpClient,private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.roomImformationService.getRoomAll()

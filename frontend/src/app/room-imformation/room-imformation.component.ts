@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { RoomImformationService } from '../shared/room-imformation/room-imformation.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-room-imformation',
@@ -24,7 +25,8 @@ export class RoomImformationComponent implements OnInit {
   nameInput:''
   };
 
-  constructor(private router: Router, private rout: ActivatedRoute,private roomImformationService:RoomImformationService , private httpClient: HttpClient,private sanitizer: DomSanitizer) {
+  constructor(private router: Router, private rout: ActivatedRoute,private roomImformationService:RoomImformationService , private httpClient: HttpClient,private sanitizer: DomSanitizer
+    ,private snackBar: MatSnackBar) {
         this.sanitizer = sanitizer;
   }
 
@@ -34,9 +36,9 @@ export class RoomImformationComponent implements OnInit {
   }
   search(){
     if(this.roomImData.nameInput ===''){
-        alert('กรุณากรอกข้อมูลให้ครบถ้วน ค้นหาไม่สำเร็จ');
+      this.snackBar.open('กรุณากรอกข้อมูลให้ครบถ้วน ค้นหาไม่สำเร็จ',"OK",{duration: 10000});
     }else if(this.roomImData.nameInput ==='allData'){
-        alert('ค้นหาทั้งหมด');
+      this.snackBar.open('ค้นหาทั้งหมด',"OK",{duration: 10000});
         this.router.navigate(['roomAll']);
     }else{
       this.roomImformationService.getOlder1(this.roomImData.nameInput).subscribe(
@@ -49,13 +51,13 @@ export class RoomImformationComponent implements OnInit {
             console.log(data.roomnumber);
             RoomImformationComponent.older1 = data.roomnumber;
             console.log(RoomImformationComponent.older1);
-            alert("ผู้สูงอายุพักอยู่ที่ห้อง " +RoomImformationComponent.older1);
+          this.snackBar.open("ผู้สูงอายุพักอยู่ที่ห้อง " +RoomImformationComponent.older1,"OK",{duration: 10000});
             RoomImformationComponent.older11 = true;
             console.log(RoomImformationComponent.older11);
 
         }},
             error => {
-                alert('ไม่พบชื่อผู้สูงอายุในห้องพัก');
+              this.snackBar.open('ไม่พบชื่อผู้สูงอายุในห้องพัก',"OK",{duration: 10000});
                 console.log('Error', error);
             }
         );
@@ -71,7 +73,7 @@ export class RoomImformationComponent implements OnInit {
             console.log(data.roomnumber);
             RoomImformationComponent.older2 = data.roomnumber;
             console.log(RoomImformationComponent.older2);
-            alert("ผู้สูงอายุพักอยู่ที่ห้อง " +RoomImformationComponent.older2);
+          this.snackBar.open("ผู้สูงอายุพักอยู่ที่ห้อง " +RoomImformationComponent.older2,"OK",{duration: 10000});
             RoomImformationComponent.older21 = true;
             console.log(RoomImformationComponent.older11);
 
@@ -88,7 +90,7 @@ export class RoomImformationComponent implements OnInit {
             console.log(data.roomnumber);
             RoomImformationComponent.older3 = data.roomnumber;
             console.log(RoomImformationComponent.older3);
-            alert("ผู้สูงอายุพักอยู่ที่ห้อง " +RoomImformationComponent.older3);
+          this.snackBar.open("ผู้สูงอายุพักอยู่ที่ห้อง " +RoomImformationComponent.older3,"OK",{duration: 10000});
             RoomImformationComponent.older31 = true;
             console.log(RoomImformationComponent.older11);
 

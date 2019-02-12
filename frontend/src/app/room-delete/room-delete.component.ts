@@ -8,6 +8,8 @@ import {Router} from '@angular/router';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { RoomImformationComponent } from '../room-imformation/room-imformation.component';
+import {MatSnackBar} from '@angular/material';
+
 @Component({
   selector: 'app-room-delete',
   templateUrl: './room-delete.component.html',
@@ -24,7 +26,7 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
 
 
   constructor(private roomImformationService : RoomImformationService,private router: Router, private rout: ActivatedRoute,
-  private sanitizer: DomSanitizer,private matdialog : MatDialog, private httpClient: HttpClient) { }
+  private sanitizer: DomSanitizer,private matdialog : MatDialog, private httpClient: HttpClient,private snackBar: MatSnackBar) { }
 
   ngOnInit() {
   this.roomImformationService.getRoomAll()
@@ -44,21 +46,23 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
           if(older3===null){
             console.log("ห้องว่างทุกที่");
             console.log(id);
-            alert('ไม่มีผู้พัก');
+            this.snackBar.open('ไม่มีผู้พัก',"OK",{duration: 10000});
+
 
           }else if(older3!==null){
             console.log("ห้องว่างที่1-2");
             this.httpClient.put('http://localhost:8080/deleteRoom1/'+id+'/'+nameInput+'/1',RoomDeleteComponent.getId)
             .subscribe(
             data => {
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
 
-                alert('ลบสำเร็จ');
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
              },
             error => {
-                alert('อัพเดทไม่สำเร็จ');
+              this.snackBar.open('อัพเดทไม่สำเร็จ',"OK",{duration: 10000});
+
                 console.log('Error', error);
             });
           }
@@ -71,14 +75,15 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
 
             .subscribe(
             data => {
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
 
-                alert('ลบสำเร็จ');
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
              },
             error => {
-                alert('อัพเดทไม่สำเร็จ');
+              this.snackBar.open('อัพเดทไม่สำเร็จ',"OK",{duration: 10000});
+
                 console.log('Error', error);
             });
 
@@ -87,14 +92,15 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
             this.httpClient.put('http://localhost:8080/deleteRoom1/'+id+'/'+nameInput+'/3',RoomDeleteComponent.getId)
             .subscribe(
             data => {
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
 
-                alert('ลบสำเร็จ');
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
              },
             error => {
-                alert('อัพเดทไม่สำเร็จ');
+              this.snackBar.open('อัพเดทไม่สำเร็จ',"OK",{duration: 10000});
+
                 console.log('Error', error);
             });
 
@@ -108,14 +114,15 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
             this.httpClient.put('http://localhost:8080/deleteRoom1/'+id+'/'+nameInput+'/1',RoomDeleteComponent.getId)
             .subscribe(
             data => {
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
 
-                alert('ลบสำเร็จ');
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
              },
             error => {
-                alert('อัพเดทไม่สำเร็จ');
+              this.snackBar.open('อัพเดทไม่สำเร็จ',"OK",{duration: 10000});
+
                 console.log('Error', error);
             });
 
@@ -124,14 +131,15 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
             this.httpClient.put('http://localhost:8080/deleteRoom1/'+id+'/'+nameInput+'/3',RoomDeleteComponent.getId)
             .subscribe(
             data => {
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
 
-                alert('ลบสำเร็จ');
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
              },
             error => {
-                alert('อัพเดทไม่สำเร็จ');
+              this.snackBar.open('อัพเดทไม่สำเร็จ',"OK",{duration: 10000});
+
                 console.log('Error', error);
             });
           }
@@ -143,8 +151,8 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
             this.httpClient.put('http://localhost:8080/deleteRoom1/'+id+'/'+nameInput+'/3',RoomDeleteComponent.getId)
             .subscribe(
             data => {
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
 
-                alert('ลบสำเร็จ');
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
@@ -159,7 +167,7 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
             .subscribe(
             data => {
 
-                alert('ลบสำเร็จ');
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
@@ -190,7 +198,7 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
             .subscribe(
             data => {
 
-                alert('ลบสำเร็จ');
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
@@ -210,7 +218,7 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
             .subscribe(
             data => {
 
-                alert('ลบสำเร็จ');
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
@@ -226,7 +234,7 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
             .subscribe(
             data => {
 
-                alert('ลบสำเร็จ');
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
@@ -247,7 +255,7 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
             .subscribe(
             data => {
 
-                alert('ลบสำเร็จ');
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
@@ -263,7 +271,7 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
             .subscribe(
             data => {
 
-                alert('ลบสำเร็จ');
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
@@ -282,7 +290,7 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
             .subscribe(
             data => {
 
-                alert('ลบสำเร็จ');
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
@@ -297,7 +305,7 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
             .subscribe(
             data => {
 
-                alert('ลบสำเร็จ');
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
@@ -326,7 +334,7 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
             .subscribe(
             data => {
 
-                alert('ลบสำเร็จ');
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
              },
@@ -345,7 +353,7 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
             .subscribe(
             data => {
 
-                alert('ลบสำเร็จ');
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
@@ -361,7 +369,7 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
             .subscribe(
             data => {
 
-                alert('ลบสำเร็จ');
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
@@ -382,7 +390,7 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
             .subscribe(
             data => {
 
-                alert('ลบสำเร็จ');
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
@@ -398,7 +406,7 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
             .subscribe(
             data => {
 
-                alert('ลบสำเร็จ');
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
@@ -417,7 +425,7 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
             .subscribe(
             data => {
 
-                alert('ลบสำเร็จ');
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
@@ -432,7 +440,7 @@ showAllColumns: string[] = ['no','roomnumber','type','status','older1','delete1'
             .subscribe(
             data => {
 
-                alert('ลบสำเร็จ');
+              this.snackBar.open('ลบสำเร็จ',"OK",{duration: 10000});
                 console.log('PUT Request is successful', data);
                 this.router.navigate(['roomAll']);
 
