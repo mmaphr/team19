@@ -18,16 +18,22 @@ public class RoomInformation {
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="room_seq")
     @Column(name="room_ID",unique = true, nullable = true)
     private @NotNull Long Id;
-    @Pattern(regexp = "^[A-Z][0-9]{3}$")
-    private @NotNull String roomnumber;
 
+    @NotNull
+    @Pattern(regexp = "^[A-Z][0-9]{3}$")
+    @Column(unique = true)
+    private String roomnumber;
+
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "ROOMSTATUS_ID", nullable = true)
     private RoomStatus Roomstatus;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "TYPE_ID", nullable = true)
     private TypeRoom Typeroom;
+
 
     @ManyToOne
     @JoinColumn(name = "OLDER1_NAME", nullable = true)

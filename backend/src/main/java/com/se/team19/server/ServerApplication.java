@@ -30,9 +30,9 @@ public class ServerApplication {
 
 	@Bean
 	ApplicationRunner init(TrainAndStaffRepository trainAndStaffRepository,
-                           TrainTypeRepository trainTypeRepository,
-                           TrainStaffRepository trainStaffRepository,
-                           PositionRepository positionRepository,
+						   TrainTypeRepository trainTypeRepository,
+						   TrainStaffRepository trainStaffRepository,
+						   PositionRepository positionRepository,
 						   ProvinceRepository provinceRepository,
 						   GenderRepository genderRepository,
 						   StaffRepository staffRepository,
@@ -62,7 +62,7 @@ public class ServerApplication {
 						   PlaceRepository placeRepository,
 						   MaintenanceStatusRepository maintenanceStatusRepository,
 						   MaintenanceRepository maintenanceRepository
-						   ) {
+	) {
 		return args -> {
 
 			//<!==========  AddOlderDisease ==========!>
@@ -215,7 +215,7 @@ public class ServerApplication {
 
 			RoomInformation	room4 = new RoomInformation();
 			room4.setRoomnumber("A104");
-			room4.setRoomstatus(roomStatusRepository.findById(4));
+			room4.setRoomstatus(roomStatusRepository.findById(1));
 			room4.setTyperoom(typeRoomRepository.findById(1));
 			roomInformationRepository.save(room4);
 

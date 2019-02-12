@@ -97,10 +97,10 @@ public class RoomInformationController {
         return roomInformationRepository.findById(roomID)
 
                 .map(update ->{
-                    update.setOlder1(olderDataRepository.findById(olderID).get());
-                    update.setRoomstatus(roomStatusRepository.findById(statusID).get());
+                            update.setOlder1(olderDataRepository.findById(olderID).get());
+                            update.setRoomstatus(roomStatusRepository.findById(statusID).get());
 
-                    return roomInformationRepository.save(update);
+                            return roomInformationRepository.save(update);
                         }
                 ).orElseGet(() ->{
                     roomImformation.setId(roomID);
@@ -125,10 +125,10 @@ public class RoomInformationController {
         return roomInformationRepository.findById(roomID)
 
                 .map(update ->{
-                    update.setOlder2(olderDataRepository.findById(olderID).get());
-                    update.setRoomstatus(roomStatusRepository.findById(statusID).get());
+                            update.setOlder2(olderDataRepository.findById(olderID).get());
+                            update.setRoomstatus(roomStatusRepository.findById(statusID).get());
 
-                    return roomInformationRepository.save(update);
+                            return roomInformationRepository.save(update);
                         }
                 ).orElseGet(() ->{
                     roomImformation.setId(roomID);
@@ -156,7 +156,7 @@ public class RoomInformationController {
                             update.setOlder3(olderDataRepository.findById(olderID).get());
                             update.setRoomstatus(roomStatusRepository.findById(statusID).get());
 
-                    return roomInformationRepository.save(update);
+                            return roomInformationRepository.save(update);
                         }
                 ).orElseGet(() ->{
                     roomImformation.setId(roomID);

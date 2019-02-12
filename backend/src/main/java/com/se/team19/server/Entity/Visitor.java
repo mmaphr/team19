@@ -4,6 +4,9 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.*;
 
@@ -19,34 +22,52 @@ public class Visitor {
     @SequenceGenerator(name="visitor_seq",sequenceName="visitor_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="visitor_seq")
     @Column(name="Visitor_ID",unique = true, nullable = true)
-    private @NonNull Long Id;
-    private @NonNull String nameVisitor;
+    private  Long Id;
+
+    @NotNull
+    @Pattern(regexp = "^([A-z*0-9*ก-๙*' '])*")
+    private  String nameVisitor;
+
+    @NotNull
     @Pattern(regexp = "^[0-9]{13}$")
-    private @NonNull String numIdVisitor;
-    private @NonNull int ageVisitor;
+    private String numIdVisitor;
+
+    @NotNull
+    private @Min(value = 1) int ageVisitor;
+
     @Pattern(regexp = "^[0][0-9]{9}$")
-    private @NonNull String phoneVisitor;
+    @NotNull
+    private String phoneVisitor;
+
+    @NotNull
     @Temporal(TemporalType.DATE)
-//    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private @NonNull Date dayVisitor;
+    private Date dayVisitor;
+
+    @NotNull
     @Temporal(TemporalType.TIME)
-    private @NonNull Date timeVisitor;
-    private @NonNull String addressVisitor;
+    private Date timeVisitor;
+
+    @NotNull
+    private String addressVisitor;
 
     @ManyToOne
     @JoinColumn(name = "GENDER_ID", nullable = true)
+    @NotNull
     private Gender genders;
 
     @ManyToOne
     @JoinColumn(name = "province_ID", nullable = true)
+    @NotNull
     private Province province;
 
     @ManyToOne
     @JoinColumn(name = "RelativesStatus_ID", nullable = true)
+    @NotNull
     private RelativesStatus relativesStatus;
 
     @ManyToOne
     @JoinColumn(name = "OLDERVISIT_ID", nullable = true)
+    @NotNull
     private DataOlder olders;
 
 

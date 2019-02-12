@@ -1,10 +1,13 @@
 package com.se.team19.server.Controller;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.se.team19.server.Entity.*;
 import com.se.team19.server.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URLDecoder;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,7 +36,7 @@ public class VisitorController {
                              ProvinceRepository provinceRepository,
                              VisitorRepository visitorRepository,
                              DataOlderRepository dataOlderRepository
-                             ) {
+    ) {
         this.roomInformationRepository = roomInformationRepository;
         this.genderRepository = genderRepository;
         this.relativesStatusRepository = relativesStatusRepository;
@@ -68,28 +71,37 @@ public class VisitorController {
     public RoomInformation getOlder3(@PathVariable long older3) throws Exception{
         return roomInformationRepository.findByOlder3(dataOlderRepository.findById(older3));
     }
-    @PostMapping("/AddVisitor/{name}/{numid}/{gender}/{age}/{address}/{provice}/{phone}/{older}/{status}")
-    public Visitor newVisitor(@RequestBody Visitor visitor,
-                           @PathVariable String name,
-                           @PathVariable String numid,
-                           @PathVariable long gender,
-                           @PathVariable int age,
-                           @PathVariable String address,
-                           @PathVariable long provice,
-                           @PathVariable String phone,
-                           @PathVariable long older,
-                           @PathVariable long status) throws Exception{
+    @PostMapping("/AddVisitor/{name}/{numid}/{gender}/{age}/{provice}/{phone}/{older}/{status}")
+    public Visitor newVisitor(
+            @PathVariable String name,
+            @PathVariable String numid,
+            @PathVariable long gender,
+            @PathVariable int age,
+            @PathVariable long provice,
+            @PathVariable String phone,
+            @PathVariable long older,
+            @PathVariable long status,@RequestBody String inputData) throws Exception{
         if(roomInformationRepository.findByOlder1(dataOlderRepository.findById(older))==null&&
                 roomInformationRepository.findByOlder2(dataOlderRepository.findById(older))==null&&
                 roomInformationRepository.findByOlder3(dataOlderRepository.findById(older))==null)
             throw new Exception("ไม่เจอผู้สูงอายุนี้ในห้องพัก");
+
+        final String decoded = URLDecoder.decode(inputData, "UTF-8");
+        inputData = decoded;
+
+        Visitor visitor = new Visitor();
+
+        if(inputData.charAt(0) == '{'){
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode actualObj = mapper.readTree(inputData);
+            visitor.setAddressVisitor( actualObj.get("address").textValue());
+        }
         visitor.setNameVisitor(name);
         visitor.setNumIdVisitor(numid);
         visitor.setAgeVisitor(age);
         visitor.setPhoneVisitor(phone);
         visitor.setDayVisitor(new Date());
         visitor.setTimeVisitor(new Date());
-        visitor.setAddressVisitor(address);
         visitor.setGenders(genderRepository.findById(gender));
         visitor.setProvince(provinceRepository.findById(provice));
         visitor.setRelativesStatus(relativesStatusRepository.findById(status));
