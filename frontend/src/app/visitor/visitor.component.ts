@@ -76,7 +76,7 @@ export class VisitorComponent implements OnInit {
       this.inputData.status === '') {
       this.snackBar.open('กรุณากรอกข้อมูลให้ครบถ้วน',"OK",{duration: 10000});
     } else {
-      this.httpClient.post('http://localhost:8080/AddVisitor/' + this.inputData.namevisitor + '/' + this.inputData.numid + '/' + this.inputData.gender + '/' + this.inputData.age + '/' + this.inputData.address + '/' + this.inputData.provice + '/' + this.inputData.phone + '/' + this.inputData.older + '/' + this.inputData.status , this.inputData)
+      this.httpClient.post('http://localhost:8080/AddVisitor/' + this.inputData.namevisitor + '/' + this.inputData.numid + '/' + this.inputData.gender + '/' + this.inputData.age + '/'  + this.inputData.provice + '/' + this.inputData.phone + '/' + this.inputData.older + '/' + this.inputData.status , this.inputData)
         .subscribe(data => {
             this.snackBar.open('บันทึกสำเร็จ',"OK",{});
             console.log('PUT Request is successful', data);
@@ -122,7 +122,12 @@ export class VisitorComponent implements OnInit {
             });
           },
           error => {
-            this.snackBar.open("กรอกข้อมูลไม่ถูกต้อง กรุณาตรวจสอบเลขบัตรประชาชนและเบอร์โทร","OK",{duration: 10000});
+          if(error.error.message=="ไม่เจอผู้สูงอายุนี้ในห้องพัก") {
+            this.snackBar.open(error.error.message, "OK", {duration: 10000});
+          }else{
+            this.snackBar.open("กรอกข้อมูลผิดพลาด ตรวจสอบเลขบัตรประชาชนหรือเบอร์โทร", "OK", {duration: 10000});
+
+          }
             console.log('Error', error);
           }
         );
