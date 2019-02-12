@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>ระบบจัดการห้องพัก</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">เพิ่มห้อง ว่าง</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:4200/roomEdit<datalist><option>http://localhost:4200/roomEdit</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เลือกประเภทห้องพัก'])[2]/following::button[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เลือกประเภทห้องพัก'])[2]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เลือกประเภทห้องพัก'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ย้อนกลับ'])[1]/preceding::button[1]</option><option>//button</option><option>css=button.mat-flat-button.mat-primary.cdk-focused.cdk-mouse-focused</option></datalist></td><td></td>
+</tr>
+<tr><td>assertText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='กรุณากรอกข้อมูลให้ครบถ้วน เพิ่มไม่สำเร็จ'])[1]/following::simple-snack-bar[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='กรุณากรอกข้อมูลให้ครบถ้วน เพิ่มไม่สำเร็จ'])[1]/following::simple-snack-bar[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ย้อนกลับ'])[1]/following::simple-snack-bar[1]</option><option>//div[@id='cdk-overlay-3']/snack-bar-container/simple-snack-bar</option><option>//simple-snack-bar</option><option>css=simple-snack-bar.mat-simple-snackbar.ng-tns-c8-10.ng-trigger.ng-trigger-contentFade.ng-star-inserted</option></datalist></td><td>กรุณากรอกข้อมูลให้ครบถ้วน เพิ่มไม่สำเร็จ OK</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">เพิ่มห้อง ได้</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:4200/roomEdit<datalist><option>http://localhost:4200/roomEdit</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=mat-input-0<datalist><option>id=mat-input-0</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='หมายเลขห้อง'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เลือกประเภทห้องพัก'])[1]/preceding::input[1]</option><option>//input[@id='mat-input-0']</option><option>//input</option><option>css=#mat-input-0</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=mat-input-0<datalist><option>id=mat-input-0</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='หมายเลขห้อง'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เลือกประเภทห้องพัก'])[1]/preceding::input[1]</option><option>//input[@id='mat-input-0']</option><option>//input</option><option>css=#mat-input-0</option></datalist></td><td>Z101</td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='หมายเลขห้อง'])[1]/following::div[9]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='หมายเลขห้อง'])[1]/following::div[9]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::div[12]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เลือกประเภทห้องพัก'])[2]/preceding::div[3]</option><option>//mat-select[@id='mat-select-0']/div/div</option><option>//mat-select/div/div</option><option>css=div.mat-select-value</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ย้อนกลับ'])[1]/following::span[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ย้อนกลับ'])[1]/following::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ยืนยัน'])[1]/following::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='พิเศษหญิง'])[1]/preceding::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ทั่วไปชาย'])[1]/preceding::span[2]</option><option>//mat-option[@id='mat-option-0']/span</option><option>//mat-option/span</option><option>css=span.mat-option-text</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เลือกประเภทห้องพัก'])[1]/following::span[2]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เลือกประเภทห้องพัก'])[1]/following::span[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='พิเศษชาย'])[1]/following::span[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ย้อนกลับ'])[1]/preceding::span[1]</option><option>//button/span</option><option>css=span.mat-button-wrapper</option></datalist></td><td></td>
+</tr>
+<tr><td>assertText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เพิ่มห้องพักสำเร็จ'])[1]/following::simple-snack-bar[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เพิ่มห้องพักสำเร็จ'])[1]/following::simple-snack-bar[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='กลับหน้าหลัก'])[1]/following::simple-snack-bar[1]</option><option>//div[@id='cdk-overlay-1']/snack-bar-container/simple-snack-bar</option><option>//simple-snack-bar</option><option>css=simple-snack-bar.mat-simple-snackbar.ng-tns-c8-4.ng-trigger.ng-trigger-contentFade.ng-star-inserted</option></datalist></td><td>เพิ่มห้องพักสำเร็จ OK</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">เพิ่มห้องไม่ได้</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:4200/roomEdit<datalist><option>http://localhost:4200/roomEdit</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::div[3]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::div[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เลือกประเภทห้องพัก'])[1]/preceding::div[5]</option><option>//div/div/div</option><option>css=div.mat-input-infix.mat-form-field-infix</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=mat-input-0<datalist><option>id=mat-input-0</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='หมายเลขห้อง'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เลือกประเภทห้องพัก'])[1]/preceding::input[1]</option><option>//input[@id='mat-input-0']</option><option>//input</option><option>css=#mat-input-0</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=mat-input-0<datalist><option>id=mat-input-0</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='หมายเลขห้อง'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เลือกประเภทห้องพัก'])[1]/preceding::input[1]</option><option>//input[@id='mat-input-0']</option><option>//input</option><option>css=#mat-input-0</option></datalist></td><td>Z101</td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='หมายเลขห้อง'])[1]/following::span[2]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='หมายเลขห้อง'])[1]/following::span[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::span[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เลือกประเภทห้องพัก'])[2]/preceding::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ยืนยัน'])[1]/preceding::span[3]</option><option>//mat-select[@id='mat-select-0']/div/div/span</option><option>//mat-select/div/div/span</option><option>css=span.mat-select-placeholder.ng-tns-c3-2.ng-star-inserted</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ย้อนกลับ'])[1]/following::span[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ย้อนกลับ'])[1]/following::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ยืนยัน'])[1]/following::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='พิเศษหญิง'])[1]/preceding::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ทั่วไปชาย'])[1]/preceding::span[2]</option><option>//mat-option[@id='mat-option-0']/span</option><option>//mat-option/span</option><option>css=span.mat-option-text</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เลือกประเภทห้องพัก'])[1]/following::span[2]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เลือกประเภทห้องพัก'])[1]/following::span[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='พิเศษชาย'])[1]/following::span[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ย้อนกลับ'])[1]/preceding::span[1]</option><option>//button/span</option><option>css=span.mat-button-wrapper</option></datalist></td><td></td>
+</tr>
+<tr><td>assertText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='หมายเลขห้องพักซ้ำ!!'])[1]/following::simple-snack-bar[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='หมายเลขห้องพักซ้ำ!!'])[1]/following::simple-snack-bar[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ย้อนกลับ'])[1]/following::simple-snack-bar[1]</option><option>//div[@id='cdk-overlay-1']/snack-bar-container/simple-snack-bar</option><option>//simple-snack-bar</option><option>css=simple-snack-bar.mat-simple-snackbar.ng-tns-c8-4.ng-trigger.ng-trigger-contentFade.ng-star-inserted</option></datalist></td><td>หมายเลขห้องพักซ้ำ!! OK</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">ค้นหา ว่าง</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:4200/roomInformation<datalist><option>http://localhost:4200/roomInformation</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ชื่อผู้สูงอายุ'])[1]/following::span[2]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ชื่อผู้สูงอายุ'])[1]/following::span[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::span[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เพิ่มเข้าห้องพัก'])[1]/preceding::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ลบออกจากห้องพัก'])[1]/preceding::span[2]</option><option>//button/span</option><option>css=span.mat-button-wrapper</option></datalist></td><td></td>
+</tr>
+<tr><td>assertText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='กรุณากรอกข้อมูลให้ครบถ้วน ค้นหาไม่สำเร็จ'])[1]/following::simple-snack-bar[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='กรุณากรอกข้อมูลให้ครบถ้วน ค้นหาไม่สำเร็จ'])[1]/following::simple-snack-bar[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='กลับหน้าหลัก'])[1]/following::simple-snack-bar[1]</option><option>//div[@id='cdk-overlay-0']/snack-bar-container/simple-snack-bar</option><option>//simple-snack-bar</option><option>css=simple-snack-bar.mat-simple-snackbar.ng-tns-c10-2.ng-trigger.ng-trigger-contentFade.ng-star-inserted</option></datalist></td><td>กรุณากรอกข้อมูลให้ครบถ้วน ค้นหาไม่สำเร็จ OK</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">ค้นหา ไม่เจอ</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:4200/roomInformation<datalist><option>http://localhost:4200/roomInformation</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=mat-input-0<datalist><option>id=mat-input-0</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ชื่อผู้สูงอายุ'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ค้นหา'])[1]/preceding::input[1]</option><option>//input[@id='mat-input-0']</option><option>//input</option><option>css=#mat-input-0</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=mat-input-0<datalist><option>id=mat-input-0</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ชื่อผู้สูงอายุ'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ค้นหา'])[1]/preceding::input[1]</option><option>//input[@id='mat-input-0']</option><option>//input</option><option>css=#mat-input-0</option></datalist></td><td>นายสมชาย สมศรี</td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ชื่อผู้สูงอายุ'])[1]/following::button[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ชื่อผู้สูงอายุ'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เพิ่มเข้าห้องพัก'])[1]/preceding::button[1]</option><option>//button</option><option>css=button.mat-flat-button.mat-primary.cdk-focused.cdk-mouse-focused</option></datalist></td><td></td>
+</tr>
+<tr><td>assertText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ไม่พบชื่อผู้สูงอายุในห้องพัก'])[1]/following::simple-snack-bar[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ไม่พบชื่อผู้สูงอายุในห้องพัก'])[1]/following::simple-snack-bar[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='กลับหน้าหลัก'])[1]/following::simple-snack-bar[1]</option><option>//div[@id='cdk-overlay-0']/snack-bar-container/simple-snack-bar</option><option>//simple-snack-bar</option><option>css=simple-snack-bar.mat-simple-snackbar.ng-tns-c5-2.ng-trigger.ng-trigger-contentFade.ng-star-inserted</option></datalist></td><td>ไม่พบชื่อผู้สูงอายุในห้องพัก OK</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">ค้นหา เจอ</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:4200/roomInformation<datalist><option>http://localhost:4200/roomInformation</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=mat-input-0<datalist><option>id=mat-input-0</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ชื่อผู้สูงอายุ'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ค้นหา'])[1]/preceding::input[1]</option><option>//input[@id='mat-input-0']</option><option>//input</option><option>css=#mat-input-0</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=mat-input-0<datalist><option>id=mat-input-0</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ชื่อผู้สูงอายุ'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ค้นหา'])[1]/preceding::input[1]</option><option>//input[@id='mat-input-0']</option><option>//input</option><option>css=#mat-input-0</option></datalist></td><td>นายตาสว่าง ขนนิ่ม</td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ชื่อผู้สูงอายุ'])[1]/following::span[2]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ชื่อผู้สูงอายุ'])[1]/following::span[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::span[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เพิ่มเข้าห้องพัก'])[1]/preceding::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ลบออกจากห้องพัก'])[1]/preceding::span[2]</option><option>//button/span</option><option>css=span.mat-button-wrapper</option></datalist></td><td></td>
+</tr>
+<tr><td>assertText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ผู้สูงอายุพักอยู่ที่ห้อง A102'])[1]/following::simple-snack-bar[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ผู้สูงอายุพักอยู่ที่ห้อง A102'])[1]/following::simple-snack-bar[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='กลับหน้าหลัก'])[1]/following::simple-snack-bar[1]</option><option>//div[@id='cdk-overlay-1']/snack-bar-container/simple-snack-bar</option><option>//simple-snack-bar</option><option>css=simple-snack-bar.mat-simple-snackbar.ng-tns-c5-4.ng-trigger.ng-trigger-contentFade.ng-star-inserted</option></datalist></td><td>ผู้สูงอายุพักอยู่ที่ห้อง A102 OK</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">ค้นหา ทั้งหมด</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:4200/roomInformation<datalist><option>http://localhost:4200/roomInformation</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=mat-input-0<datalist><option>id=mat-input-0</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ชื่อผู้สูงอายุ'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ค้นหา'])[1]/preceding::input[1]</option><option>//input[@id='mat-input-0']</option><option>//input</option><option>css=#mat-input-0</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=mat-input-0<datalist><option>id=mat-input-0</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ชื่อผู้สูงอายุ'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ค้นหา'])[1]/preceding::input[1]</option><option>//input[@id='mat-input-0']</option><option>//input</option><option>css=#mat-input-0</option></datalist></td><td>allData</td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ชื่อผู้สูงอายุ'])[1]/following::span[2]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ชื่อผู้สูงอายุ'])[1]/following::span[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::span[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เพิ่มเข้าห้องพัก'])[1]/preceding::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ลบออกจากห้องพัก'])[1]/preceding::span[2]</option><option>//button/span</option><option>css=span.mat-button-wrapper</option></datalist></td><td></td>
+</tr>
+<tr><td>assertText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ค้นหาทั้งหมด'])[1]/following::simple-snack-bar[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ค้นหาทั้งหมด'])[1]/following::simple-snack-bar[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ย้อนกลับ'])[1]/following::simple-snack-bar[1]</option><option>//div[@id='cdk-overlay-0']/snack-bar-container/simple-snack-bar</option><option>//simple-snack-bar</option><option>css=simple-snack-bar.mat-simple-snackbar.ng-tns-c5-2.ng-trigger.ng-trigger-contentFade.ng-star-inserted</option></datalist></td><td>ค้นหาทั้งหมด OK</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">เพิ่มไม่ได้ ว่าง</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:4200/roomAdd<datalist><option>http://localhost:4200/roomAdd</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ห้องว่าง'])[1]/following::button[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ห้องว่าง'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='พิเศษชาย'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='A102'])[1]/preceding::button[1]</option><option>//button</option><option>css=button.mat-flat-button.mat-primary.cdk-focused.cdk-mouse-focused</option></datalist></td><td></td>
+</tr>
+<tr><td>assertText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='กรุณาเลือก'])[1]/following::simple-snack-bar[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='กรุณาเลือก'])[1]/following::simple-snack-bar[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ย้อนกลับ'])[1]/following::simple-snack-bar[1]</option><option>//div[@id='cdk-overlay-1']/snack-bar-container/simple-snack-bar</option><option>//simple-snack-bar</option><option>css=simple-snack-bar.mat-simple-snackbar.ng-tns-c10-6.ng-trigger.ng-trigger-contentFade.ng-star-inserted</option></datalist></td><td>กรุณาเลือก OK</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">เพิ่มไม่ได้ ซ้ำ</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:4200/roomAdd<datalist><option>http://localhost:4200/roomAdd</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::div[3]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::div[3]</option><option>//div/div/div</option><option>css=div.mat-input-infix.mat-form-field-infix</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ย้อนกลับ'])[1]/following::span[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ย้อนกลับ'])[1]/following::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เพิ่ม'])[11]/following::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นางหมู หน้ารัก'])[2]/preceding::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นายหนุ่ม จุกจอก'])[2]/preceding::span[2]</option><option>//mat-option[@id='mat-option-0']/span</option><option>//mat-option/span</option><option>css=span.mat-option-text</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ห้องว่าง'])[1]/following::span[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ห้องว่าง'])[1]/following::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='พิเศษชาย'])[1]/following::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='A102'])[1]/preceding::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='พิเศษชาย'])[2]/preceding::span[1]</option><option>//button/span</option><option>css=span.mat-button-wrapper</option></datalist></td><td></td>
+</tr>
+<tr><td>assertText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เพิ่มไม่สำเร็จ ผู้สูงอายุมีห้องพักแล้ว'])[1]/following::simple-snack-bar[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เพิ่มไม่สำเร็จ ผู้สูงอายุมีห้องพักแล้ว'])[1]/following::simple-snack-bar[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ย้อนกลับ'])[1]/following::simple-snack-bar[1]</option><option>//div[@id='cdk-overlay-1']/snack-bar-container/simple-snack-bar</option><option>//simple-snack-bar</option><option>css=simple-snack-bar.mat-simple-snackbar.ng-tns-c9-3.ng-trigger.ng-trigger-contentFade.ng-star-inserted</option></datalist></td><td>เพิ่มไม่สำเร็จ ผู้สูงอายุมีห้องพักแล้ว OK</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">เพิ่มไม่ได้ ผิดประเภท</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:4200/roomAdd<datalist><option>http://localhost:4200/roomAdd</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::div[5]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::div[5]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เลือกชื่อผู้สูงอายุที่จะเพิ่ม'])[2]/preceding::div[3]</option><option>//mat-select[@id='mat-select-0']/div/div</option><option>//mat-select/div/div</option><option>css=div.mat-select-value</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นางสาวดำ ขำ'])[1]/following::span[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นางสาวดำ ขำ'])[1]/following::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นายหนุ่ม จุกจอก'])[2]/following::span[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นายเอ บีซี'])[1]/preceding::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นางบี ซีดี'])[1]/preceding::span[2]</option><option>//mat-option[@id='mat-option-4']/span</option><option>//mat-option[5]/span</option><option>css=#mat-option-4 &gt; span.mat-option-text</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นางหมู หน้ารัก'])[1]/following::span[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นางหมู หน้ารัก'])[1]/following::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ขาด2คน'])[1]/following::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='A104'])[1]/preceding::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='พิเศษชาย'])[3]/preceding::span[1]</option><option>//mat-row[3]/mat-cell[8]/button/span</option><option>css=button.mat-flat-button.mat-primary.cdk-focused.cdk-mouse-focused &gt; span.mat-button-wrapper</option></datalist></td><td></td>
+</tr>
+<tr><td>assertText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักชาย'])[1]/following::simple-snack-bar[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักชาย'])[1]/following::simple-snack-bar[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ย้อนกลับ'])[1]/following::simple-snack-bar[1]</option><option>//div[@id='cdk-overlay-1']/snack-bar-container/simple-snack-bar</option><option>//simple-snack-bar</option><option>css=simple-snack-bar.mat-simple-snackbar.ng-tns-c9-3.ng-trigger.ng-trigger-contentFade.ng-star-inserted</option></datalist></td><td>ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักชาย OK</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">เพิ่มได้</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:4200/roomAdd<datalist><option>http://localhost:4200/roomAdd</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::div[5]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::div[5]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เลือกชื่อผู้สูงอายุที่จะเพิ่ม'])[2]/preceding::div[3]</option><option>//mat-select[@id='mat-select-0']/div/div</option><option>//mat-select/div/div</option><option>css=div.mat-select-value</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นางสาวดำ ขำ'])[1]/following::span[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นางสาวดำ ขำ'])[1]/following::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นายหนุ่ม จุกจอก'])[2]/following::span[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นายเอ บีซี'])[1]/preceding::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นางบี ซีดี'])[1]/preceding::span[2]</option><option>//mat-option[@id='mat-option-4']/span</option><option>//mat-option[5]/span</option><option>css=#mat-option-4 &gt; span.mat-option-text</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นายหนุ่ม จุกจอก'])[1]/following::button[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นายหนุ่ม จุกจอก'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นายตาสว่าง ขนนิ่ม'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='A103'])[1]/preceding::button[1]</option><option>//mat-row[2]/mat-cell[8]/button</option><option>css=button.mat-flat-button.mat-primary.cdk-focused.cdk-mouse-focused</option></datalist></td><td></td>
+</tr>
+<tr><td>assertText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เพิ่มสำเร็จ'])[1]/following::simple-snack-bar[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เพิ่มสำเร็จ'])[1]/following::simple-snack-bar[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ย้อนกลับ'])[1]/following::simple-snack-bar[1]</option><option>//div[@id='cdk-overlay-1']/snack-bar-container/simple-snack-bar</option><option>//simple-snack-bar</option><option>css=simple-snack-bar.mat-simple-snackbar.ng-tns-c9-3.ng-trigger.ng-trigger-contentFade.ng-star-inserted</option></datalist></td><td>เพิ่มสำเร็จ OK</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">เพิ่มไม่ได้ เต็ม</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:4200/roomAdd<datalist><option>http://localhost:4200/roomAdd</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::div[5]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ระบบจัดการห้องพักผู้สูงอายุ'])[1]/following::div[5]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='เลือกชื่อผู้สูงอายุที่จะเพิ่ม'])[2]/preceding::div[3]</option><option>//mat-select[@id='mat-select-0']/div/div</option><option>//mat-select/div/div</option><option>css=div.mat-select-value</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นายโม็ะ โง๊ะ'])[2]/following::span[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นายโม็ะ โง๊ะ'])[2]/following::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นางสาวดำ ขำ'])[1]/following::span[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นางบี ซีดี'])[1]/preceding::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นายซี บีเอฟ'])[1]/preceding::span[2]</option><option>//mat-option[@id='mat-option-5']/span</option><option>//mat-option[6]/span</option><option>css=#mat-option-5 &gt; span.mat-option-text</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นายโม็ะ โง๊ะ'])[1]/following::button[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นายโม็ะ โง๊ะ'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นายหนุ่ม จุกจอก'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='A103'])[1]/preceding::button[1]</option><option>//mat-row[2]/mat-cell[8]/button</option><option>css=button.mat-flat-button.mat-primary.cdk-focused.cdk-mouse-focused</option></datalist></td><td></td>
+</tr>
+<tr><td>assertText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ห้องพักเต็ม ไม่สามารถเพิ่มเข้าห้องนี้ได้'])[1]/following::simple-snack-bar[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ห้องพักเต็ม ไม่สามารถเพิ่มเข้าห้องนี้ได้'])[1]/following::simple-snack-bar[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ย้อนกลับ'])[1]/following::simple-snack-bar[1]</option><option>//div[@id='cdk-overlay-1']/snack-bar-container/simple-snack-bar</option><option>//simple-snack-bar</option><option>css=simple-snack-bar.mat-simple-snackbar.ng-tns-c10-4.ng-trigger.ng-trigger-contentFade.ng-star-inserted</option></datalist></td><td>ห้องพักเต็ม ไม่สามารถเพิ่มเข้าห้องนี้ได้ OK</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">ลบได้</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:4200/roomDelete<datalist><option>http://localhost:4200/roomDelete</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นายโม็ะ โง๊ะ'])[1]/following::span[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='นายโม็ะ โง๊ะ'])[1]/following::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ลบคนที่2'])[2]/following::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='A103'])[1]/preceding::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='พิเศษหญิง'])[1]/preceding::span[1]</option><option>//mat-row[2]/mat-cell[10]/button/span</option><option>css=button.mat-flat-button.mat-warn.cdk-focused.cdk-mouse-focused &gt; span.mat-button-wrapper</option></datalist></td><td></td>
+</tr>
+<tr><td>assertText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ลบสำเร็จ'])[1]/following::simple-snack-bar[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ลบสำเร็จ'])[1]/following::simple-snack-bar[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ย้อนกลับ'])[1]/following::simple-snack-bar[1]</option><option>//div[@id='cdk-overlay-0']/snack-bar-container/simple-snack-bar</option><option>//simple-snack-bar</option><option>css=simple-snack-bar.mat-simple-snackbar.ng-tns-c7-2.ng-trigger.ng-trigger-contentFade.ng-star-inserted</option></datalist></td><td>ลบสำเร็จ OK</td>
+</tr>
+</tbody></table>
+</body>
+</html>
