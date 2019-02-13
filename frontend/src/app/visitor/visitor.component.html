@@ -78,11 +78,6 @@
       <h1 class="stay-h1">ข้อมูลผู้มาเยี่ยม</h1>
       <mat-table [dataSource]="visitorData" class="table">
 
-        <ng-container matColumnDef="id">
-          <mat-header-cell *matHeaderCellDef> ลำดับ </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
-        </ng-container>
-
         <ng-container matColumnDef="visitorname">
           <mat-header-cell *matHeaderCellDef> ชื่อ </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.nameVisitor}} </mat-cell>
