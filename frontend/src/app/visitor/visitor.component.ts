@@ -15,7 +15,7 @@ export class VisitorComponent implements OnInit {
   static older1 : String;
   static older2 : String;
   static older3 : String;
-  dataColumns: string[] = ['id','visitorname','numid','gender','age','address','phone','older','status','date'/**/];
+  dataColumns: string[] = ['visitorname','numid','gender','age','address','phone','older','status','date'];
   olderData: Array<any>;
   visitorData: Array<any>;
   ShowName: Array<any>;
