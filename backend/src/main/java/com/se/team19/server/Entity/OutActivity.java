@@ -3,6 +3,7 @@ package com.se.team19.server.Entity;
 import lombok.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
 import java.util.Date;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -22,52 +23,53 @@ import java.util.*;
 @Entity
 public class OutActivity {
     @Id
-    @SequenceGenerator(name="activity_seq",sequenceName="activity_seq")
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="activity_seq")
-    @Column(name="activity_id",unique = true)
+    @SequenceGenerator(name = "activity_seq", sequenceName = "activity_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "activity_seq")
+    @Column(name = "activity_id", unique = true)
 
     private @NotNull Long activity_id;
-    private @NotNull  String nameActivity;
+    private @NotNull String nameActivity;
     private @NotNull String nameRequestor;
     @NotNull
     @Size(min = 10, max = 50)
-    private  String descriptionActivity;
+    private String descriptionActivity;
     @NotNull
     @Pattern(regexp = "^[0-9]{10}$")
     private String phonenum;
     @NotNull
     @Column(unique = true)
-    private  Date date;
+    private Date date;
 
     @ManyToOne
-    @JoinColumn(name="category_id")
+    @JoinColumn(name = "category_id")
     @NotNull
     private CategoryActivity categoryActivity;
 
     @ManyToOne
-    @JoinColumn(name="periodTimeS_id")
+    @JoinColumn(name = "periodTimeS_id")
     @NotNull
     private PeriodTime periodTimeS;
 
     @ManyToOne
-    @JoinColumn(name="periodTimeE_id")
+    @JoinColumn(name = "periodTimeE_id")
     @NotNull
     private PeriodTime periodTimeE;
 
-   @OneToOne
-   @JoinColumn(name="StaffId")
-   @NotNull
+    @ManyToOne
+    @JoinColumn(name = "StaffId")
+    @NotNull
     private Staff staff;
 
 
-    @OneToOne
-    @JoinColumn(name="organized_id")
+    @ManyToOne
+    @JoinColumn(name = "organized_id")
     @NotNull
     private Organized organized;
 
-    public OutActivity(){}
+    public OutActivity() {
+    }
 
-    public OutActivity(String nameActivity, String nameRequestor, String descriptionActivity, String phonenum, Date date, CategoryActivity categoryActivity, PeriodTime periodTimeS, PeriodTime periodTimeE, Organized organized,Staff staff) {
+    public OutActivity(String nameActivity, String nameRequestor, String descriptionActivity, String phonenum, Date date, CategoryActivity categoryActivity, PeriodTime periodTimeS, PeriodTime periodTimeE, Organized organized, Staff staff) {
         this.nameActivity = nameActivity;
         this.nameRequestor = nameRequestor;
         this.descriptionActivity = descriptionActivity;
