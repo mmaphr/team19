@@ -36,7 +36,7 @@ public class BookAPlace {
     @Pattern(regexp = "^[A-Z]([A-z*0-9*' '])+|^([ก-๙*0-9*' '])+")
     private String descriptionPlace;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="activity_id")
     @NotNull
     private OutActivity outActivity;
