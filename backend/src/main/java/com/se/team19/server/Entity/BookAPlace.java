@@ -18,19 +18,24 @@ public class BookAPlace {
 
 
     @NonNull private  Long bookaplace_id;
+
     @NotNull
     @Pattern(regexp = "^[0-9]{13}$")
     @Column(unique = true)
     private  String cardid;
+
     @NotNull
     @Pattern(regexp = "^[A-Z]([A-z*0-9*' '])+|^([ก-๙*0-9*' '])+")
     private String nameCaretaker;
+
     @NotNull
     @Pattern(regexp = "^[0-9]{10}$")
     private String phonCaretaker;
+
     @NotNull
     @Pattern(regexp = "^[A-Z]([A-z*0-9*' '])+|^([ก-๙*0-9*' '])+")
     private String namePlace;
+    
     @NotNull
     @Size (min=10,max=50)
     @Pattern(regexp = "^[A-Z]([A-z*0-9*' '])+|^([ก-๙*0-9*' '])+")
