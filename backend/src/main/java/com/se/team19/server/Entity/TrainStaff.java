@@ -34,7 +34,7 @@ public class TrainStaff {
     @JoinColumn(name = "TRAINTYPE_ID", insertable = true)
     private TrainType trainType;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "STAFF_ID", insertable = true)
     private Staff trainStaff;
 
