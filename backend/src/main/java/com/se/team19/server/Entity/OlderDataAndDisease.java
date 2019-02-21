@@ -20,9 +20,9 @@ public class OlderDataAndDisease {
     private @NotNull DataOlder dataOlderADiseaseDataOlder;
 
 
-    @OneToOne(fetch = FetchType.EAGER, targetEntity = OlderDisease.class)
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = OlderDisease.class)
     @JoinColumn(name = "OlderDisease_ID", insertable = true)
-    private @NotNull  OlderDisease dataOlderADiseaseOlderDisease;
+    private @NotNull OlderDisease dataOlderADiseaseOlderDisease;
 
     public OlderDataAndDisease(){}
 
