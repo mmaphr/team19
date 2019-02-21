@@ -3,18 +3,18 @@
 
     <mat-form-field class="full-width">
       <mat-label>ชื่อผู้สูงอายุ</mat-label>
-      <input matInput placeholder="กรอก ชื่อผู้สูงอายุ" [(ngModel)]="inputDataOlder.oldername">
+      <input matInput placeholder="กรอก ชื่อผู้สูงอายุ" name="oldername"[(ngModel)]="inputDataOlder.oldername">
     </mat-form-field>
 
     <mat-form-field class="full-width">
       <mat-label>วันเกิด</mat-label>
-      <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY" [(ngModel)]="inputDataOlder.olderbirth">
+      <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY" name="olderbirth"[(ngModel)]="inputDataOlder.olderbirth">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <mat-select placeholder="เพศ" name="gendername" [(ngModel)]="inputDataOlder.oldergender">
+      <mat-select placeholder="เพศ" name="gender" [(ngModel)]="inputDataOlder.oldergender">
         <mat-option *ngFor="let gender of genders" [value]="gender.genderId" >
           {{gender.genderName}}
         </mat-option>
@@ -22,7 +22,7 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <mat-select placeholder="โรคประจำตัวผู้สูงอายุ" [(ngModel)]="inputDataOlder.olderdisease" multiple>
+      <mat-select placeholder="โรคประจำตัวผู้สูงอายุ" name="disease"[(ngModel)]="inputDataOlder.olderdisease" multiple>
         <mat-option *ngFor="let disease of diseases" [value]="disease.id">
           {{disease.diseasename}}
         </mat-option>
@@ -31,12 +31,12 @@
 
     <mat-form-field class="full-width">
       <mat-label>ชื่อญาติผู้สูงอายุ</mat-label>
-      <input matInput placeholder="กรอก ชื่อญาติ" [(ngModel)]="inputDataOlder.parentname">
+      <input matInput placeholder="กรอก ชื่อญาติ" name="parentname"[(ngModel)]="inputDataOlder.parentname">
     </mat-form-field>
 
     <mat-form-field class="full-width">
       <mat-label>ที่อยู่ญาติผู้สูงอายุ</mat-label>
-      <input matInput placeholder="กรอก ที่อยู่ญาติ" [(ngModel)]="inputDataOlder.parentaddress">
+      <input matInput placeholder="กรอก ที่อยู่ญาติ" name="parentaddress"[(ngModel)]="inputDataOlder.parentaddress">
     </mat-form-field>
 
     <mat-form-field class="full-width">
@@ -49,7 +49,7 @@
 
     <mat-form-field class="full-width">
       <mat-label>เบอร์โทรญาติผู้สูงอายุ</mat-label>
-      <input matInput placeholder="กรอก เบอร์โทร" [(ngModel)]="inputDataOlder.parentphone">
+      <input matInput placeholder="กรอก เบอร์โทร" name="parentphone"[(ngModel)]="inputDataOlder.parentphone">
     </mat-form-field>
     <br>
       <button mat-flat-button class="buttom"color="warn" routerLink="/main" routerLinkActive="active" >กลับ</button>
