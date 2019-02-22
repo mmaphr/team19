@@ -1,7 +1,9 @@
 package com.se.team19.server;
 
-import com.se.team19.server.Entity.*;
-import com.se.team19.server.Repository.*;
+import com.se.team19.server.Entity.InternalActivity;
+import com.se.team19.server.Repository.DaysOfTheWeekRepository;
+import com.se.team19.server.Repository.StaffRepository;
+import com.se.team19.server.Repository.TimeDurationRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
