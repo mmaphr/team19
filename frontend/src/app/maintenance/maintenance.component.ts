@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {MaintenanceService} from '../shared/maintenance/maintenance.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-maintenance',
@@ -10,7 +11,7 @@ import {MaintenanceService} from '../shared/maintenance/maintenance.service';
 })
 export class MaintenanceComponent implements OnInit {
 
-  constructor(private maintenanceService: MaintenanceService, private httpClient: HttpClient, private router: Router) {
+  constructor(private maintenanceService: MaintenanceService, private httpClient: HttpClient, private router: Router, private snackBar: MatSnackBar) {
   }
 
   displayedStartColumns: string[] = ['dateStartAndTimeStart', 'place', 'maintenanceName', 'description', 'staff', 'update'];
@@ -53,11 +54,13 @@ export class MaintenanceComponent implements OnInit {
 
   save() {
     if (this.maintenanceData.maintenanceNameInput === '') {
-      alert('กรุณากรอกชื่อการซ่อม');
+      this.snackBar.open('กรุณากรอกชื่อการซ่อม', 'OK', {});
+    } else if (this.maintenanceData.placeSelect === '') {
+      this.snackBar.open('กรุณาเลือกสถานที่', 'OK', {});
     } else if (this.maintenanceData.dateStart === '' || this.maintenanceData.timeStart === '') {
-      alert('กรุณาเลือกวันและเวลาของการซ่อม');
+      this.snackBar.open('กรุณาเลือกวันและเวลาของการซ่อม', 'OK', {});
     } else if (this.maintenanceData.staffSelect === '') {
-      alert('กรุณาเลือกผู้รับผิดชอบการซ่อม');
+      this.snackBar.open('กรุณาเลือกผู้รับผิดชอบการซ่อม', 'OK', {});
     } else {
       if (this.maintenanceData.descriptionInput === '') {
         this.maintenanceData.descriptionInput = '---';
@@ -67,7 +70,7 @@ export class MaintenanceComponent implements OnInit {
         this.maintenanceData).subscribe(
         data => {
           console.log('PUT Request is successful', data);
-          alert('เพิ่มรายการกิจกรรมสำเร็จ');
+          this.snackBar.open('เพิ่มรายการกิจกรรมสำเร็จ', 'OK', {});
           this.maintenanceData.maintenanceNameInput = '';
           this.maintenanceData.descriptionInput = '';
           this.maintenanceData.dateStart = '';
@@ -81,7 +84,7 @@ export class MaintenanceComponent implements OnInit {
         },
         error => {
           console.log('Error', error);
-          alert('Staff คนนี้ไม่ว่างในเวลาดังกล่าว');
+          this.snackBar.open('ชื่อการซ่อมไม่ถูกต้อง หรือมีการแจ้งซ่อมในเวลาดังกล่าวแล้ว', 'OK', {});
         });
     }
   }
@@ -90,7 +93,7 @@ export class MaintenanceComponent implements OnInit {
     this.httpClient.put('http://localhost:8080/maintenance/update/' + maintenanceId, this.getMaintenanceId).subscribe(
       data => {
         console.log('PUT Request is successful', data);
-        alert('Update รายการซ่อมเสร็จสิ้น');
+        this.snackBar.open('Update รายการซ่อมเสร็จสิ้น', 'OK', {});
         this.maintenanceService.getMaintenanceStart().subscribe(data1 => {
           this.showMaintenanceStart = data1;
           console.log(this.showMaintenanceStart);

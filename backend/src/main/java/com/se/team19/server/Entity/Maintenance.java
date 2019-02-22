@@ -17,8 +17,7 @@ public class Maintenance {
     @Id
     @GeneratedValue(generator = "Maintenance_Seq")
     private @NotNull Long maintenanceId;
-    @Pattern(regexp = "[A-Za-zก-์' ']+$")
-    @Size(min = 5, max = 30)
+    @Pattern(regexp = "[A-Za-zก-์' ']{5,30}")
     private @NotNull String maintenanceName;
     @Size(max = 50)
     private @NotNull String description;
