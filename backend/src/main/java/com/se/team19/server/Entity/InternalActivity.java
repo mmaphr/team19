@@ -1,9 +1,11 @@
 package com.se.team19.server.Entity;
 
-import lombok.*;
+import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Data
 @Entity
@@ -14,8 +16,7 @@ public class InternalActivity {
     @Id
     @GeneratedValue(generator = "InternalActivity_Seq")
     private @NotNull Long actId;
-    @Pattern(regexp = "[A-Za-zก-์' ']+$")
-    @Size(min = 5, max = 30)
+    @Pattern(regexp = "[A-Za-zก-์' ']{5,30}")
     private @NotNull String actName;
     @Size(max = 50)
     private String description;
