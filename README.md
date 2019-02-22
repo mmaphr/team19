@@ -9,7 +9,14 @@ Members
   6. B5922635 Mr. Aphirach Ek-Un
 
 
-Before Running ==> npm install --save-exact @angular/material@5.2.4 @angular/cdk@5.2.4 && npm i rxjs-compat && npm i amazing-time-picker --save
-Running ==> backend ==> mvnw spring-boot:run
-              
-            frontend ==> ng serve
+Before Running
+    
+    npm i @angular/material@5.2.4 @angular/cdk@5.2.4 rxjs-compat amazing-time-picker
+
+Running backend
+    
+    mvnw spring-boot:run
+    
+Running frontend
+    
+    ng serve
