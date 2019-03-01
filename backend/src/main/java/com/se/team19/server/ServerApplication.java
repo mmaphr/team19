@@ -239,7 +239,7 @@ public class ServerApplication {
 			room5.setRoomnumber("A105");
 			room5.setDayCheckin(new Date());
 			room5.setOlder(DataolderRepository.findById(4));
-			room5.setRoomstatus(roomStatusRepository.findById(1));
+			room5.setRoomstatus(roomStatusRepository.findById(2));
 			room5.setTyperoom(typeRoomRepository.findById(4));
 			roomInformationRepository.save(room5);
 
@@ -248,9 +248,9 @@ public class ServerApplication {
 			room6.setFloor(2);
 			room6.setRoomphone("012106");
 			room6.setRoomnumber("A106");
-			room2.setDayCheckin(new Date());
-			room2.setOlder(DataolderRepository.findById(6));
-			room6.setRoomstatus(roomStatusRepository.findById(1));
+			room6.setDayCheckin(new Date());
+			room6.setOlder(DataolderRepository.findById(6));
+			room6.setRoomstatus(roomStatusRepository.findById(2));
 			room6.setTyperoom(typeRoomRepository.findById(4));
 			roomInformationRepository.save(room6);
 //
@@ -279,7 +279,7 @@ public class ServerApplication {
 			room9.setRoomnumber("A109");
 			room9.setDayCheckin(new Date());
 			room9.setOlder(DataolderRepository.findById(3));
-			room9.setRoomstatus(roomStatusRepository.findById(1));
+			room9.setRoomstatus(roomStatusRepository.findById(2));
 			room9.setTyperoom(typeRoomRepository.findById(3));
 			roomInformationRepository.save(room9);
 //
@@ -290,7 +290,7 @@ public class ServerApplication {
 			room10.setRoomnumber("A110");
 			room10.setDayCheckin(new Date());
 			room10.setOlder(DataolderRepository.findById(5));
-			room10.setRoomstatus(roomStatusRepository.findById(1));
+			room10.setRoomstatus(roomStatusRepository.findById(2));
 			room10.setTyperoom(typeRoomRepository.findById(3));
 			roomInformationRepository.save(room10);
 
