@@ -20,9 +20,24 @@ public class RoomInformation {
     private @NotNull Long Id;
 
     @NotNull
-    @Pattern(regexp = "^[A-Z][0-9]{3}$")
+    @Pattern(regexp = "^[A-z][0-9]{3}$")
     @Column(unique = true)
     private String roomnumber;
+
+    @NotNull
+    @Pattern(regexp = "^([A-z*0-9*ก-๙*' '])*")
+    private String building;
+
+    @NotNull
+    private @Min(value = 1) int floor;
+
+    @NotNull
+    @Pattern(regexp = "^[0][0-9]{5}$")
+    @Column(unique = true)
+    private String roomphone;
+
+    @Temporal(TemporalType.DATE)
+    private Date dayCheckin;
 
     @NotNull
     @ManyToOne
@@ -35,26 +50,22 @@ public class RoomInformation {
     private TypeRoom Typeroom;
 
 
-    @ManyToOne
-    @JoinColumn(name = "OLDER1_NAME", nullable = true)
-    private DataOlder older1;
+    @OneToOne
+    @JoinColumn(name = "OLDER_NAME", nullable = true)
+    private DataOlder older;
 
-    @ManyToOne
-    @JoinColumn(name = "OLDER2_NAME", nullable = true)
-    private DataOlder older2;
 
-    @ManyToOne
-    @JoinColumn(name = "OLDER3_NAME", nullable = true)
-    private DataOlder older3;
 
     public RoomInformation() {}
-    public RoomInformation(String RoomNumber,RoomStatus RoomStatus,TypeRoom TypeRoom,DataOlder older1,DataOlder older2,DataOlder older3) {
+    public RoomInformation(String RoomNumber,RoomStatus RoomStatus,TypeRoom TypeRoom,DataOlder older,String building,int floor,String roomphone,Date dayCheckin) {
         this.roomnumber = RoomNumber;
         this.Roomstatus = RoomStatus;
         this.Typeroom = TypeRoom;
-        this.older1 = older1;
-        this.older2 = older2;
-        this.older2 = older2;
+        this.older = older;
+        this.building = building;
+        this.floor = floor;
+        this.roomphone = roomphone;
+        this.dayCheckin = dayCheckin;
 
     }
 }

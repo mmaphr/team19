@@ -58,19 +58,10 @@ public class VisitorController {
 
     @GetMapping("/checkOlder1OfRoom/{older1}")
     public RoomInformation getOlder1(@PathVariable long older1) throws Exception{
-        return roomInformationRepository.findByOlder1(dataOlderRepository.findById(older1));
+        return roomInformationRepository.findByOlder(dataOlderRepository.findById(older1));
 
     }
 
-    @GetMapping("/checkOlder2OfRoom/{older2}")
-    public RoomInformation getOlder2(@PathVariable long older2) throws Exception{
-        return roomInformationRepository.findByOlder2(dataOlderRepository.findById(older2));
-
-    }
-    @GetMapping("/checkOlder3OfRoom/{older3}")
-    public RoomInformation getOlder3(@PathVariable long older3) throws Exception{
-        return roomInformationRepository.findByOlder3(dataOlderRepository.findById(older3));
-    }
     @PostMapping("/AddVisitor/{name}/{numid}/{gender}/{age}/{provice}/{phone}/{older}/{status}")
     public Visitor newVisitor(
             @PathVariable String name,
@@ -81,9 +72,7 @@ public class VisitorController {
             @PathVariable String phone,
             @PathVariable long older,
             @PathVariable long status,@RequestBody String inputData) throws Exception{
-        if(roomInformationRepository.findByOlder1(dataOlderRepository.findById(older))==null&&
-                roomInformationRepository.findByOlder2(dataOlderRepository.findById(older))==null&&
-                roomInformationRepository.findByOlder3(dataOlderRepository.findById(older))==null)
+        if(roomInformationRepository.findByOlder(dataOlderRepository.findById(older))==null)
             throw new Exception("ไม่เจอผู้สูงอายุนี้ในห้องพัก");
 
         final String decoded = URLDecoder.decode(inputData, "UTF-8");

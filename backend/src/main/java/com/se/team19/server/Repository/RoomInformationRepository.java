@@ -11,9 +11,7 @@ public interface RoomInformationRepository extends JpaRepository<RoomInformation
     RoomInformation findById(long id);
     RoomInformation findByRoomnumber(String roomnumber);
 
-//    RoomStatus findByStatusName(String name);
-    RoomInformation findByOlder1(DataOlder older1);
-    RoomInformation findByOlder2(DataOlder older2);
-    RoomInformation findByOlder3(DataOlder older3);
+    RoomInformation findByOlder(DataOlder older);
+
 
 }

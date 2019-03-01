@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,6 +42,7 @@ public class RoomInformationController {
     public DataOlder older(@PathVariable String name) {
         return olderDataRepository.findByOldername(name);
     }
+
     @GetMapping("/OldersName")
     public Collection<DataOlder> olders() {
         return olderDataRepository.findAll().stream().collect(Collectors.toList());
@@ -58,25 +60,11 @@ public class RoomInformationController {
     }
     @GetMapping("/getOlder1OfRoom/{older1}")
     public RoomInformation getOlder1(@PathVariable String older1) throws Exception{
-        if(roomInformationRepository.findByOlder1(olderDataRepository.findByOldername(older1))==null&&
-                roomInformationRepository.findByOlder2(olderDataRepository.findByOldername(older1))==null&&
-                roomInformationRepository.findByOlder3(olderDataRepository.findByOldername(older1))==null)
+        if(roomInformationRepository.findByOlder(olderDataRepository.findByOldername(older1))==null)
             throw new Exception("ไม่เจอในห้องพัก");
-        return roomInformationRepository.findByOlder1(olderDataRepository.findByOldername(older1));
+        return roomInformationRepository.findByOlder(olderDataRepository.findByOldername(older1));
 
     }
-    @GetMapping("/getOlder2OfRoom/{older2}")
-    public RoomInformation getOlder2(@PathVariable String older2) throws Exception{
-
-        return roomInformationRepository.findByOlder2(olderDataRepository.findByOldername(older2));
-
-    }
-    @GetMapping("/getOlder3OfRoom/{older3}")
-    public RoomInformation getOlder3(@PathVariable String older3) {
-        return roomInformationRepository.findByOlder3(olderDataRepository.findByOldername(older3));
-
-    }
-
 
 
     @PutMapping("/updateRoom1/{roomID}/{olderID}/{statusID}/{typeID}")
@@ -85,9 +73,7 @@ public class RoomInformationController {
                             @PathVariable Long olderID,
                             @PathVariable Long statusID,
                             @PathVariable int typeID ) throws Exception{
-        if(roomInformationRepository.findByOlder1(olderDataRepository.findById(olderID).get())!=null||
-                roomInformationRepository.findByOlder2(olderDataRepository.findById(olderID).get())!=null||
-                roomInformationRepository.findByOlder3(olderDataRepository.findById(olderID).get())!=null)
+        if(roomInformationRepository.findByOlder(olderDataRepository.findById(olderID).get())!=null)
             throw new Exception("เพิ่มไม่สำเร็จ ผู้สูงอายุมีห้องพักแล้ว");
         if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="ชาย"&&typeID==2)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักชาย");
         if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="ชาย"&&typeID==4)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักชาย");
@@ -97,7 +83,8 @@ public class RoomInformationController {
         return roomInformationRepository.findById(roomID)
 
                 .map(update ->{
-                            update.setOlder1(olderDataRepository.findById(olderID).get());
+                            update.setDayCheckin(new Date());
+                            update.setOlder(olderDataRepository.findById(olderID).get());
                             update.setRoomstatus(roomStatusRepository.findById(statusID).get());
 
                             return roomInformationRepository.save(update);
@@ -107,62 +94,7 @@ public class RoomInformationController {
                     return roomInformationRepository.save(roomImformation);
                 });
     }
-    @PutMapping("/updateRoom2/{roomID}/{olderID}/{statusID}/{typeID}")
-    RoomInformation update2(RoomInformation roomImformation,
-                            @PathVariable Long roomID,
-                            @PathVariable Long olderID,
-                            @PathVariable Long statusID,
-                            @PathVariable int typeID) throws Exception{
-        if(roomInformationRepository.findByOlder1(olderDataRepository.findById(olderID).get())!=null||
-                roomInformationRepository.findByOlder2(olderDataRepository.findById(olderID).get())!=null||
-                roomInformationRepository.findByOlder3(olderDataRepository.findById(olderID).get())!=null)
-            throw new Exception("เพิ่มไม่สำเร็จ ผู้สูงอายุมีห้องพักแล้ว");
-        if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="ชาย"&&typeID==2)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักชาย");
-        if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="ชาย"&&typeID==4)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักชาย");
-        if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="หญิง"&&typeID==1)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักหญิง");
-        if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="หญิง"&&typeID==3)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักหญิง");
 
-        return roomInformationRepository.findById(roomID)
-
-                .map(update ->{
-                            update.setOlder2(olderDataRepository.findById(olderID).get());
-                            update.setRoomstatus(roomStatusRepository.findById(statusID).get());
-
-                            return roomInformationRepository.save(update);
-                        }
-                ).orElseGet(() ->{
-                    roomImformation.setId(roomID);
-                    return roomInformationRepository.save(roomImformation);
-                });
-    }
-    @PutMapping("/updateRoom3/{roomID}/{olderID}/{statusID}/{typeID}")
-    RoomInformation update3(RoomInformation roomImformation,
-                            @PathVariable Long roomID,
-                            @PathVariable Long olderID,
-                            @PathVariable Long statusID,
-                            @PathVariable int typeID) throws Exception{
-        if(roomInformationRepository.findByOlder1(olderDataRepository.findById(olderID).get())!=null||
-                roomInformationRepository.findByOlder2(olderDataRepository.findById(olderID).get())!=null||
-                roomInformationRepository.findByOlder3(olderDataRepository.findById(olderID).get())!=null)
-            throw new Exception("เพิ่มไม่สำเร็จ ผู้สูงอายุมีห้องพักแล้ว");
-        if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="ชาย"&&typeID==2)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักชาย");
-        if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="ชาย"&&typeID==4)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักชาย");
-        if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="หญิง"&&typeID==1)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักหญิง");
-        if(olderDataRepository.findById(olderID).get().getDataOlderGender().getGenderName()=="หญิง"&&typeID==3)throw new Exception("ประเภทห้องไม่ถูกต้อง กรุณาเลือกห้องพักหญิง");
-
-        return roomInformationRepository.findById(roomID)
-
-                .map(update ->{
-                            update.setOlder3(olderDataRepository.findById(olderID).get());
-                            update.setRoomstatus(roomStatusRepository.findById(statusID).get());
-
-                            return roomInformationRepository.save(update);
-                        }
-                ).orElseGet(() ->{
-                    roomImformation.setId(roomID);
-                    return roomInformationRepository.save(roomImformation);
-                });
-    }
 
     @PutMapping("/deleteRoom1/{roomID}/{olderID}/{statusID}")
     RoomInformation delete1(RoomInformation roomImformation,
@@ -173,45 +105,8 @@ public class RoomInformationController {
         return roomInformationRepository.findById(roomID)
 
                 .map(update ->{
-                            update.setOlder1(null);
-                            update.setRoomstatus(roomStatusRepository.findById(statusID).get());
-
-                            return roomInformationRepository.save(update);
-                        }
-                ).orElseGet(() ->{
-                    roomImformation.setId(roomID);
-                    return roomInformationRepository.save(roomImformation);
-                });
-    }
-    @PutMapping("/deleteRoom2/{roomID}/{olderID}/{statusID}")
-    RoomInformation delete2(RoomInformation roomImformation,
-                            @PathVariable Long roomID,
-                            @PathVariable Long olderID,
-                            @PathVariable Long statusID){
-
-        return roomInformationRepository.findById(roomID)
-
-                .map(update ->{
-                            update.setOlder2(null);
-                            update.setRoomstatus(roomStatusRepository.findById(statusID).get());
-
-                            return roomInformationRepository.save(update);
-                        }
-                ).orElseGet(() ->{
-                    roomImformation.setId(roomID);
-                    return roomInformationRepository.save(roomImformation);
-                });
-    }
-    @PutMapping("/deleteRoom3/{roomID}/{olderID}/{statusID}")
-    RoomInformation delete3(RoomInformation roomImformation,
-                            @PathVariable Long roomID,
-                            @PathVariable Long olderID,
-                            @PathVariable Long statusID){
-
-        return roomInformationRepository.findById(roomID)
-
-                .map(update ->{
-                            update.setOlder3(null);
+                            update.setOlder(null);
+                            update.setDayCheckin(null);
                             update.setRoomstatus(roomStatusRepository.findById(statusID).get());
 
                             return roomInformationRepository.save(update);
@@ -225,19 +120,22 @@ public class RoomInformationController {
 
 
 
-    @PostMapping("/newRoom/{roomNum}/{typeRoom}")
+    @PostMapping("/newRoom/{build}/{floor}/{roomNum}/{phone}/{typeRoom}")
     public RoomInformation newRoom(@RequestBody RoomInformation roomImformation,
-                                   @PathVariable String roomNum,
+                                   @PathVariable String roomNum,@PathVariable String build,@PathVariable int floor,@PathVariable String phone,
                                    @PathVariable long typeRoom) throws Exception{
         if(roomInformationRepository.findByRoomnumber(roomNum)!=null)
             throw new Exception("หมายเลขห้องพักซ้ำ!!");
 
+        roomImformation.setBuilding(build);
+        roomImformation.setFloor(floor);
         roomImformation.setRoomnumber(roomNum);
+        roomImformation.setRoomphone(phone);
+        roomImformation.setDayCheckin(null);
         roomImformation.setTyperoom(typeRoomRepository.findById(typeRoom));
         roomImformation.setRoomstatus(roomStatusRepository.findById(1));
-        roomImformation.setOlder1(null);
-        roomImformation.setOlder2(null);
-        roomImformation.setOlder3(null);
+        roomImformation.setOlder(null);
+
         return roomInformationRepository.save(roomImformation);
     }
 
