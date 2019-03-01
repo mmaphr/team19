@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RoomImformationService } from '../shared/room-imformation/room-imformation.service';
 import { HttpClient} from '@angular/common/http';
 import {MatTableDataSource,MatPaginator, MatSort, MatTable, MatTableModule, MatTabHeader,
-MatHeaderRow, MatHeaderCell, MatHeaderCellDef, MatHeaderRowDef,
-MatSortHeader, MatRow, MatRowDef,  MatCell, MatCellDef,MatDialog} from '@angular/material'
+  MatHeaderRow, MatHeaderCell, MatHeaderCellDef, MatHeaderRowDef,
+  MatSortHeader, MatRow, MatRowDef,  MatCell, MatCellDef,MatDialog} from '@angular/material'
 import {Router} from '@angular/router';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
@@ -16,10 +16,9 @@ import {MatSnackBar} from '@angular/material';
   styleUrls: ['./room-add.component.css']
 })
 export class RoomAddComponent implements OnInit {
-  showAllColumns: string[] = ['no','roomnumber','type','status','older1','older2','older3','add'];
+  showAllColumns: string[] = ['build','floor','roomnumber','type','status','older1','add'];
   ShowAll: Array<any>;
   ShowName: Array<any>;
-  static idOut : String
   static getId: any = {
     id:'',older1:'',older2:'',older3:''
   }
@@ -29,169 +28,68 @@ export class RoomAddComponent implements OnInit {
 
 
   constructor(private roomImformationService : RoomImformationService,private router: Router, private rout: ActivatedRoute,
-  private sanitizer: DomSanitizer,private matdialog : MatDialog, private httpClient: HttpClient,private snackBar: MatSnackBar) { }
+              private sanitizer: DomSanitizer,private matdialog : MatDialog, private httpClient: HttpClient,private snackBar: MatSnackBar) { }
 
 
   ngOnInit() {
-  if(RoomImformationComponent.older11){
+    if(RoomImformationComponent.older1){
       this.router.navigate(['roomAll']);
-    this.snackBar.open('มีในห้องพักแล้ว',"OK",{duration: 10000});
-  }
+      this.snackBar.open('มีในห้องพักแล้ว',"OK",{duration: 10000});
+    }
     this.roomImformationService.getRoomAll()
-    .subscribe(
-    data => {
-      this.ShowAll = data;
-      console.log(this.ShowAll);
-    });
+      .subscribe(
+        data => {
+          this.ShowAll = data;
+          console.log(this.ShowAll);
+        });
     this.roomImformationService.getOlderAll()
-    .subscribe(
-    data => {
-      this.ShowName = data;
-      console.log(this.ShowName);
-    });
+      .subscribe(
+        data => {
+          this.ShowName = data;
+          console.log(this.ShowName);
+        });
 
 
   }
 
-  add(id,older1,older2,older3,type){
+  add(id,older1,type){
     console.log(this.roomImData.nameInput);
-    console.log(id,older1,older2,older3);
+    console.log(id,older1);
     if(this.roomImData.nameInput === ''){
       this.snackBar.open('กรุณาเลือก',"OK",{duration: 10000});
     }else{
       if(older1===null){
-        if(older2===null){
-          if(older3===null){
-            console.log("ห้องว่างทุกที่");
-            console.log(id);
-            this.httpClient.put('http://localhost:8080/updateRoom1/' +id+ '/'+this.roomImData.nameInput+'/3/'+type.id,RoomAddComponent.getId)
-            .subscribe(
+        console.log("ห้องว่างทุกที่");
+        console.log(id);
+        this.httpClient.put('http://localhost:8080/updateRoom1/' +id+ '/'+this.roomImData.nameInput+'/2/'+type.id,RoomAddComponent.getId)
+          .subscribe(
             data => {
               this.snackBar.open('เพิ่มสำเร็จ',"OK",{duration: 10000});
 
-                console.log('PUT Request is successful', data);
-                this.router.navigate(['roomAll']);
-
-             },
+              console.log('PUT Request is successful', data);
+              // this.router.navigate(['roomAll']);
+              this.roomImData.nameInput = '';
+              this.roomImformationService.getRoomAll()
+                .subscribe(
+                  data => {
+                    this.ShowAll = data;
+                    console.log(this.ShowAll);
+                  });
+            },
             error => {
               this.snackBar.open(error.error.message,"OK",{duration: 10000});
-                console.log('Error', error);
+              console.log('Error', error);
             });
 
-          }else if(older3!==null){
-            console.log("ห้องว่างที่1-2");
-            this.httpClient.put('http://localhost:8080/updateRoom1/' +id+ '/'+this.roomImData.nameInput+'/2/'+type.id,RoomAddComponent.getId)
-            .subscribe(
-            data => {
-
-              this.snackBar.open('เพิ่มสำเร็จ',"OK",{duration: 10000});
-                console.log('PUT Request is successful', data);
-                this.router.navigate(['roomAll']);
-
-             },
-            error => {
-              this.snackBar.open(error.error.message,"OK",{duration: 10000});
-                console.log('Error', error);
-            });
-          }
-
-        }else if(older2!==null){
-
-          if(older3===null){
-            console.log("ห้องว่างที่1,3");
-            this.httpClient.put('http://localhost:8080/updateRoom1/' +id+ '/'+this.roomImData.nameInput+'/2/'+type.id,RoomAddComponent.getId)
-            .subscribe(
-            data => {
-
-              this.snackBar.open('เพิ่มสำเร็จ',"OK",{duration: 10000});
-                console.log('PUT Request is successful', data);
-                this.router.navigate(['roomAll']);
-
-             },
-            error => {
-              this.snackBar.open(error.error.message,"OK",{duration: 10000});
-                console.log('Error', error);
-            });
-
-          }else if(older3!==null){
-            console.log("ห้องว่างที่1");
-            this.httpClient.put('http://localhost:8080/updateRoom1/' +id+ '/'+this.roomImData.nameInput+'/4/'+type.id,RoomAddComponent.getId)
-            .subscribe(
-            data => {
-
-              this.snackBar.open('เพิ่มสำเร็จ',"OK",{duration: 10000});
-                console.log('PUT Request is successful', data);
-                this.router.navigate(['roomAll']);
-
-             },
-            error => {
-              this.snackBar.open(error.error.message,"OK",{duration: 10000});
-                console.log('Error', error);
-            });
-
-          }
-        }
-    }else if(older1!==null){
-        if(older2===null){
-
-          if(older3===null){
-            console.log("ห้องว่างที่2-3");
-            this.httpClient.put('http://localhost:8080/updateRoom2/' +id+ '/'+this.roomImData.nameInput+'/2/'+type.id,RoomAddComponent.getId)
-            .subscribe(
-            data => {
-
-              this.snackBar.open('เพิ่มสำเร็จ',"OK",{duration: 10000});
-                console.log('PUT Request is successful', data);
-                this.router.navigate(['roomAll']);
-
-             },
-            error => {
-              this.snackBar.open(error.error.message,"OK",{duration: 10000});
-                console.log('Error', error);
-            });
-
-          }else if(older3!==null){
-            console.log("ห้องว่างที่2");
-            this.httpClient.put('http://localhost:8080/updateRoom2/' +id+ '/'+this.roomImData.nameInput+'/4/'+type.id,RoomAddComponent.getId)
-            .subscribe(
-            data => {
-
-              this.snackBar.open('เพิ่มสำเร็จ',"OK",{duration: 10000});
-                console.log('PUT Request is successful', data);
-                this.router.navigate(['roomAll']);
-             },
-            error => {
-              this.snackBar.open(error.error.message,"OK",{duration: 10000});
-                console.log('Error', error);
-            });
-          }
-
-        }else if(older2!==null){
-
-          if(older3===null){
-            console.log("ห้องว่างที่3");
-            this.httpClient.put('http://localhost:8080/updateRoom3/' +id+ '/'+this.roomImData.nameInput+'/4/'+type.id,RoomAddComponent.getId)
-            .subscribe(
-            data => {
-
-              this.snackBar.open('เพิ่มสำเร็จ',"OK",{duration: 10000});
-                console.log('PUT Request is successful', data);
-                this.router.navigate(['roomAll']);
-
-             },
-            error => {
-              this.snackBar.open(error.error.message,"OK",{duration: 10000});
-               console.log('Error', error);
-            });
-          }else if(older3!==null){
-            console.log("ห้องเต็ม");
-            this.snackBar.open("ห้องพักเต็ม ไม่สามารถเพิ่มเข้าห้องนี้ได้","OK",{duration: 10000});
-          }
-        }
+      }else{
+        console.log("ห้องเต็ม");
+        this.snackBar.open("ห้องพักเต็ม ไม่สามารถเพิ่มเข้าห้องนี้ได้","OK",{duration: 10000});
+      }
     }
-    }
-
-
   }
 
+
+
 }
+
+

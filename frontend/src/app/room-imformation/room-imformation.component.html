@@ -17,8 +17,8 @@
     <br>
     <button mat-flat-button color="primary" (click)="search()" >ค้นหา</button>
     <p><button mat-raised-button color="accent" (click)="add(roomImData.nameInput)">เพิ่มเข้าห้องพัก</button>
-    <button mat-raised-button color="warn"(click)="delete()">ลบออกจากห้องพัก</button></p>
-    <p>ต้องการเพิ่มจำนวนห้องพัก <a href="roomEdit">เพิ่มห้องพัก</a></p>
-    <p><a href="main">กลับหน้าหลัก</a></p>
+      <button mat-raised-button color="warn"(click)="delete()">ลบออกจากห้องพัก</button></p>
+    <p>ต้องการเพิ่มจำนวนห้องพัก <a routerLink="/roomEdit" routerLinkActive="active">เพิ่มห้องพัก</a></p>
+    <a routerLink="/main" routerLinkActive="active" >กลับหน้าหลัก</a>
   </div>
 </div>

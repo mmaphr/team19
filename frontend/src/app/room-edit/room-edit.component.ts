@@ -18,43 +18,60 @@ export class RoomEditComponent implements OnInit {
   static roomnumber : String;
   roomImData: any = {
     roomNumInput:'',
-    typeSelect:''
+    typeSelect:'',
+    buildingInput:'',
+    floorInput:'',
+    roomphoneInput:''
+
   };
   constructor(private router: Router, private rout: ActivatedRoute,private roomEditService:RoomImformationService ,private snackBar: MatSnackBar, private httpClient: HttpClient,private sanitizer: DomSanitizer) {
-        this.sanitizer = sanitizer;
+    this.sanitizer = sanitizer;
   }
 
   ngOnInit() {
 
-  this.roomEditService.getTypeRoom().subscribe(data => {
-    this.types = data;
-    console.log(this.types);
-  });
+    this.roomEditService.getTypeRoom().subscribe(data => {
+      this.types = data;
+      console.log(this.types);
+    });
 
   }
 
   save(){
-  console.log(this.roomImData.roomNumInput);
-  if(this.roomImData.roomNumInput ===''||this.roomImData.typeSelect ===''){
-    this.snackBar.open('กรุณากรอกข้อมูลให้ครบถ้วน เพิ่มไม่สำเร็จ',"OK",{duration: 10000});
-  }else{
     console.log(this.roomImData.roomNumInput);
-    this.httpClient.post('http://localhost:8080/newRoom/'+this.roomImData.roomNumInput+'/'+this.roomImData.typeSelect,this.roomImData).subscribe(
-    data => {
-      this.snackBar.open('เพิ่มห้องพักสำเร็จ',"OK",{duration: 10000});
+    if(this.roomImData.roomNumInput ===''||this.roomImData.typeSelect ===''||this.roomImData.buildingInput ===''||this.roomImData.floorInput ===''||this.roomImData.roomphoneInput ===''){
+      this.snackBar.open('กรุณากรอกข้อมูลให้ครบถ้วน เพิ่มไม่สำเร็จ',"OK",{duration: 10000});
+    }else{
+      console.log(this.roomImData.roomNumInput);
+      this.httpClient.post('http://localhost:8080/newRoom/'+this.roomImData.buildingInput+'/'+this.roomImData.floorInput+'/'+this.roomImData.roomNumInput+'/'+this.roomImData.roomphoneInput+'/'+this.roomImData.typeSelect,this.roomImData).subscribe(
+        data => {
+          this.snackBar.open('เพิ่มห้องพักสำเร็จ',"OK",{duration: 10000});
 
-              console.log('เพิ่มห้องพักสำเร็จ', data);
-              this.router.navigate(['roomInformation']);
+          console.log('เพิ่มห้องพักสำเร็จ', data);
 
-          },
-          error => {
+          this.roomImData.roomNumInput = '';
+          this.roomImData.typeSelect = '' ;
+          // this.roomImData.buildingInput = '';
+          // this.roomImData.floorInput = '';
+          this.roomImData.roomphoneInput = '';
+
+
+          // this.router.navigate(['roomInformation']);
+
+        },
+        error => {
+          if(error.error.message=="หมายเลขห้องพักซ้ำ!!"){
             this.snackBar.open(error.error.message,"OK",{duration: 10000});
 
-              console.log('Error', error.error.message);
+            console.log('Error', error.error.message);
+          }else{
+            this.snackBar.open("กรอกข้อมูลผิดพลาด กรุณาตรวจสอบข้อมูล","OK",{duration: 10000});
+
           }
-    );
+        }
+      );
 
 
-  }
+    }
   }
 }

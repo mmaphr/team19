@@ -1,12 +1,27 @@
 <div class="blackground" align="center" >
   <div class="form">
     <h1>ระบบจัดการห้องพักผู้สูงอายุ</h1>
-    <p>เติมชื่อผู้สูงอายุเพื่อค้นหาห้องพัก</p>
+    <p>กรอกข้อมูลห้องพักที่จะเพิ่ม</p>
     <hr>
 
     <p><mat-form-field class="half-width" >
+      <mat-label>อาคาร</mat-label>
+      <input matInput placeholder="กรอกอาคาร"[(ngModel)]="roomImData.buildingInput" >
+    </mat-form-field></p>
+
+    <p><mat-form-field class="half-width" >
+      <mat-label>ชั้น</mat-label>
+      <input matInput type="number" min="1" placeholder="กรอกชั้น"[(ngModel)]="roomImData.floorInput" >
+    </mat-form-field></p>
+
+    <p><mat-form-field class="half-width" >
       <mat-label>หมายเลขห้อง</mat-label>
-      <input matInput placeholder="A101"[(ngModel)]="roomImData.roomNumInput" >
+      <input matInput maxlength="4" placeholder="กรอกเลขห้อง ตัวอย่าง:A101"[(ngModel)]="roomImData.roomNumInput" >
+    </mat-form-field></p>
+
+    <p><mat-form-field class="half-width" >
+      <mat-label>เบอร์โทรประจำห้อง</mat-label>
+      <input matInput maxlength="6" placeholder="กรอกเบอร์โทรประจำห้อง"[(ngModel)]="roomImData.roomphoneInput" >
     </mat-form-field></p>
 
     <p><mat-form-field class="half-width">
@@ -17,7 +32,9 @@
       </mat-select>
     </mat-form-field></p>
 
+
+
     <button mat-flat-button color="primary" (click)="save()" >ยืนยัน</button>
-    <p><a href="roomInformation">ย้อนกลับ</a></p>
+    <p></p><a routerLink="/roomInformation" routerLinkActive="active" >ย้อนกลับ</a>
   </div>
 </div>
