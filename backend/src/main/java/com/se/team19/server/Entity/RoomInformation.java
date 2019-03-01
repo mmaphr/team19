@@ -25,6 +25,7 @@ public class RoomInformation {
     private String roomnumber;
 
     @NotNull
+    @Size (max=50)
     @Pattern(regexp = "^([A-z*0-9*ก-๙*' '])*")
     private String building;
 
