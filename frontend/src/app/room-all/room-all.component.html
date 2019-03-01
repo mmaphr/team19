@@ -8,52 +8,58 @@
 
     <mat-table [dataSource]="ShowAll" class="mat-elevation-z8">
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-    <ng-container matColumnDef="no">
-      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-      <mat-cell *matCellDef="let element ; let i = index">{{i+1}}</mat-cell>
-    </ng-container>
-    <!-- Position Column -->
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+
+      <ng-container matColumnDef="build">
+        <mat-header-cell *matHeaderCellDef> อาคาร </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.building}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="floor">
+        <mat-header-cell *matHeaderCellDef> ชั้น </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.floor}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="roomnumber">
+        <mat-header-cell *matHeaderCellDef> หมายเลขห้อง </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.roomnumber}} </mat-cell>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef> ประเภทห้องพัก </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.typeroom.typeroom}} </mat-cell>
+      </ng-container>
+
+      <!--Symbol Column -->
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef> สถานะห้องพัก </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.roomstatus.statusname}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef> เบอร์โทรภายในห้อง </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.roomphone}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="older1">
+        <mat-header-cell *matHeaderCellDef> ผู้พัก </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.older&&element.older.oldername}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="day">
+        <mat-header-cell *matHeaderCellDef> วันที่เข้าพัก </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.dayCheckin}} </mat-cell>
+      </ng-container>
 
 
 
-    <ng-container matColumnDef="roomnumber">
-      <mat-header-cell *matHeaderCellDef> หมายเลขห้อง </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.roomnumber}} </mat-cell>
-    </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="type">
-      <mat-header-cell *matHeaderCellDef> ประเภทห้องพัก </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.typeroom.typeroom}} </mat-cell>
-    </ng-container>
-
-    <!--Symbol Column -->
-    <ng-container matColumnDef="status">
-      <mat-header-cell *matHeaderCellDef> สถานะห้องพัก </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.roomstatus.statusname}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="older1">
-      <mat-header-cell *matHeaderCellDef> ผู้พักคนที่1 </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.older1&&element.older1.oldername}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="older2">
-      <mat-header-cell *matHeaderCellDef> ผู้พักคนที่2 </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.older2&&element.older2.oldername}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="older3">
-      <mat-header-cell *matHeaderCellDef> ผู้พักคนที่3 </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.older3&&element.older3.oldername}} </mat-cell>
-    </ng-container>
-
-
-    <mat-header-row *matHeaderRowDef="showAllColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: showAllColumns;"></mat-row>
-  </mat-table>
-    <a href="roomInformation">ย้อนกลับ</a>
+      <mat-header-row *matHeaderRowDef="showAllColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: showAllColumns;"></mat-row>
+    </mat-table>
+    <a routerLink="/roomInformation" routerLinkActive="active" >ย้อนกลับ</a>
   </div>
 </div>

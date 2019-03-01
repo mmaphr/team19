@@ -78,6 +78,8 @@ import {BookaplaceComponent} from './bookaplace/bookaplace.component';
 import {BookaplaceService} from './service/bookaplace.service';
 import {MaintenanceComponent} from './maintenance/maintenance.component';
 import {MaintenanceService} from './shared/maintenance/maintenance.service';
+import { ShowroomComponent } from './showroom/showroom.component';
+
 const appRoutes: Routes = [
   { path: '',  redirectTo: '/loginpage', pathMatch: 'full' },
   { path: 'loginpage',component : LoginpageComponent},
@@ -128,7 +130,8 @@ const appRoutes: Routes = [
     TrainAddComponent,
     ConfirmActivityComponent,
     BookaplaceComponent,
-    MaintenanceComponent
+    MaintenanceComponent,
+    ShowroomComponent
   ],
   imports: [
     BrowserModule,
@@ -169,6 +172,9 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     AmazingTimePickerModule
+  ],
+  entryComponents: [
+    ShowroomComponent,
   ],
   providers: [TrainStaffService,TrainAddService,WithdrawService,HealthCheckService,StaffService,RoomImformationService,AdditemService,LoginpageService,AddDataOlderService,OutactivityService,InActService,VisitorService,BookaplaceService,MaintenanceService],
   bootstrap: [AppComponent]
