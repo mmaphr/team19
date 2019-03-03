@@ -31,17 +31,17 @@ public class Staff {
 
     @ManyToOne()
     @JoinColumn(name = "GENDER_ID", insertable = true)
-    private Gender staffGender;
+    private @NotNull Gender staffGender;
 
     @ManyToOne()
     @JoinColumn(name = "PROVINCE_ID", insertable = true)
-    private Province staffProvince;
+    private @NotNull Province staffProvince;
 
     @ManyToOne()
     @JoinColumn(name = "POSITION_ID", insertable = true)
-    private Position staffPosition;
+    private @NotNull Position staffPosition;
 
-    public Staff(String staffName, @NonNull int age, String address, String phone, String username, String password, Gender staffGender, Province staffProvince, Position staffPosition) {
+    public Staff(String staffName,int age, String address, String phone, String username, String password, Gender staffGender, Province staffProvince, Position staffPosition) {
         this.staffName = staffName;
         this.age = age;
         this.address = address;

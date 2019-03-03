@@ -28,14 +28,14 @@ public class TrainStaff {
 
     @ManyToOne
     @JoinColumn(name = "TIMEDURATION_ID", insertable = true)
-    private TimeDuration trainTime;
+    private @NotNull TimeDuration trainTime;
 
     @ManyToOne
     @JoinColumn(name = "TRAINTYPE_ID", insertable = true)
-    private TrainType trainType;
+    private @NotNull TrainType trainType;
 
     @ManyToOne
     @JoinColumn(name = "STAFF_ID", insertable = true)
-    private Staff trainStaff;
+    private @NotNull Staff trainStaff;
 
 }
