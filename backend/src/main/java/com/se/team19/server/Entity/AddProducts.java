@@ -4,6 +4,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
@@ -28,7 +29,8 @@ public class AddProducts {
     @Pattern(regexp = "^[A-Z]([A-z*0-9*' '])+|^([ก-๙*0-9*' '])+")
     private   String addProductName;
     @NotNull
-    private   Integer addAmount;
+    @Positive
+    private   int addAmount;
     @NotNull
     @Column(unique = true)
     private   Date addDate;

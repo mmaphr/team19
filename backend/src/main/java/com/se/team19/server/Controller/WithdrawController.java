@@ -56,7 +56,7 @@ public class WithdrawController {
     }
     //  <!========== UpdateToStock || SaveToWithdraw==========!>
     @RequestMapping(path = "/WithdrawStock/{category}/{itemname}/{amount}/{department}/{description}/{username}/{password}")
-    public Withdraw newWithdraw(Withdraw withdraw, Stock newStock, @PathVariable String category, @PathVariable String itemname, @PathVariable Integer amount, @PathVariable String department, @PathVariable String description, @PathVariable String username, @PathVariable String password) {
+    public Withdraw newWithdraw(Withdraw withdraw, Stock newStock, @PathVariable String category, @PathVariable String itemname, @PathVariable int amount, @PathVariable String department, @PathVariable String description, @PathVariable String username, @PathVariable String password) {
         Category cat = categoryRepository.findBycategoryName(category);
         Stock Sid = stockRepository.findByCategoryNameAndProductName(cat,itemname);
         Staff userandpass = staffRepository.findByUsernameAndPassword(username,password);
