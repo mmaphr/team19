@@ -27,7 +27,7 @@ public class Withdraw {
     @NotNull
     private  String withdrawName;
     @NotNull
-    private  Long withdrawAmount;
+    private  Integer withdrawAmount;
     @NotNull
     @Column(unique = true)
     private  Date withdrawDate;

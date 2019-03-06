@@ -25,7 +25,7 @@ public class Stock {
     @NotNull
     private  Long stockId;
     @NotNull
-    private  Long amountTotal;
+    private  Integer amountTotal;
     @NotNull
     @Size(min = 4, max = 20)
     @Pattern(regexp = "^[A-Z]([A-z*0-9*' '])+|^([ก-๙*0-9*' '])+")

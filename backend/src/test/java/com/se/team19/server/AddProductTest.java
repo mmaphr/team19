@@ -56,7 +56,7 @@ public class AddProductTest {
 
         Stock stock = new Stock();
         stock.setProductName("Drug");
-        stock.setAmountTotal(1000l);
+        stock.setAmountTotal(1000);
         stock.setCategoryName(categoryRepository.findBycategoryName("TestCategory"));
         entityManager.persist(stock);
         entityManager.flush();
@@ -81,7 +81,7 @@ public class AddProductTest {
     public void testAddProductsDataSuccess() {
         AddProducts addProducts = new AddProducts();
         addProducts.setAddProductName("Drug");
-        addProducts.setAddAmount(10l);
+        addProducts.setAddAmount(10);
         addProducts.setNoteName(note);
         addProducts.setCategoryName(category);
         addProducts.setStaffName(staff);
@@ -106,7 +106,7 @@ public class AddProductTest {
     public void testAddProductNameCannotBeNull() {
         AddProducts addProducts = new AddProducts();
         addProducts.setAddProductName(null);
-        addProducts.setAddAmount(10l);
+        addProducts.setAddAmount(10);
         addProducts.setNoteName(note);
         addProducts.setCategoryName(category);
         addProducts.setStaffName(staff);
@@ -166,7 +166,7 @@ public class AddProductTest {
     public void testNoteNameCannotBeNull() {
         AddProducts addProducts = new AddProducts();
         addProducts.setAddProductName("Drug");
-        addProducts.setAddAmount(10l);
+        addProducts.setAddAmount(10);
         addProducts.setNoteName(null);
         addProducts.setCategoryName(category);
         addProducts.setStaffName(staff);
@@ -196,7 +196,7 @@ public class AddProductTest {
     public void testCategoryNameCannotBeNull() {
         AddProducts addProducts = new AddProducts();
         addProducts.setAddProductName("Drug");
-        addProducts.setAddAmount(10l);
+        addProducts.setAddAmount(10);
         addProducts.setNoteName(note);
         addProducts.setCategoryName(null);
         addProducts.setStaffName(staff);
@@ -226,7 +226,7 @@ public class AddProductTest {
     public void testStockNameCannotBeNull() {
         AddProducts addProducts = new AddProducts();
         addProducts.setAddProductName("Drug");
-        addProducts.setAddAmount(10l);
+        addProducts.setAddAmount(10);
         addProducts.setNoteName(note);
         addProducts.setCategoryName(category);
         addProducts.setStaffName(staff);
@@ -256,7 +256,7 @@ public class AddProductTest {
     public void testAddDateCannotBeNull() {
         AddProducts addProducts = new AddProducts();
         addProducts.setAddProductName("Drug");
-        addProducts.setAddAmount(10l);
+        addProducts.setAddAmount(10);
         addProducts.setNoteName(note);
         addProducts.setCategoryName(category);
         addProducts.setStaffName(staff);
@@ -284,7 +284,7 @@ public class AddProductTest {
     public void testAddProductPattern() {
         AddProducts addProducts = new AddProducts();
         addProducts.setAddProductName("drug");
-        addProducts.setAddAmount(10l);
+        addProducts.setAddAmount(10);
         addProducts.setNoteName(note);
         addProducts.setCategoryName(category);
         addProducts.setStaffName(staff);
@@ -314,7 +314,7 @@ public class AddProductTest {
     public void testAddProductMinSize() {
         AddProducts addProducts = new AddProducts();
         addProducts.setAddProductName("Dr");
-        addProducts.setAddAmount(10l);
+        addProducts.setAddAmount(10);
         addProducts.setNoteName(note);
         addProducts.setCategoryName(category);
         addProducts.setStaffName(staff);
@@ -344,7 +344,7 @@ public class AddProductTest {
     public void testAddProductMaxSize() {
         AddProducts addProducts = new AddProducts();
         addProducts.setAddProductName("Drug Drug Drug Drug Drug Drug Drug Drug Drug");
-        addProducts.setAddAmount(10l);
+        addProducts.setAddAmount(10);
         addProducts.setNoteName(note);
         addProducts.setCategoryName(category);
         addProducts.setStaffName(staff);
@@ -373,7 +373,7 @@ public class AddProductTest {
     public void testAddProductDataUnique() {
         AddProducts addProducts = new AddProducts();
         addProducts.setAddProductName("Drug");
-        addProducts.setAddAmount(10l);
+        addProducts.setAddAmount(10);
         addProducts.setNoteName(note);
         addProducts.setCategoryName(category);
         addProducts.setStaffName(staff);
@@ -382,7 +382,7 @@ public class AddProductTest {
 
         AddProducts addProducts1 = new AddProducts();
         addProducts1.setAddProductName("Drug");
-        addProducts1.setAddAmount(10l);
+        addProducts1.setAddAmount(10);
         addProducts1.setNoteName(note);
         addProducts1.setCategoryName(category);
         addProducts1.setStaffName(staff);

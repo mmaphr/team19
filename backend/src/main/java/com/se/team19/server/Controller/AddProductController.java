@@ -51,7 +51,7 @@ public class AddProductController {
 
     //  <!========== SaveAndUpdateToStock || SavetoAddProduct==========!>
     @RequestMapping(path = "/AddStock/{category}/{itemname}/{amount}/{noteitem}/{username}/{password}")
-    public AddProducts newAddProducts(AddProducts addProducts, Stock newStock, @PathVariable String category, @PathVariable String itemname, @PathVariable Long amount, @PathVariable String noteitem,@PathVariable String username,@PathVariable String password) {
+    public AddProducts newAddProducts(AddProducts addProducts, Stock newStock, @PathVariable String category, @PathVariable String itemname, @PathVariable Integer amount, @PathVariable String noteitem,@PathVariable String username,@PathVariable String password) {
         Category cat = categoryRepository.findBycategoryName(category);
         Stock Sid = stockRepository.findByCategoryNameAndProductName(cat,itemname);
         Note newnote = noteRepository.findBynoteName(noteitem);
@@ -64,35 +64,38 @@ public class AddProductController {
         } catch (ParseException e) {
         }
 //        <!========== SaveToStock ===========!>
-        if(Sid == null){
-            newStock.setCategoryName(cat);
-            newStock.setProductName(itemname);
-            newStock.setAmountTotal(amount);
-            stockRepository.save(newStock);
+        if(amount > 0) {
+            if (Sid == null) {
+                newStock.setCategoryName(cat);
+                newStock.setProductName(itemname);
+                newStock.setAmountTotal(amount);
+                stockRepository.save(newStock);
 
-        }
-        //        <!========== UpdateToStock ===========!>
-        else if(Sid != null){
-            stockRepository.findById(Sid.getStockId())
-                    .map(update ->{
-                                update.setAmountTotal(Sid.getAmountTotal()+amount);
-                                return stockRepository.save(update);
-                            }
-                    ).orElseGet(() ->{
-                newStock.setStockId(Sid.getStockId());
-                return stockRepository.save(newStock);
-            });
-        }
+            }
+            //        <!========== UpdateToStock ===========!>
+            else if (Sid != null) {
+                stockRepository.findById(Sid.getStockId())
+                        .map(update -> {
+                                    update.setAmountTotal(Sid.getAmountTotal() + amount);
+                                    return stockRepository.save(update);
+                                }
+                        ).orElseGet(() -> {
+                    newStock.setStockId(Sid.getStockId());
+                    return stockRepository.save(newStock);
+                });
+            }
 //        <!========== SaveToAddProduct ===========!>
-        Stock Aid = stockRepository.findByCategoryNameAndProductName(cat,itemname);
-        addProducts.setCategoryName(cat);
-        addProducts.setAddProductName(itemname);
-        addProducts.setAddAmount(amount);
-        addProducts.setNoteName(newnote);
-        addProducts.setAddDate(date);
-        addProducts.setStockName(Aid);
-        addProducts.setStaffName(userandpass);
-        return addProductsRepository.save(addProducts);
+            Stock Aid = stockRepository.findByCategoryNameAndProductName(cat, itemname);
+            addProducts.setCategoryName(cat);
+            addProducts.setAddProductName(itemname);
+            addProducts.setAddAmount(amount);
+            addProducts.setNoteName(newnote);
+            addProducts.setAddDate(date);
+            addProducts.setStockName(Aid);
+            addProducts.setStaffName(userandpass);
+            return addProductsRepository.save(addProducts);
+        }
+        return addProducts;
     }
 
     //  <!========== ShowTableAddProduct ==========!>

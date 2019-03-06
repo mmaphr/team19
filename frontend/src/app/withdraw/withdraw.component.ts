@@ -55,10 +55,11 @@ export class WithdrawComponent implements OnInit {
       || this.Withdraw.itemNameInput === ''
       || this.Withdraw.amountItemInput === ''
       || this.Withdraw.amountItemInput === 0
+      || this.Withdraw.amountItemInput < 0
       || this.Withdraw.departmentInput === ''
       || this.Withdraw.descriptionInput === ''
     ) {
-      this.snackBar.open('กรุณาใส่ข้อมูลให้ครับ', 'KO', {});
+      this.snackBar.open('กรุณาใส่ข้อมูลหรือจำนวนให้ถูกต้อง', 'OK', {});
     } else {
       this.usernameInput = localStorage.getItem('id');
       this.passwordInput = localStorage.getItem('pass');
@@ -74,11 +75,11 @@ export class WithdrawComponent implements OnInit {
               this.Showitem = data1;
               console.log(this.Showitem);
             });
-            this.snackBar.open('การเบิกสำเสร็จ', 'KO', {});
+            this.snackBar.open('การเบิกสำเสร็จ', 'OK', {});
           },
           error => {
             console.log('Rrror', error);
-            this.snackBar.open('กรุณาตรวจสอบความยาวของสาเหตุที่เบิกสินค้า', 'KO', {});
+            this.snackBar.open('กรุณาตรวจสอบความยาวของสาเหตุที่เบิกสินค้า', 'OK', {});
           }
         );
     }

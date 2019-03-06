@@ -56,7 +56,7 @@ public class WithdrawController {
     }
     //  <!========== UpdateToStock || SaveToWithdraw==========!>
     @RequestMapping(path = "/WithdrawStock/{category}/{itemname}/{amount}/{department}/{description}/{username}/{password}")
-    public Withdraw newWithdraw(Withdraw withdraw, Stock newStock, @PathVariable String category, @PathVariable String itemname, @PathVariable Long amount, @PathVariable String department, @PathVariable String description, @PathVariable String username, @PathVariable String password) {
+    public Withdraw newWithdraw(Withdraw withdraw, Stock newStock, @PathVariable String category, @PathVariable String itemname, @PathVariable Integer amount, @PathVariable String department, @PathVariable String description, @PathVariable String username, @PathVariable String password) {
         Category cat = categoryRepository.findBycategoryName(category);
         Stock Sid = stockRepository.findByCategoryNameAndProductName(cat,itemname);
         Staff userandpass = staffRepository.findByUsernameAndPassword(username,password);
@@ -69,16 +69,16 @@ public class WithdrawController {
         } catch (ParseException e) {
         }
         //        <!========== UpdateToStock ===========!>
-        if(Sid.getAmountTotal() >= amount && Sid.getAmountTotal() > 0 && amount > 0){
+        if (Sid.getAmountTotal() >= amount && Sid.getAmountTotal() > 0 && amount > 0) {
             stockRepository.findById(Sid.getStockId())
-                    .map(update ->{
-                                update.setAmountTotal(Sid.getAmountTotal()-amount);
-                                return stockRepository.save(update);
-                            }
-                    ).orElseGet(() ->{
-                newStock.setStockId(Sid.getStockId());
-                return stockRepository.save(newStock);
-            });
+                    .map(update -> {
+                        update.setAmountTotal(Sid.getAmountTotal() - amount);
+                        return stockRepository.save(update);
+                    }
+                    ).orElseGet(() -> {
+                    newStock.setStockId(Sid.getStockId());
+                    return stockRepository.save(newStock);
+                });
             //        <!========== SaveToWithdraw ===========!>
             withdraw.setWithdrawName(itemname);
             withdraw.setWithdrawAmount(amount);
@@ -88,9 +88,11 @@ public class WithdrawController {
             withdraw.setCategoryName(cat);
             withdraw.setStaffName(userandpass);
             withdraw.setStockName(Sid);
+            return withdrawRepository.save(withdraw);
         }
-        return withdrawRepository.save(withdraw);
-    }
+        return withdraw;
+        }
+
     //  <!========== ShowTableAddProduct ==========!>
     @GetMapping(path ="/ShowWithdraw", produces = MediaType.APPLICATION_JSON_VALUE)
     public Collection<Withdraw> Withdraw() {
