@@ -57,7 +57,7 @@ public class StockTests {
 	@Test
 	public void testStockDataSuccess() {
 		Stock stock = new Stock();
-		stock.setAmountTotal(1000l);
+		stock.setAmountTotal(1000);
 		stock.setProductName("Drug");
 		stock.setCategoryName(category);
 		try {
@@ -99,7 +99,7 @@ public class StockTests {
 	@Test
 	public void testProductNameCannotBeNull() {
 		Stock stock = new Stock();
-		stock.setAmountTotal(1000l);
+		stock.setAmountTotal(1000);
 		stock.setProductName(null);
 		stock.setCategoryName(category);
 		try {
@@ -123,7 +123,7 @@ public class StockTests {
 	@Test
 	public void testStockCategoryNameCannotBeNull() {
 		Stock stock = new Stock();
-		stock.setAmountTotal(1000l);
+		stock.setAmountTotal(1000);
 		stock.setProductName("Drug");
 		stock.setCategoryName(null);
 		try {
@@ -147,7 +147,7 @@ public class StockTests {
 	@Test
 	public void testStockPattern() {
 		Stock stock = new Stock();
-		stock.setAmountTotal(1000l);
+		stock.setAmountTotal(1000);
 		stock.setProductName("drug");
 		stock.setCategoryName(category);
 		try {
@@ -171,7 +171,7 @@ public class StockTests {
 	@Test
 	public void testStockMinSize() {
 		Stock stock = new Stock();
-		stock.setAmountTotal(1000l);
+		stock.setAmountTotal(1000);
 		stock.setProductName("Dru");
 		stock.setCategoryName(category);
 		try {
@@ -195,7 +195,7 @@ public class StockTests {
 	@Test
 	public void testStockMaxSize() {
 		Stock stock = new Stock();
-		stock.setAmountTotal(1000l);
+		stock.setAmountTotal(1000);
 		stock.setProductName("Drug drug drug drug drug drug drug drug");
 		stock.setCategoryName(category);
 		try {
@@ -219,13 +219,13 @@ public class StockTests {
 	@Test
 	public void testStockDataUnique() {
 		Stock stock = new Stock();
-		stock.setAmountTotal(1000l);
+		stock.setAmountTotal(1000);
 		stock.setProductName("Drug");
 		stock.setCategoryName(category);
 		entityManager.persist(stock);
 
 		Stock stock1 = new Stock();
-		stock1.setAmountTotal(1000l);
+		stock1.setAmountTotal(1000);
 		stock1.setProductName("Drug");
 		stock1.setCategoryName(category);
 		try {

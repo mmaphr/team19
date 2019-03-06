@@ -48,9 +48,10 @@ export class AdditemComponent implements OnInit {
       || this.Input.itemNameInput === ''
       || this.Input.amountItemInput === ''
       || this.Input.amountItemInput === 0
+      || this.Input.amountItemInput < 0
       || this.Input.noteItemInput === ''
     ){
-      this.snackBar.open('กรุณาใส่ข้อมูลให้ครับ', 'KO', {});
+      this.snackBar.open('กรุณาใส่ข้อมูลหรือจำนวนให้ถูกต้อง', 'OK', {});
     } else {
       this.usernameInput = localStorage.getItem('id');
       this.passwordInput = localStorage.getItem('pass');
@@ -66,11 +67,11 @@ export class AdditemComponent implements OnInit {
               this.Showitem = data;
               console.log(this.Showitem);
             });
-            this.snackBar.open('บันทึกสำเร็จ', 'KO', {});
+            this.snackBar.open('บันทึกสำเร็จ', 'OK', {});
           },
           error => {
             console.log('Rrror', error);
-            this.snackBar.open('กรุณาตรวจสอบชื่อสินค้า "ต้องขึ้นต้นด้วยตัวใหญ่และมีความยาวมากกว่า2ตัว"', 'KO', {});
+            this.snackBar.open('กรุณาตรวจสอบชื่อสินค้า "ต้องขึ้นต้นด้วยตัวใหญ่และมีความยาวมากกว่า2ตัว"', 'OK', {});
           }
         );
     }

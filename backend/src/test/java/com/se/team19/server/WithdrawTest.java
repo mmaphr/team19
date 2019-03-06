@@ -59,7 +59,7 @@ public class WithdrawTest {
 
 		Stock stock = new Stock();
 		stock.setProductName("Drug");
-		stock.setAmountTotal(1000l);
+		stock.setAmountTotal(1000);
 		stock.setCategoryName(categoryRepository.findBycategoryName("TestCategory"));
 		entityManager.persist(stock);
 		entityManager.flush();
@@ -84,7 +84,7 @@ public class WithdrawTest {
 	public void testWithdrawDataSuccess() {
 		Withdraw withdraw = new Withdraw();
 		withdraw.setWithdrawName("Drug");
-		withdraw.setWithdrawAmount(10l);
+		withdraw.setWithdrawAmount(10);
 		withdraw.setWithdrawDescrition("Test Case Sprint2");
 		withdraw.setDepartmentName(department);
 		withdraw.setCategoryName(category);
@@ -110,7 +110,7 @@ public class WithdrawTest {
 	public void testWithdrawNameCannotBeNull() {
 		Withdraw withdraw = new Withdraw();
 		withdraw.setWithdrawName(null);
-		withdraw.setWithdrawAmount(10l);
+		withdraw.setWithdrawAmount(10);
 		withdraw.setWithdrawDescrition("Test Case Sprint2");
 		withdraw.setDepartmentName(department);
 		withdraw.setCategoryName(category);
@@ -172,7 +172,7 @@ public class WithdrawTest {
 	public void testWithdrawDescritionCannotBeNull() {
 		Withdraw withdraw = new Withdraw();
 		withdraw.setWithdrawName("Drug");
-		withdraw.setWithdrawAmount(10l);
+		withdraw.setWithdrawAmount(10);
 		withdraw.setWithdrawDescrition(null);
 		withdraw.setDepartmentName(department);
 		withdraw.setCategoryName(category);
@@ -203,7 +203,7 @@ public class WithdrawTest {
 	public void testWithdrawDepartmentNameCannotBeNull() {
 		Withdraw withdraw = new Withdraw();
 		withdraw.setWithdrawName("Drug");
-		withdraw.setWithdrawAmount(10l);
+		withdraw.setWithdrawAmount(10);
 		withdraw.setWithdrawDescrition("Test Case Sprint2");
 		withdraw.setDepartmentName(null);
 		withdraw.setCategoryName(category);
@@ -234,7 +234,7 @@ public class WithdrawTest {
 	public void testWithdrawCategoryNameCannotBeNull() {
 		Withdraw withdraw = new Withdraw();
 		withdraw.setWithdrawName("Drug");
-		withdraw.setWithdrawAmount(10l);
+		withdraw.setWithdrawAmount(10);
 		withdraw.setWithdrawDescrition("Test Case Sprint2");
 		withdraw.setDepartmentName(department);
 		withdraw.setCategoryName(null);
@@ -265,7 +265,7 @@ public class WithdrawTest {
 	public void testWithdrawStaffNameCannotBeNull() {
 		Withdraw withdraw = new Withdraw();
 		withdraw.setWithdrawName("Drug");
-		withdraw.setWithdrawAmount(10l);
+		withdraw.setWithdrawAmount(10);
 		withdraw.setWithdrawDescrition("Test Case Sprint2");
 		withdraw.setDepartmentName(department);
 		withdraw.setCategoryName(category);
@@ -296,7 +296,7 @@ public class WithdrawTest {
 	public void testWithdrawStockNameCannotBeNull() {
 		Withdraw withdraw = new Withdraw();
 		withdraw.setWithdrawName("Drug");
-		withdraw.setWithdrawAmount(10l);
+		withdraw.setWithdrawAmount(10);
 		withdraw.setWithdrawDescrition("Test Case Sprint2");
 		withdraw.setDepartmentName(department);
 		withdraw.setCategoryName(category);
@@ -327,7 +327,7 @@ public class WithdrawTest {
 	public void testWithdrawDateCannotBeNull() {
 		Withdraw withdraw = new Withdraw();
 		withdraw.setWithdrawName("Drug");
-		withdraw.setWithdrawAmount(10l);
+		withdraw.setWithdrawAmount(10);
 		withdraw.setWithdrawDescrition("Test Case Sprint2");
 		withdraw.setDepartmentName(department);
 		withdraw.setCategoryName(category);
@@ -356,7 +356,7 @@ public class WithdrawTest {
 	public void testWithdrawPattern() {
 		Withdraw withdraw = new Withdraw();
 		withdraw.setWithdrawName("Drug");
-		withdraw.setWithdrawAmount(10l);
+		withdraw.setWithdrawAmount(10);
 		withdraw.setWithdrawDescrition("test Case Sprint2");
 		withdraw.setDepartmentName(department);
 		withdraw.setCategoryName(category);
@@ -387,7 +387,7 @@ public class WithdrawTest {
 	public void testWithdrawDescritionMinSize() {
 		Withdraw withdraw = new Withdraw();
 		withdraw.setWithdrawName("Drug");
-		withdraw.setWithdrawAmount(10l);
+		withdraw.setWithdrawAmount(10);
 		withdraw.setWithdrawDescrition("Test");
 		withdraw.setDepartmentName(department);
 		withdraw.setCategoryName(category);
@@ -418,7 +418,7 @@ public class WithdrawTest {
 	public void testWithdrawDescritionMaXSize() {
 		Withdraw withdraw = new Withdraw();
 		withdraw.setWithdrawName("Drug");
-		withdraw.setWithdrawAmount(10l);
+		withdraw.setWithdrawAmount(10);
 		withdraw.setWithdrawDescrition("Test Case Sprint2 Test Case Sprint2 Test Case Sprint2 Test Case Sprint2 Test Case Sprint2");
 		withdraw.setDepartmentName(department);
 		withdraw.setCategoryName(category);
@@ -449,7 +449,7 @@ public class WithdrawTest {
 	public void testWithdrawDataUnique() {
 		Withdraw withdraw = new Withdraw();
 		withdraw.setWithdrawName("Drug");
-		withdraw.setWithdrawAmount(10l);
+		withdraw.setWithdrawAmount(10);
 		withdraw.setWithdrawDescrition("Test Case Sprint2");
 		withdraw.setDepartmentName(department);
 		withdraw.setCategoryName(category);
@@ -459,7 +459,7 @@ public class WithdrawTest {
 
 		Withdraw withdraw1 = new Withdraw();
 		withdraw1.setWithdrawName("Drug");
-		withdraw1.setWithdrawAmount(10l);
+		withdraw1.setWithdrawAmount(10);
 		withdraw1.setWithdrawDescrition("Test Case Sprint2");
 		withdraw1.setDepartmentName(department);
 		withdraw1.setCategoryName(category);

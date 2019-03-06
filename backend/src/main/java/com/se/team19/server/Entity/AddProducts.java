@@ -28,7 +28,7 @@ public class AddProducts {
     @Pattern(regexp = "^[A-Z]([A-z*0-9*' '])+|^([ก-๙*0-9*' '])+")
     private   String addProductName;
     @NotNull
-    private   Long addAmount;
+    private   Integer addAmount;
     @NotNull
     @Column(unique = true)
     private   Date addDate;
