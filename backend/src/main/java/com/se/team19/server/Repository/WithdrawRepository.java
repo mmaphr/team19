@@ -11,4 +11,5 @@ import java.util.Collection;
 @CrossOrigin(origins = "http://localhost:4200")
 public interface WithdrawRepository extends JpaRepository<Withdraw,Long> {
     Collection<Withdraw> findByWithdrawId(long l);
+    Withdraw findTopByOrderByWithdrawIdDesc ();
 }
