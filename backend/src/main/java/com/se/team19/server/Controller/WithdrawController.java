@@ -100,7 +100,7 @@ public class WithdrawController {
     //  <!========== ShowTableAddProduct ==========!>
     @GetMapping(path ="/ShowWithdraw", produces = MediaType.APPLICATION_JSON_VALUE)
     public Collection<Withdraw> Withdraw() {
-        long num = withdrawRepository.count();
+        long num = withdrawRepository.findTopByOrderByWithdrawIdDesc().getWithdrawId();
         Collection<Withdraw> withdrawLast = withdrawRepository.findByWithdrawId(num);
         return withdrawLast;
     }
