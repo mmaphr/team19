@@ -64,6 +64,7 @@ public class WithdrawController {
         Date date = new Date();
         String dateInString = "dd.MM.yyyy HH:mm:ss";
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+
         try {
             date = formatter.parse(dateInString);
         } catch (ParseException e) {
