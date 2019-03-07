@@ -71,30 +71,6 @@ public class StockTests {
 		}
 	}
 	//<!!========== Notnull ==========!!>//
-	//<!!========== StockAmount ==========!!>//
-	@Test
-	public void testStockAmountTotalCannotBeNull() {
-		Stock stock = new Stock();
-		stock.setAmountTotal(null);
-		stock.setProductName("Drug");
-		stock.setCategoryName(category);
-		try {
-			entityManager.persist(stock);
-			entityManager.flush();
-
-			fail("Should not pass to this line");
-		} catch (javax.validation.ConstraintViolationException e) {
-			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
-			System.out.println("================================================");
-			System.out.println("<!!=========== StockAmountNotnull ===========!!>");
-			System.out.println(e);
-			System.out.println("================================================");
-			System.out.println("================================================");
-		}
-	}
-
 	//<!!========== ProductName ==========!!>//
 	@Test
 	public void testProductNameCannotBeNull() {

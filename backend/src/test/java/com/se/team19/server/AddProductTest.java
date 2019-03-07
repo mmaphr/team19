@@ -136,7 +136,7 @@ public class AddProductTest {
     public void testAddAmountCannotBeNull() {
         AddProducts addProducts = new AddProducts();
         addProducts.setAddProductName("Drug");
-        addProducts.setAddAmount(null);
+        addProducts.setAddAmount(0);
         addProducts.setNoteName(note);
         addProducts.setCategoryName(category);
         addProducts.setStaffName(staff);

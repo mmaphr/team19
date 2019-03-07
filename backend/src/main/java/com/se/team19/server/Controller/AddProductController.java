@@ -51,7 +51,7 @@ public class AddProductController {
 
     //  <!========== SaveAndUpdateToStock || SavetoAddProduct==========!>
     @RequestMapping(path = "/AddStock/{category}/{itemname}/{amount}/{noteitem}/{username}/{password}")
-    public AddProducts newAddProducts(AddProducts addProducts, Stock newStock, @PathVariable String category, @PathVariable String itemname, @PathVariable Integer amount, @PathVariable String noteitem,@PathVariable String username,@PathVariable String password) {
+    public AddProducts newAddProducts(AddProducts addProducts, Stock newStock, @PathVariable String category, @PathVariable String itemname, @PathVariable int amount, @PathVariable String noteitem,@PathVariable String username,@PathVariable String password) {
         Category cat = categoryRepository.findBycategoryName(category);
         Stock Sid = stockRepository.findByCategoryNameAndProductName(cat,itemname);
         Note newnote = noteRepository.findBynoteName(noteitem);

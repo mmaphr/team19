@@ -78,8 +78,8 @@ export class WithdrawComponent implements OnInit {
             this.snackBar.open('การเบิกสำเสร็จ', 'OK', {});
           },
           error => {
-            console.log('Rrror', error);
-            this.snackBar.open('กรุณาตรวจสอบความยาวของสาเหตุที่เบิกสินค้า', 'OK', {});
+            console.log('Error', error);
+            this.snackBar.open('กรุณาตรวจสอบความยาวของสาเหตุที่เบิกสินค้าหรือจำนวนสินค้า', 'OK', {});
           }
         );
     }

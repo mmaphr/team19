@@ -141,7 +141,7 @@ public class WithdrawTest {
 	public void testWithdrawAmountCannotBeNull() {
 		Withdraw withdraw = new Withdraw();
 		withdraw.setWithdrawName("Drug");
-		withdraw.setWithdrawAmount(null);
+		withdraw.setWithdrawAmount(0);
 		withdraw.setWithdrawDescrition("Test Case Sprint2");
 		withdraw.setDepartmentName(department);
 		withdraw.setCategoryName(category);
