@@ -56,7 +56,7 @@ public class WithdrawController {
     }
     //  <!========== UpdateToStock || SaveToWithdraw==========!>
     @RequestMapping(path = "/WithdrawStock/{category}/{itemname}/{amount}/{department}/{description}/{username}/{password}")
-    public Withdraw newWithdraw(Withdraw withdraw, Stock newStock, @PathVariable String category, @PathVariable String itemname, @PathVariable int amount, @PathVariable String department, @PathVariable String description, @PathVariable String username, @PathVariable String password) {
+    public Withdraw newWithdraw(Withdraw withdraw, Stock newStock, @PathVariable String category, @PathVariable String itemname, @PathVariable int amount, @PathVariable String department, @PathVariable String description, @PathVariable String username, @PathVariable String password) throws Exception {
         Category cat = categoryRepository.findBycategoryName(category);
         Stock Sid = stockRepository.findByCategoryNameAndProductName(cat,itemname);
         Staff userandpass = staffRepository.findByUsernameAndPassword(username,password);
@@ -69,7 +69,10 @@ public class WithdrawController {
         } catch (ParseException e) {
         }
         //        <!========== UpdateToStock ===========!>
-        if (Sid.getAmountTotal() >= amount && Sid.getAmountTotal() > 0 && amount > 0) {
+        if(Sid.getAmountTotal() < amount){
+            throw new Exception();
+        }
+        else if (Sid.getAmountTotal() >= amount && Sid.getAmountTotal() > 0 && amount > 0) {
             stockRepository.findById(Sid.getStockId())
                     .map(update -> {
                         update.setAmountTotal(Sid.getAmountTotal() - amount);
